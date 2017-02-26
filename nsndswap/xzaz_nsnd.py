@@ -17,6 +17,7 @@ class ParseModes(enum.Enum):
 class XzazParser(html.parser.HTMLParser):
     mode = ParseModes.SEEKING_SONG
     active_song = None
+    all_songs = []
 
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
@@ -33,14 +34,21 @@ class XzazParser(html.parser.HTMLParser):
             print(f'Skipping "{data}" (flagged as original)')
         elif self.mode == ParseModes.FOUND_SONG:
             print(f'Scanning song "{data}"')
-        elif self.mode = ParseModes.EATING_REFERENCE:
+        elif self.mode == ParseModes.EATING_REFERENCE:
             print(f'Got "{self.active_song.title}" referencing "{data}"')
             self.mode = ParseModes.SEEKING_REFERENCE
-            self.active_song.references.push(data)
+            self.active_song.references.append(data)
 
     def handle_endtag(self, tag):
         if self.mode == ParseModes.FOUND_SONG and tag == "td":
             self.mode = ParseModes.SEEKING_REFERENCE
-        elif self.mode in (ParseModes.SEEKING_REFERENCE, ParseModes.SKIPPING_ORIGINAL_SONG)
+        elif self.mode in (ParseModes.SEEKING_REFERENCE, ParseModes.SKIPPING_ORIGINAL_SONG) \
             and tag == "tr":
             self.mode = ParseModes.SEEKING_SONG
+            self.all_songs.append(self.active_song)
+            self.active_song = None
+
+def parse(nsnd):
+    parser = XzazParser()
+    parser.feed(nsnd)
+    return parser.all_songs

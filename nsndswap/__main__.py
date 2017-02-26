@@ -5,10 +5,11 @@
 import sys
 import requests
 import nsndswap.util
+import nsndswap.xzaz_nsnd
 
 def main():
     nsnd = get_nsnd_page()
-    nsnd = parse_nsnd(nsnd)
+    print(repr(nsndswap.xzaz_nsnd.parse(nsnd)))
 
 def get_nsnd_page():
     try:
