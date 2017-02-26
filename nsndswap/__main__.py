@@ -3,13 +3,14 @@
 # copyright 2017 ViKomprenas, 2-clause BSD license (LICENSE.md)
 
 import sys
+import requests
+import nsndswap.util
 
 def main():
     nsnd = get_nsnd_page()
-    print(len(nsnd))
+    nsnd = parse_nsnd(nsnd)
 
 def get_nsnd_page():
-    import requests
     try:
         req = requests.get('http://xzazupsilon.webs.com/nsnd.html')
         if req.status_code != 200:
