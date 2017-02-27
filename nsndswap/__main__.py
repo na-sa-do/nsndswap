@@ -31,20 +31,17 @@ def postprocess(nsnd):
     for track in nsnd:
         track.title = postprocess_title(track.title)
         track.references = [postprocess_title(title) for title in track.references]
-        for i in range(0, len(track.references)): # separately because this screws with indexes
-            if ref == track.title:
-                # no, just no
-                track.references = [r for r in track.references if r is not ref]
 
 postprocess_title_table = {
         "Beatdown (Strider Style)": "Beatdown",
         "Showtime (Original Mix)": "Showtime",
+        "TBoSRE": "The Beginning of Something Really Excellent",
+        "IaMotMC": "I'm a Member of the Midnight Crew",
+        "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
         }
 def postprocess_title(title):
-    title = title.replace('TBoSRE', 'The Beginning of Something Really Excellent')\
-                 .replace('IaMotMC', 'I\'m a Member of the Midnight Crew')\
-                 .replace('PPiSHWA', 'Pumpkin Party in Sea Hitler\'s Water Apocalypse')\
-                 .replace('RCT', 'Rollercoaster Tycoon')
+    title = title.replace('RCT', 'Rollercoaster Tycoon')\
+                 .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
     return title
