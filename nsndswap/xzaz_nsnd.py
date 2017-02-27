@@ -22,7 +22,11 @@ class XzazParser(html.parser.HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
         if self.mode == ParseModes.SEEKING_SONG and tag == "td":
-            if 'original' in attrs['class']:
+            if 'class' not in attrs.keys():
+                self.active_song = self.all_songs.pop()
+                self.mode = ParseModes.FOUND_SONG
+                print(f'Resuming {self.active_song.title}')
+            elif 'original' in attrs['class']:
                 self.mode = ParseModes.SKIPPING_ORIGINAL_SONG
             elif 'hasquotes' in attrs['class']:
                 self.mode = ParseModes.FOUND_SONG
@@ -32,9 +36,13 @@ class XzazParser(html.parser.HTMLParser):
     def handle_data(self, data):
         if self.mode == ParseModes.SKIPPING_ORIGINAL_SONG:
             print(f'Skipping "{data}" (flagged as original)')
+            self.all_songs.append(nsndswap.util.Track(data))
         elif self.mode == ParseModes.FOUND_SONG:
             print(f'Scanning song "{data}"')
+            self.active_song = nsndswap.util.Track(data)
         elif self.mode == ParseModes.EATING_REFERENCE:
+            if data == "":
+                return
             print(f'Got "{self.active_song.title}" referencing "{data}"')
             self.mode = ParseModes.SEEKING_REFERENCE
             self.active_song.references.append(data)

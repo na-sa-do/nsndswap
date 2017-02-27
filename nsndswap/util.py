@@ -6,7 +6,7 @@ class Track(object):
     # encapsulation? what encapsulation? just use the properties
     def __init__(self, title):
         self.title = title
-        self.references_to = []
+        self.references = []
 
 def split_attrs(attrs):
     ret = {}
