@@ -7,10 +7,14 @@ import requests
 import re
 import nsndswap.util
 import nsndswap.xzaz_nsnd
+import nsndswap.web
 
 def main():
-    nsnd = get_nsnd_page()
-    xzaz_nsnd = nsndswap.xzaz_nsnd.parse(nsnd)
+    xzaz_nsnd = get_nsnd_page()
+    xzaz_nsnd = nsndswap.xzaz_nsnd.parse(xzaz_nsnd)
+
+    web = nsndswap.web.Web()
+    web.append(xzaz_nsnd)
 
 def get_nsnd_page():
     try:
