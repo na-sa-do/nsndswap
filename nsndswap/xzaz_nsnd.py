@@ -38,7 +38,10 @@ class XzazParser(html.parser.HTMLParser):
     
     def handle_data(self, data):
         data = nsndswap.util.reencode(data)
-        if self.mode == ParseModes.SKIPPING_ORIGINAL_SONG:
+        if self.mode != ParseModes.DONE and data == "?" * len(data):
+            print('Caught a question marks zone, ending now')
+            self.mode = ParseModes.DONE
+        elif self.mode == ParseModes.SKIPPING_ORIGINAL_SONG:
             self.all_songs.append(nsndswap.util.Track(data))
             print(f'Skipping "{self.all_songs[-1].title}" (flagged as original)')
         elif self.mode == ParseModes.FOUND_SONG:
