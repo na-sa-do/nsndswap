@@ -16,6 +16,8 @@ def main():
 
     web = nsndswap.web.Web()
     web.append(xzaz_nsnd)
+    with open('everything.gexf', 'w') as outf:
+        web.dump_gexf(outf)
 
 def get_nsnd_page():
     try:
