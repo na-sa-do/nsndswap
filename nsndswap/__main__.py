@@ -12,6 +12,7 @@ import nsndswap.web
 def main():
     xzaz_nsnd = get_nsnd_page()
     xzaz_nsnd = nsndswap.xzaz_nsnd.parse(xzaz_nsnd)
+    xzaz_nsnd = postprocess(xzaz_nsnd)
 
     web = nsndswap.web.Web()
     web.append(xzaz_nsnd)
@@ -32,9 +33,11 @@ def get_nsnd_page():
         raise
 
 def postprocess(nsnd):
+    nsnd = [x for x in nsnd if x]
     for track in nsnd:
         track.title = postprocess_title(track.title)
         track.references = [postprocess_title(title) for title in track.references]
+    return nsnd
 
 postprocess_title_table = {
         "Beatdown (Strider Style)": "Beatdown",

@@ -18,7 +18,6 @@ class Web(object):
             assert self.nodes[r] is title
             return r
     def append(self, nsnd):
-        nsnd = [x for x in nsnd if x] # apparently the list gets filled with Nones???
         while True:
             try:
                 next_song = nsnd.pop()
