@@ -37,21 +37,21 @@ class Web(object):
     def dump_gexf(self, outf):
         print('Dumping web')
         outf.write(f"""
-<?xml version='1.0' encoding='UTF-8' ?>
-<gexf xmlns='http://www.gexf.net/1.2draft' version='1.2'>
-    <meta lastmodifieddate='{str(datetime.date.today())}'>
+<?xml version="1.0" encoding="UTF-8" ?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2">
+    <meta lastmodifieddate="{str(datetime.date.today())}">
         <creator>nsndswap</creator>
         <description>This is a list of references (remixes, arrangements, samples, etc.) in Homestuck music.</description>
     </meta>
-    <graph mode='static' defaultedgetype='directed'>
+    <graph mode="static" defaultedgetype="directed">
         <nodes>\n""")
         for node_id in range(len(self.nodes)):
-            outf.write(f"            <node id='{node_id}' label=\"{self.nodes[node_id]}\" />\n")
+            outf.write(f"            <node id=\"{node_id}\" label=\"{self.nodes[node_id]}\" />\n")
         outf.write("""
         </nodes>
         <edges>\n""")
         for edge_id in range(len(self.edges)):
-            outf.write(f"            <edge id='{edge_id}' source='{self.edges[edge_id][0]}' target='{self.edges[edge_id][1]}' />\n")
+            outf.write(f"            <edge id=\"{edge_id}\" source=\"{self.edges[edge_id][0]}\" target=\"{self.edges[edge_id][1]}\" />\n")
         outf.write("""
         </edges>
     </graph>
