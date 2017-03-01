@@ -36,8 +36,7 @@ class Web(object):
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
     def dump_gexf(self, outf):
         print('Dumping web')
-        outf.write(f"""
-<?xml version="1.0" encoding="UTF-8" ?>
+        outf.write(f"""<?xml version="1.0" encoding="UTF-8" ?>
 <gexf xmlns="http://www.gexf.net/1.2draft" version="1.2">
     <meta lastmodifieddate="{str(datetime.date.today())}">
         <creator>nsndswap</creator>
@@ -46,7 +45,7 @@ class Web(object):
     <graph mode="static" defaultedgetype="directed">
         <nodes>\n""")
         for node_id in range(len(self.nodes)):
-            outf.write(f"            <node id=\"{node_id}\" label=\"{self.nodes[node_id]}\" />\n")
+            outf.write(f"            <node id=\"{node_id}\" label=\"{self.nodes[node_id].replace('&', '&amp;')}\" />\n")
         outf.write("""
         </nodes>
         <edges>\n""")
