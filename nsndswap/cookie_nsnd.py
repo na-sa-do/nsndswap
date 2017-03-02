@@ -59,12 +59,13 @@ class CookieParser(html.parser.HTMLParser):
                 self.active_song = nsndswap.util.Track("")
 
     def handle_endtag(self, tag):
-        if self.mode == ParseModes.SKIPPING_ALBUM_HEADER and tag == "tr":
+        if self.mode in (ParseModes.SKIPPING_ALBUM_HEADER, ParseModes.SEEKING_REFERENCE) and tag == "tr":
             self.mode = ParseModes.SEEKING_SONG
         elif tag == "td":
             if self.mode == ParseModes.EATING_REFERENCE:
                 self.mode = ParseModes.SEEKING_REFERENCE
-                print(f'Got a reference from "{self.active_song.title}" to "{self.active_song.references[-1]}')
+                if self.active_song.references[-1] != "":
+                    print(f'Got a reference from "{self.active_song.title}" to "{self.active_song.references[-1]}"')
                 self.got_new_this_round = False
             elif self.mode == ParseModes.EATING_TITLE:
                 self.mode = ParseModes.SKIPPING_ARTIST
