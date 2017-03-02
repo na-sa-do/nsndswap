@@ -51,10 +51,11 @@ class CookieParser(html.parser.HTMLParser):
                     }[self.mode]
             if self.mode == ParseModes.SKIPPING_TRACK_NUM:
                 self.active_song = nsndswap.util.Track("")
-            elif self.mode == ParseModes.EATING_TITLE and self.active_song is not None:
-                print(f'Finished "{self.active_song.title}"')
-                self.all_songs.append(self.active_song)
-                self.active_song = None
+            elif self.mode == ParseModes.EATING_TITLE :
+                if self.active_song is not None:
+                    print(f'Finished "{self.active_song.title}"')
+                    self.all_songs.append(self.active_song)
+                self.active_song = nsndswap.util.Track("")
 
     def handle_endtag(self, tag):
         if self.mode == ParseModes.SKIPPING_ALBUM_HEADER and tag == "tr":
@@ -75,7 +76,11 @@ class CookieParser(html.parser.HTMLParser):
         if self.mode == ParseModes.EATING_TITLE:
             self.active_song.title += data
         elif self.mode == ParseModes.EATING_REFERENCE:
+            if len(self.active_song.references) is 0:
+                self.active_song.references.append("")
             self.active_song.references[-1] += data
 
 def parse(nsnd):
-    raise NotImplementedError()
+    parser = CookieParser()
+    parser.feed(nsnd)
+    return parser.all_songs
