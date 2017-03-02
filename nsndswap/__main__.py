@@ -7,15 +7,20 @@ import requests
 import re
 import nsndswap.util
 import nsndswap.xzaz_nsnd
+import nsndswap.cookie_nsnd
 import nsndswap.web
 
 def main():
     xzaz_nsnd = get_nsnd_page('http://xzazupsilon.webs.com/nsnd.html')
     xzaz_nsnd = nsndswap.xzaz_nsnd.parse(xzaz_nsnd)
     xzaz_nsnd = postprocess(xzaz_nsnd)
+    cookie_nsnd = get_nsnd_page('https://wheals.github.io/canwc/nsnd.html')
+    cookie_nsnd = nsndswap.cookie_nsnd.parse(cookie_nsnd)
+    cookie_nsnd = postprocess(cookie_nsnd)
 
     web = nsndswap.web.Web()
     web.append(xzaz_nsnd)
+    web.append(cookie_nsnd)
     with open('everything.gexf', 'w') as outf:
         web.dump_gexf(outf)
 
