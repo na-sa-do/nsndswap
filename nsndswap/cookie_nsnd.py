@@ -34,6 +34,7 @@ class CookieParser(html.parser.HTMLParser):
     mode = ParseModes.SEEKING_ALBUM
     active_song = None
     all_songs = []
+    got_new_this_round = False
 
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
@@ -64,6 +65,7 @@ class CookieParser(html.parser.HTMLParser):
             if self.mode == ParseModes.EATING_REFERENCE:
                 self.mode = ParseModes.SEEKING_REFERENCE
                 print(f'Got a reference from "{self.active_song.title}" to "{self.active_song.references[-1]}')
+                self.got_new_this_round = False
             elif self.mode == ParseModes.EATING_TITLE:
                 self.mode = ParseModes.SKIPPING_ARTIST
                 if self.active_song.title == "":
@@ -74,11 +76,12 @@ class CookieParser(html.parser.HTMLParser):
 
     def handle_data(self, data):
         if self.mode == ParseModes.EATING_TITLE:
-            self.active_song.title += data
+            self.active_song.title += nsndswap.util.reencode(data).strip()
         elif self.mode == ParseModes.EATING_REFERENCE:
-            if len(self.active_song.references) is 0:
+            if len(self.active_song.references) is 0 or not self.got_new_this_round:
                 self.active_song.references.append("")
-            self.active_song.references[-1] += data
+                self.got_new_this_round = True
+            self.active_song.references[-1] += nsndswap.util.reencode(data).strip()
 
 def parse(nsnd):
     parser = CookieParser()
