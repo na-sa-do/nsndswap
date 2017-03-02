@@ -19,11 +19,7 @@ class Web(object):
             assert self.nodes[r] is title
             return r
     def append(self, nsnd):
-        while True:
-            try:
-                next_song = nsnd.pop()
-            except IndexError:
-                return # cave johnson, we're done here
+        for next_song in nsnd:
             assert isinstance(next_song, nsndswap.util.Track)
             print(f'Turning references into map for "{next_song.title}"')
 
