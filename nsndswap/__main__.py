@@ -10,7 +10,7 @@ import nsndswap.xzaz_nsnd
 import nsndswap.web
 
 def main():
-    xzaz_nsnd = get_nsnd_page()
+    xzaz_nsnd = get_nsnd_page('http://xzazupsilon.webs.com/nsnd.html')
     xzaz_nsnd = nsndswap.xzaz_nsnd.parse(xzaz_nsnd)
     xzaz_nsnd = postprocess(xzaz_nsnd)
 
@@ -19,9 +19,9 @@ def main():
     with open('everything.gexf', 'w') as outf:
         web.dump_gexf(outf)
 
-def get_nsnd_page():
+def get_nsnd_page(url):
     try:
-        req = requests.get('http://xzazupsilon.webs.com/nsnd.html')
+        req = requests.get(url)
         if req.status_code != 200:
             sys.stderr.write(f'Request for nsnd returned {req.status_code}, aborting\n')
             raise SystemExit(1)
