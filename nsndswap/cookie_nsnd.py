@@ -29,6 +29,7 @@ class ParseModes(enum.Enum):
     SKIPPING_ALBUM_ARTIST = 4
     SEEKING_REFERENCE = 5
     EATING_REFERENCE = 6
+    RESUMING = 7
 
 class CookieParser(html.parser.HTMLParser):
     mode = ParseModes.SEEKING_ALBUM
@@ -40,11 +41,14 @@ class CookieParser(html.parser.HTMLParser):
         attrs = nsndswap.util.split_attrs(attrs)
         if self.mode == ParseModes.SEEKING_ALBUM and tag == "tr":
             self.mode = ParseModes.SKIPPING_ALBUM_HEADER
+        elif self.mode == ParseModes.SEEKING_SONG and tag == "tr" and 'class' in attrs.keys() and 'no-sep' in attrs['class']:
+            self.mode = ParseModes.RESUMING
         elif self.mode != ParseModes.SKIPPING_ALBUM_HEADER and tag == "td":
             self.mode = {
                     ParseModes.SEEKING_SONG: ParseModes.SKIPPING_TRACK_NUM,
                     ParseModes.SKIPPING_TRACK_NUM: ParseModes.EATING_TITLE,
                     ParseModes.EATING_TITLE: ParseModes.SKIPPING_ARTIST,
+                    ParseModes.RESUMING: ParseModes.SKIPPING_ARTIST,
                     ParseModes.SKIPPING_ARTIST: ParseModes.SKIPPING_ALBUM_ARTIST,
                     ParseModes.SKIPPING_ALBUM_ARTIST: ParseModes.SEEKING_REFERENCE,
                     ParseModes.SEEKING_REFERENCE: ParseModes.EATING_REFERENCE
@@ -52,10 +56,11 @@ class CookieParser(html.parser.HTMLParser):
                     }[self.mode]
             if self.mode == ParseModes.SKIPPING_TRACK_NUM:
                 self.active_song = nsndswap.util.Track("")
-            elif self.mode == ParseModes.EATING_TITLE :
+            elif self.mode == ParseModes.EATING_TITLE:
                 if self.active_song is not None:
                     print(f'Finished "{self.active_song.title}"')
                     self.all_songs.append(self.active_song)
+                    self.active_song = None
                 self.active_song = nsndswap.util.Track("")
 
     def handle_endtag(self, tag):
@@ -79,6 +84,7 @@ class CookieParser(html.parser.HTMLParser):
         if self.mode == ParseModes.EATING_TITLE:
             self.active_song.title += nsndswap.util.reencode(data).strip()
         elif self.mode == ParseModes.EATING_REFERENCE:
+            assert self.active_song.title != ""
             if len(self.active_song.references) is 0 or not self.got_new_this_round:
                 self.active_song.references.append("")
                 self.got_new_this_round = True
