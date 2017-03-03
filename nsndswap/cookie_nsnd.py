@@ -37,6 +37,12 @@ class CookieParser(html.parser.HTMLParser):
     all_songs = []
     got_new_this_round = False
 
+    def _finish_song(self):
+        if self.active_song is not None:
+            print(f'Finished "{self.active_song.title}"')
+            self.all_songs.append(self.active_song)
+            self.active_song = None
+
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
         if self.mode == ParseModes.SEEKING_ALBUM and tag == "tr":
@@ -57,10 +63,7 @@ class CookieParser(html.parser.HTMLParser):
             if self.mode == ParseModes.SKIPPING_TRACK_NUM:
                 self.active_song = nsndswap.util.Track("")
             elif self.mode == ParseModes.EATING_TITLE:
-                if self.active_song is not None:
-                    print(f'Finished "{self.active_song.title}"')
-                    self.all_songs.append(self.active_song)
-                    self.active_song = None
+                self._finish_song()
                 self.active_song = nsndswap.util.Track("")
 
     def handle_endtag(self, tag):
@@ -79,6 +82,11 @@ class CookieParser(html.parser.HTMLParser):
                     print(f'Resuming "{self.active_song.title}"')
                 else:
                     print(f'Scanning "{self.active_song.title}"')
+        elif tag == "table":
+            if self.mode != ParseModes.SEEKING_REFERENCE:
+                print(f'[W] Reached unexpected end of album')
+                self._finish_song()
+                self.mode = ParseModes.SEEKING_ALBUM
 
     def handle_data(self, data):
         if self.mode == ParseModes.EATING_TITLE:

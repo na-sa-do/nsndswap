@@ -52,6 +52,8 @@ postprocess_title_table = {
         "TBoSRE": "The Beginning of Something Really Excellent",
         "IaMotMC": "I'm a Member of the Midnight Crew",
         "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
+        # a note to cookiefonster: i can't believe you've done this
+        "Showdown (who were you expecting, the easter bunny?)": "Showdown",
         }
 def postprocess_title(title):
     title = title.replace('RCT', 'Rollercoaster Tycoon')\
