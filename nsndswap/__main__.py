@@ -40,10 +40,10 @@ def get_nsnd_page(url):
         raise
 
 def postprocess(nsnd):
-    nsnd = [x for x in nsnd if x]
+    nsnd = [x for x in nsnd if x and x.title != ""]
     for track in nsnd:
         track.title = postprocess_title(track.title)
-        track.references = [postprocess_title(title) for title in track.references]
+        track.references = [postprocess_title(title) for title in track.references if title != ""]
     return nsnd
 
 postprocess_title_table = {
@@ -57,7 +57,9 @@ postprocess_title_table = {
         }
 def postprocess_title(title):
     title = title.replace('RCT', 'Rollercoaster Tycoon')\
-                 .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
+                 .replace('ICBSITC', 'I Can Barely Sleep in This Casino')\
+                 .replace('\n', '')\
+                 .replace('  ', ' ')
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
     return title

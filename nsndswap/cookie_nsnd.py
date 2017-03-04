@@ -39,9 +39,10 @@ class CookieParser(html.parser.HTMLParser):
 
     def _finish_song(self):
         if self.active_song is not None:
-            print(f'Finished "{self.active_song.title}"')
-            self.all_songs.append(self.active_song)
-            self.active_song = None
+            if self.active_song.title != "":
+                print(f'Finished "{self.active_song.title}"')
+                self.all_songs.append(self.active_song)
+                self.active_song = None
 
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
@@ -57,8 +58,8 @@ class CookieParser(html.parser.HTMLParser):
                     ParseModes.RESUMING: ParseModes.SKIPPING_ARTIST,
                     ParseModes.SKIPPING_ARTIST: ParseModes.SKIPPING_ALBUM_ARTIST,
                     ParseModes.SKIPPING_ALBUM_ARTIST: ParseModes.SEEKING_REFERENCE,
-                    ParseModes.SEEKING_REFERENCE: ParseModes.EATING_REFERENCE
-                    # not doing anything for EATING_REFERENCE because that IS an error
+                    ParseModes.SEEKING_REFERENCE: ParseModes.EATING_REFERENCE,
+                    ParseModes.EATING_REFERENCE: ParseModes.EATING_REFERENCE,
                     }[self.mode]
             if self.mode == ParseModes.SKIPPING_TRACK_NUM:
                 self.active_song = nsndswap.util.Track("")
@@ -84,7 +85,7 @@ class CookieParser(html.parser.HTMLParser):
                     print(f'Scanning "{self.active_song.title}"')
         elif tag == "table":
             if self.mode != ParseModes.SEEKING_REFERENCE:
-                print(f'[W] Reached unexpected end of album')
+                print(f'[W] Reached unexpected end of album in mode {self.mode}')
                 self._finish_song()
                 self.mode = ParseModes.SEEKING_ALBUM
 
