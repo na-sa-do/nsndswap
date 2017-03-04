@@ -34,7 +34,7 @@ def get_nsnd_page(url):
         if len(nsndtext) == 0:
             sys.stderr.write(f'Got a blank page instead of nsnd, aborting\n')
             raise SystemExit(1)
-        return nsndtext
+        return nsndtext.strip().replace('\n', '')
     except Exception as e:
         sys.stderr.write(f'Caught an exception while fetching nsnd\n')
         raise
@@ -52,7 +52,7 @@ postprocess_title_table = {
         "TBoSRE": "The Beginning of Something Really Excellent",
         "IaMotMC": "I'm a Member of the Midnight Crew",
         "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
-        # a note to cookiefonster: i can't believe you've done this
+        # a note to wheals: i can't believe you've done this
         "Showdown (who were you expecting, the easter bunny?)": "Showdown",
         }
 def postprocess_title(title):
