@@ -34,12 +34,18 @@ class Web(object):
     def append(self, nsnd):
         for next_song in nsnd:
             assert isinstance(next_song, nsndswap.util.Track)
+            if next_song.title == "":
+                print('Skipping a null song')
+                continue
             print(f'Turning references into map for "{next_song.title}"')
 
             node_id = self._get_id_of(next_song.title)
 
             # document references
             for ref in next_song.references:
+                if ref == "":
+                    print('Skipping a null reference')
+                    continue
                 ref_node_id = self._get_id_of(ref)
                 self.edges.append((node_id, ref_node_id))
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
