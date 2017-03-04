@@ -5,6 +5,19 @@
 import datetime
 import nsndswap.util
 
+def _xmlencode(string):
+    chars = {
+        # note that this one has to be first, or else the other &s are caught
+        '&': '&amp;',
+        '"': '&quot;',
+        '\'': '&apos;',
+        '<': '&lt;',
+        '>': '&gt;',
+        }
+    for ch in chars.keys():
+        string = string.replace(ch, chars[ch])
+    return string
+
 class Web(object):
     def __init__(self):
         self.nodes = [] # list of strings
@@ -41,7 +54,7 @@ class Web(object):
     <graph mode="static" defaultedgetype="directed">
         <nodes>\n""")
         for node_id in range(len(self.nodes)):
-            outf.write(f"            <node id=\"{node_id}\" label=\"{self.nodes[node_id].replace('&', '&amp;')}\" />\n")
+            outf.write(f"            <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\" />\n")
         outf.write("""
         </nodes>
         <edges>\n""")
