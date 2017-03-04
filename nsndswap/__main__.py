@@ -59,7 +59,8 @@ def postprocess_title(title):
     title = title.replace('RCT', 'Rollercoaster Tycoon')\
                  .replace('ICBSITC', 'I Can Barely Sleep in This Casino')\
                  .replace('\n', '')\
-                 .replace('  ', ' ')
+                 .replace('  ', ' ')\
+                 .strip()
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
     return title
