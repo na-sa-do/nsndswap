@@ -61,9 +61,7 @@ class CookieParser(html.parser.HTMLParser):
                     ParseModes.SEEKING_REFERENCE: ParseModes.EATING_REFERENCE,
                     ParseModes.EATING_REFERENCE: ParseModes.EATING_REFERENCE,
                     }[self.mode]
-            if self.mode == ParseModes.SKIPPING_TRACK_NUM:
-                self.active_song = nsndswap.util.Track("")
-            elif self.mode == ParseModes.EATING_TITLE:
+            if self.mode in (ParseModes.EATING_TITLE, ParseModes.SKIPPING_TRACK_NUM): # ???
                 self._finish_song()
                 self.active_song = nsndswap.util.Track("")
 
