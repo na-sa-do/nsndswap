@@ -52,6 +52,8 @@ postprocess_title_table = {
         "TBoSRE": "The Beginning of Something Really Excellent",
         "IaMotMC": "I'm a Member of the Midnight Crew",
         "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
+        "Upward Movement (Dave Owns)": "Upward Movement",
+        "Dave Fucking Owns At This Game": "Upward Movement",
         # a note to wheals: i can't believe you've done this
         "Showdown (who were you expecting, the easter bunny?)": "Showdown",
         }
