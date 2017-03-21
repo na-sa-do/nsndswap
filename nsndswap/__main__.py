@@ -18,11 +18,19 @@ def main():
     cookie_nsnd = nsndswap.cookie_nsnd.parse(cookie_nsnd)
     cookie_nsnd = postprocess(cookie_nsnd)
 
-    web = nsndswap.web.Web()
-    web.append(xzaz_nsnd)
-    web.append(cookie_nsnd)
-    with open('everything.gexf', 'w') as outf:
-        web.dump_gexf(outf)
+    xzaz_web = nsndswap.web.Web()
+    xzaz_web.append(xzaz_nsnd)
+    with open('homestuck.gexf', 'w') as f:
+        xzaz_web.dump_gexf(f)
+    cookie_web = nsndswap.web.Web()
+    cookie_web.append(cookie_nsnd)
+    with open('canwc.gexf', 'w') as f:
+        cookie_web.dump_gexf(f)
+    all_web = nsndswap.web.Web()
+    all_web.append(xzaz_nsnd)
+    all_web.append(cookie_nsnd)
+    with open('everything.gexf', 'w') as f:
+        all_web.dump_gexf(f)
 
 def get_nsnd_page(url):
     try:
