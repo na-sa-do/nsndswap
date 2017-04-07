@@ -18,6 +18,7 @@ import html.parser
 import enum
 import nsndswap.util
 
+
 @enum.unique
 class ParseModes(enum.Enum):
     SEEKING_ALBUM = -2
@@ -31,6 +32,7 @@ class ParseModes(enum.Enum):
     EATING_REFERENCE = 6
     RESUMING = 7
     DONE = 8
+
 
 class CookieParser(html.parser.HTMLParser):
     mode = ParseModes.SEEKING_ALBUM
@@ -46,7 +48,8 @@ class CookieParser(html.parser.HTMLParser):
                 self.active_song = None
 
     def handle_starttag(self, tag, attrs):
-        if self.mode == ParseModes.DONE: return
+        if self.mode == ParseModes.DONE:
+            return
         attrs = nsndswap.util.split_attrs(attrs)
         if tag == "table" and "class" in attrs.keys() and "no-artist" in attrs["class"]:
             print('Reached unreleased?, ending')
@@ -57,21 +60,22 @@ class CookieParser(html.parser.HTMLParser):
             self.mode = ParseModes.RESUMING
         elif self.mode != ParseModes.SKIPPING_ALBUM_HEADER and tag == "td":
             self.mode = {
-                    ParseModes.SEEKING_SONG: ParseModes.SKIPPING_TRACK_NUM,
-                    ParseModes.SKIPPING_TRACK_NUM: ParseModes.EATING_TITLE,
-                    ParseModes.EATING_TITLE: ParseModes.SKIPPING_ARTIST,
-                    ParseModes.RESUMING: ParseModes.SKIPPING_ARTIST,
-                    ParseModes.SKIPPING_ARTIST: ParseModes.SKIPPING_ALBUM_ARTIST,
-                    ParseModes.SKIPPING_ALBUM_ARTIST: ParseModes.SEEKING_REFERENCE,
-                    ParseModes.SEEKING_REFERENCE: ParseModes.EATING_REFERENCE,
-                    ParseModes.EATING_REFERENCE: ParseModes.EATING_REFERENCE,
-                    }[self.mode]
-            if self.mode in (ParseModes.EATING_TITLE, ParseModes.SKIPPING_TRACK_NUM): # ???
+                ParseModes.SEEKING_SONG: ParseModes.SKIPPING_TRACK_NUM,
+                ParseModes.SKIPPING_TRACK_NUM: ParseModes.EATING_TITLE,
+                ParseModes.EATING_TITLE: ParseModes.SKIPPING_ARTIST,
+                ParseModes.RESUMING: ParseModes.SKIPPING_ARTIST,
+                ParseModes.SKIPPING_ARTIST: ParseModes.SKIPPING_ALBUM_ARTIST,
+                ParseModes.SKIPPING_ALBUM_ARTIST: ParseModes.SEEKING_REFERENCE,
+                ParseModes.SEEKING_REFERENCE: ParseModes.EATING_REFERENCE,
+                ParseModes.EATING_REFERENCE: ParseModes.EATING_REFERENCE,
+            }[self.mode]
+            if self.mode in (ParseModes.EATING_TITLE, ParseModes.SKIPPING_TRACK_NUM):  # ???
                 self._finish_song()
                 self.active_song = nsndswap.util.Track("")
 
     def handle_endtag(self, tag):
-        if self.mode == ParseModes.DONE: return
+        if self.mode == ParseModes.DONE:
+            return
         if self.mode in (ParseModes.SKIPPING_ALBUM_HEADER, ParseModes.SEEKING_REFERENCE) and tag == "tr":
             self.mode = ParseModes.SEEKING_SONG
         elif tag == "td":
@@ -94,7 +98,8 @@ class CookieParser(html.parser.HTMLParser):
                 self.mode = ParseModes.SEEKING_ALBUM
 
     def handle_data(self, data):
-        if self.mode == ParseModes.DONE: return
+        if self.mode == ParseModes.DONE:
+            return
         if self.mode == ParseModes.EATING_TITLE:
             self.active_song.title += nsndswap.util.reencode(data)
         elif self.mode == ParseModes.EATING_REFERENCE:
@@ -103,6 +108,7 @@ class CookieParser(html.parser.HTMLParser):
                 self.active_song.references.append("")
                 self.got_new_this_round = True
             self.active_song.references[-1] += nsndswap.util.reencode(data)
+
 
 def parse(nsnd):
     parser = CookieParser()

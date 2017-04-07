@@ -4,11 +4,11 @@
 
 import sys
 import requests
-import re
 import nsndswap.util
 import nsndswap.xzaz_nsnd
 import nsndswap.cookie_nsnd
 import nsndswap.web
+
 
 def main():
     xzaz_nsnd = get_nsnd_page('http://xzazupsilon.webs.com/nsnd.html')
@@ -32,6 +32,7 @@ def main():
     with open('everything.gexf', 'w') as f:
         all_web.dump_gexf(f)
 
+
 def get_nsnd_page(url):
     try:
         req = requests.get(url)
@@ -47,6 +48,7 @@ def get_nsnd_page(url):
         sys.stderr.write(f'Caught an exception while fetching nsnd\n')
         raise
 
+
 def postprocess(nsnd):
     nsnd = [x for x in nsnd if x and x.title != ""]
     for track in nsnd:
@@ -54,17 +56,20 @@ def postprocess(nsnd):
         track.references = [postprocess_title(title) for title in track.references if title != ""]
     return nsnd
 
+
 postprocess_title_table = {
-        "Beatdown (Strider Style)": "Beatdown",
-        "Showtime (Original Mix)": "Showtime",
-        "TBoSRE": "The Beginning of Something Really Excellent",
-        "IaMotMC": "I'm a Member of the Midnight Crew",
-        "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
-        "Upward Movement (Dave Owns)": "Upward Movement",
-        "Dave Fucking Owns At This Game": "Upward Movement",
-        # a note to wheals: i can't believe you've done this
-        "Showdown (who were you expecting, the easter bunny?)": "Showdown",
-        }
+    "Beatdown (Strider Style)": "Beatdown",
+    "Showtime (Original Mix)": "Showtime",
+    "TBoSRE": "The Beginning of Something Really Excellent",
+    "IaMotMC": "I'm a Member of the Midnight Crew",
+    "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
+    "Upward Movement (Dave Owns)": "Upward Movement",
+    "Dave Fucking Owns At This Game": "Upward Movement",
+    # a note to wheals: i can't believe you've done this
+    "Showdown (who were you expecting, the easter bunny?)": "Showdown",
+}
+
+
 def postprocess_title(title):
     title = title.replace('RCT', 'Rollercoaster Tycoon')\
                  .replace('ICBSITC', 'I Can Barely Sleep in This Casino')\
@@ -74,6 +79,7 @@ def postprocess_title(title):
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
     return title
+
 
 if __name__ == '__main__':
     main()

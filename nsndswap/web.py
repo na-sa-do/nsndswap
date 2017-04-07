@@ -5,6 +5,7 @@
 import datetime
 import nsndswap.util
 
+
 def _xmlencode(string):
     chars = {
         # note that this one has to be first, or else the other &s are caught
@@ -13,15 +14,17 @@ def _xmlencode(string):
         '\'': '&apos;',
         '<': '&lt;',
         '>': '&gt;',
-        }
+    }
     for ch in chars.keys():
         string = string.replace(ch, chars[ch])
     return string
 
+
 class Web(object):
     def __init__(self):
-        self.nodes = [] # list of strings
-        self.edges = [] # list of edges, as (from, to) tuples
+        self.nodes = []  # list of strings
+        self.edges = []  # list of edges, as (from, to) tuples
+
     def _get_id_of(self, title):
         try:
             return self.nodes.index(title)
@@ -31,6 +34,7 @@ class Web(object):
             r = len(self.nodes) - 1
             assert self.nodes[r] is title
             return r
+
     def append(self, nsnd):
         for next_song in nsnd:
             assert isinstance(next_song, nsndswap.util.Track)
@@ -49,6 +53,7 @@ class Web(object):
                 ref_node_id = self._get_id_of(ref)
                 self.edges.append((node_id, ref_node_id))
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
+
     def dump_gexf(self, outf):
         print('Dumping web')
         outf.write(f"""<?xml version="1.0" encoding="UTF-8" ?>

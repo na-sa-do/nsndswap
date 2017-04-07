@@ -6,6 +6,7 @@ import html.parser
 import enum
 import nsndswap.util
 
+
 @enum.unique
 class ParseModes(enum.Enum):
     SEEKING_SONG = 0
@@ -14,6 +15,7 @@ class ParseModes(enum.Enum):
     SEEKING_REFERENCE = 3
     EATING_REFERENCE = 4
     DONE = 5
+
 
 class XzazParser(html.parser.HTMLParser):
     mode = ParseModes.SEEKING_SONG
@@ -35,7 +37,7 @@ class XzazParser(html.parser.HTMLParser):
                 self.mode = ParseModes.FOUND_SONG
         elif self.mode == ParseModes.SEEKING_REFERENCE and tag == "td":
             self.mode = ParseModes.EATING_REFERENCE
-    
+
     def handle_data(self, data):
         data = nsndswap.util.reencode(data)
         if self.mode != ParseModes.DONE and data == "?" * len(data):
@@ -63,10 +65,11 @@ class XzazParser(html.parser.HTMLParser):
         if self.mode == ParseModes.FOUND_SONG and tag == "td":
             self.mode = ParseModes.SEEKING_REFERENCE
         elif self.mode in (ParseModes.SEEKING_REFERENCE, ParseModes.SKIPPING_ORIGINAL_SONG) \
-            and tag == "tr":
+                and tag == "tr":
             self.mode = ParseModes.SEEKING_SONG
             self.all_songs.append(self.active_song)
             self.active_song = None
+
 
 def parse(nsnd):
     parser = XzazParser()
