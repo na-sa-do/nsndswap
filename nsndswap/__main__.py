@@ -7,6 +7,7 @@ import requests
 import nsndswap.util
 import nsndswap.xzaz_nsnd
 import nsndswap.cookie_nsnd
+import nsndswap.viko_nsnd
 import nsndswap.web
 
 
@@ -17,6 +18,8 @@ def main():
     cookie_nsnd = get_nsnd_page('https://wheals.github.io/canwc/nsnd.html')
     cookie_nsnd = nsndswap.cookie_nsnd.parse(cookie_nsnd)
     cookie_nsnd = postprocess(cookie_nsnd)
+    viko_nsnd = nsndswap.viko_nsnd.parse()
+    viko_nsnd = postprocess(viko_nsnd)
 
     xzaz_web = nsndswap.web.Web()
     xzaz_web.append(xzaz_nsnd)
@@ -29,6 +32,9 @@ def main():
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
     all_web.append(cookie_nsnd)
+    with open('almost_everything.gexf', 'w') as f:
+        all_web.dump_gexf(f)
+    all_web.append(viko_nsnd)
     with open('everything.gexf', 'w') as f:
         all_web.dump_gexf(f)
 

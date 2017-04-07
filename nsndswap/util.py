@@ -5,9 +5,9 @@
 
 class Track(object):
     # encapsulation? what encapsulation? just use the properties
-    def __init__(self, title):
+    def __init__(self, title, references=None):
         self.title = title
-        self.references = []
+        self.references = references or []
 
     def __repr__(self):
         return f'Track("{self.title}", {self.references})'
