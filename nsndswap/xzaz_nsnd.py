@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 -ttb
+#!/usr/bin/env python3
 # nsndswap/xzaz_nsnd.py
 # copyright 2017 ViKomprenas, 2-clause BSD license (LICENSE.md)
 
