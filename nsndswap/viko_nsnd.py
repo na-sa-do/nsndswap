@@ -18,7 +18,7 @@ nsnd = {
     "Whirlwind (L8 for D8 Version)": ["Patient", "Penumbra Phantasm", "Doctor", "Showtime", "Crystalanthemums", "Crystamanthequins", "Spider's Claw", "Vriska's Theme"],
     "Wishful Thinking": ["Skies of Skaia", "Skaian Summoning", "Theme", "Rex Duodecim Angelus", "Penumbra Phantasm", "Upward Movement (Dave Owns)", "Lotus", "Homestuck Anthem", "Ruins", "Explore", "Skaian Skuffle", "Sburban Jungle", "Cascade (Beta)", "Overture (Canon Edit)", "Even in Death"],
     "\N{Dingbat Circled Sans-Serif Digit Eight}": ["Spider's Claw", "Vriska's Theme", "Rex Duodecim Angelus", "Amen Break"],
-    "Blacker Than Licorice": ["Three in the Morning", "Liquid Negrocity", "Descend", "Umbral Ultimatum", "Walk-Stab-Walk", "Cascade (Beta)", "The Ballad of Jack Noir", "Lotus", "Non Compos Mentis", "Three's a Crowd", "Calamity", "Explore", "Flight of the White Wolf", "Amen Break"],
+    "Blacker Than Licorice": ["Three in the Morning", "Liquid Negrocity", "Descend", "Umbral Ultimatum", "Walk-Stab-Walk", "Cascade (Beta)", "The Ballad of Jack Noir", "Lotus", "Non Compos Mentis", "Three's a Crowd", "Calamity", "Explore", "Flight of the White Wolf", "Amen Break", "Harlequin"],
 }
 
 
