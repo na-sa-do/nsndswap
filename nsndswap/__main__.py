@@ -40,6 +40,7 @@ def main():
 
 
 def get_nsnd_page(url):
+    print(f'Fetching {url}')
     try:
         req = requests.get(url)
         if req.status_code != 200:
