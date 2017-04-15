@@ -71,6 +71,7 @@ postprocess_title_table = {
     "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
     "Upward Movement (Dave Owns)": "Upward Movement",
     "Dave Fucking Owns At This Game": "Upward Movement",
+    "Catchyegrabber (Skipper Plumbthroat's Song)": "Catchyegrabber",
     # a note to wheals: i can't believe you've done this
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",
 }
