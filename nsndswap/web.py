@@ -51,7 +51,11 @@ class Web(object):
                     print('Skipping a null reference')
                     continue
                 ref_node_id = self._get_id_of(ref)
-                self.edges.append((node_id, ref_node_id))
+                edge = (node_id, ref_node_id)
+                if edge in self.edges:
+                    print(f'Skipping a duplicated reference from "{next_song.title}" to "{ref}"')
+                    continue
+                self.edges += [edge]
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
 
     def dump_gexf(self, outf):
