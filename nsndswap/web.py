@@ -27,6 +27,15 @@ class NodeData:
         self.weighted_in_deg = 0
         self.weighted_out_deg = 0
         self.color = (0, 0, 0) # between 0 and 256
+        self.size = 1
+
+    @property
+    def deg(self):
+        return self.in_deg + self.out_deg
+
+    @property
+    def weighted_deg(self):
+        return (self.weighted_in_deg + self.weighted_out_deg) / 2
 
 
 class Web:
@@ -85,13 +94,14 @@ class Web:
             largest_in = max(largest_in, data.in_deg)
             largest_out = max(largest_out, data.out_deg)
         
-        print('Computing weighted degrees and colors')
+        print('Computing weighted degrees, colors, and sizes')
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
             data.color = [data.weighted_in_deg * 127, data.weighted_out_deg * 127, 32]
             data.color = tuple(map(lambda x: x + 65, map(round, data.color)))
             assert len(data.color) == 3
+            data.size = data.weighted_in_deg * 29 + 1
 
         print('Done building node data')
         return nodes_data
@@ -111,7 +121,7 @@ class Web:
         for node_id in range(len(self.nodes)):
             outf.write(f"""
             <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\" >
-                <viz:size value="30.0"></viz:size>
+                <viz:size value="{node_data[node_id].size}"></viz:size>
                 <viz:position x="0" y="0"></viz:position>
                 <viz:color r="{node_data[node_id].color[0]}" g="{node_data[node_id].color[1]}" b="{node_data[node_id].color[2]}"></viz:color>
             </node>""")
