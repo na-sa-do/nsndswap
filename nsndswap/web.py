@@ -101,7 +101,7 @@ class Web:
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
-            data.color = [data.weighted_in_deg * 127, data.weighted_out_deg * 127, 32]
+            data.color = [data.weighted_in_deg * 127, data.weighted_out_deg * 127, 0]
             data.color = tuple(map(lambda x: x + 65, map(round, data.color)))
             assert len(data.color) == 3
             data.size = data.weighted_in_deg * 29 + 1
@@ -114,7 +114,7 @@ class Web:
         node_data = self._build_node_data()
         print('Dumping web')
         outf.write(f"""<?xml version="1.0" encoding="UTF-8" ?>
-<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.1draft/viz">
+<gexf xmlns="http://www.gexf.net/1.3" version="1.3" xmlns:viz="http://www.gexf.net/1.3/viz">
     <meta lastmodifieddate="{str(datetime.date.today())}">
         <creator>nsndswap</creator>
         <description>This is a list of references (remixes, arrangements, samples, etc.) in Homestuck music.</description>
