@@ -3,7 +3,12 @@
 # copyright 2017 ViKomprenas, 2-clause BSD license (LICENSE.md)
 
 import datetime
+import random
 import nsndswap.util
+
+
+BOX_SIDE_STDDEV = 100
+BOX_SIDE_MAXDEV = 4
 
 
 def _xmlencode(string):
@@ -28,6 +33,8 @@ class NodeData:
         self.weighted_out_deg = 0
         self.color = (0, 0, 0) # between 0 and 256
         self.size = 1
+        self.x = 0
+        self.y = 0
 
     @property
     def deg(self):
@@ -97,7 +104,7 @@ class Web:
             largest_in = max(largest_in, data.in_deg)
             largest_out = max(largest_out, data.out_deg)
         
-        print('Computing weighted degrees, colors, and sizes')
+        print('Computing weighted degrees, colors, sizes')
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
@@ -105,6 +112,12 @@ class Web:
             data.color = tuple(map(lambda x: x + 65, map(round, data.color)))
             assert len(data.color) == 3
             data.size = data.weighted_in_deg * 29 + 1
+
+        print('Computing node locations')
+        for i in range(len(nodes_data)):
+            nodes_data[i].x = min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV), BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
+            nodes_data[i].y = min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV), BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
+
 
         print('Done building node data')
         return nodes_data
@@ -125,7 +138,7 @@ class Web:
             outf.write(f"""
             <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\" >
                 <viz:size value="{node_data[node_id].size}"></viz:size>
-                <viz:position x="0" y="0"></viz:position>
+                <viz:position x="{node_data[node_id].x}" y="{node_data[node_id].y}"></viz:position>
                 <viz:color r="{node_data[node_id].color[0]}" g="{node_data[node_id].color[1]}" b="{node_data[node_id].color[2]}"></viz:color>
             </node>""")
         outf.write("""
