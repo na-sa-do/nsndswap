@@ -69,6 +69,9 @@ class Web:
                     print('Skipping a null reference')
                     continue
                 ref_node_id = self._get_id_of(ref)
+                if ref_node_id == node_id:
+                    print(f'Skipping a reference from "{next_song.title}" to itself')
+                    continue
                 edge = (node_id, ref_node_id)
                 if edge in self.edges:
                     print(f'Skipping a duplicated reference from "{next_song.title}" to "{ref}"')
