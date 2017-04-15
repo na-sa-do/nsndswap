@@ -20,7 +20,16 @@ def _xmlencode(string):
     return string
 
 
-class Web(object):
+class NodeData:
+    def __init__(self):
+        self.in_deg = 0
+        self.out_deg = 0
+        self.weighted_in_deg = 0
+        self.weighted_out_deg = 0
+        self.color = (0, 0, 0) # between 0 and 256
+
+
+class Web:
     def __init__(self):
         self.nodes = []  # list of strings
         self.edges = []  # list of edges, as (from, to) tuples
@@ -58,7 +67,38 @@ class Web(object):
                 self.edges += [edge]
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
 
+    def _build_node_data(self):
+        nodes_data = [NodeData() for _ in self.nodes]
+
+        print('Adding degrees to node_data')
+        for i in range(len(self.nodes)):
+            for ref in self.edges:
+                if ref[0] == i:
+                    nodes_data[i].out_deg += 1
+                elif ref[1] == i:
+                    nodes_data[i].in_deg += 1
+
+        print('Computing largest degree (for weighted degrees)')
+        largest_in = 1
+        largest_out = 1
+        for data in nodes_data:
+            largest_in = max(largest_in, data.in_deg)
+            largest_out = max(largest_out, data.out_deg)
+        
+        print('Computing weighted degrees and colors')
+        for data in nodes_data:
+            data.weighted_in_deg = data.in_deg / largest_in
+            data.weighted_out_deg = data.out_deg / largest_out
+            data.color = [data.weighted_in_deg * 127, data.weighted_out_deg * 127, 32]
+            data.color = tuple(map(lambda x: x + 65, map(round, data.color)))
+            assert len(data.color) == 3
+
+        print('Done building node data')
+        return nodes_data
+            
+
     def dump_gexf(self, outf):
+        node_data = self._build_node_data()
         print('Dumping web')
         outf.write(f"""<?xml version="1.0" encoding="UTF-8" ?>
 <gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.1draft/viz">
@@ -73,7 +113,7 @@ class Web(object):
             <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\" >
                 <viz:size value="30.0"></viz:size>
                 <viz:position x="0" y="0"></viz:position>
-                <viz:color r="127" g="127" b="127"></viz:color>
+                <viz:color r="{node_data[node_id].color[0]}" g="{node_data[node_id].color[1]}" b="{node_data[node_id].color[2]}"></viz:color>
             </node>""")
         outf.write("""
         </nodes>
