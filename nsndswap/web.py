@@ -7,8 +7,14 @@ import random
 import nsndswap.util
 
 
-BOX_SIDE_STDDEV = 100
 BOX_SIDE_MAXDEV = 4
+BOX_SIDE_STDDEV = 100
+COLOR_BLUE_CONSTANT = 0
+COLOR_GREEN_FACTOR = 127
+COLOR_GREEN_OFFSET = 32
+COLOR_RED_FACTOR = 127
+COLOR_RED_OFFSET = 32
+SIZE_FACTOR = 30
 
 
 def _xmlencode(string):
@@ -23,6 +29,10 @@ def _xmlencode(string):
     for ch in chars.keys():
         string = string.replace(ch, chars[ch])
     return string
+
+
+def _fruchterman_reingold(nodes_data):
+    return nodes_data # TBD
 
 
 class NodeData:
@@ -108,16 +118,17 @@ class Web:
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
-            data.color = [data.weighted_in_deg * 127, data.weighted_out_deg * 127, 0]
-            data.color = tuple(map(lambda x: x + 65, map(round, data.color)))
+            data.color = [data.weighted_in_deg * COLOR_RED_FACTOR, data.weighted_out_deg * COLOR_GREEN_FACTOR, 0]
+            data.color = tuple([round(data.color[0]) + COLOR_RED_OFFSET, round(data.color[1]) + COLOR_GREEN_OFFSET, COLOR_BLUE_CONSTANT])
             assert len(data.color) == 3
-            data.size = data.weighted_in_deg * 29 + 1
+            data.size = data.weighted_in_deg * (SIZE_FACTOR - 1) + 1
 
-        print('Computing node locations')
+        print('Randomizing node locations')
         for i in range(len(nodes_data)):
             nodes_data[i].x = min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV), BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
             nodes_data[i].y = min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV), BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
-
+        print('Running Fruchterman-Reingold algorithm')
+        nodes_data = _fruchterman_reingold(nodes_data)
 
         print('Done building node data')
         return nodes_data
