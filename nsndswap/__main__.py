@@ -73,17 +73,20 @@ postprocess_title_table = {
     "Upward Movement (Dave Owns)": "Upward Movement",
     "Dave Fucking Owns At This Game": "Upward Movement",
     "Catchyegrabber (Skipper Plumbthroat's Song)": "Catchyegrabber",
+    "Three in the Morning (Kali)": "Three in the Morning (Kali's 2 in the AM PM Edit)",
+    "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
     # a note to wheals: i can't believe you've done this
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",
 }
 
 
 def postprocess_title(title):
-    title = title.replace('RCT', 'Rollercoaster Tycoon')\
-                 .replace('ICBSITC', 'I Can Barely Sleep in This Casino')\
-                 .replace('\n', '')\
-                 .replace('  ', ' ')\
-                 .strip()
+    title = (title.replace('RCT', 'Rollercoaster Tycoon')
+                  .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
+                  .replace(' (unreleased)', '')
+                  .replace('\n', '')
+                  .replace('  ', ' ')
+                  .strip())
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
     return title
