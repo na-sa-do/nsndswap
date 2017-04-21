@@ -43,8 +43,7 @@ class NodeData:
         self.weighted_out_deg = 0
         self.color = (0, 0, 0) # between 0 and 256
         self.size = 1
-        self.x = 0
-        self.y = 0
+        self.position = 0+0j
 
     @property
     def deg(self):
@@ -124,9 +123,12 @@ class Web:
             data.size = data.weighted_in_deg * (SIZE_FACTOR - 1) + 1
 
         print('Randomizing node locations')
-        for i in range(len(nodes_data)):
-            nodes_data[i].x = min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV), BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
-            nodes_data[i].y = min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV), BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
+        def make_component():
+            return min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV),
+                       BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
+        for node_data in nodes_data:
+            node_data.position = complex(make_component(), make_component())
+
         print('Running Fruchterman-Reingold algorithm')
         nodes_data = _fruchterman_reingold(nodes_data)
 
@@ -149,7 +151,7 @@ class Web:
             outf.write(f"""
             <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\" >
                 <viz:size value="{node_data[node_id].size}"></viz:size>
-                <viz:position x="{node_data[node_id].x}" y="{node_data[node_id].y}"></viz:position>
+                <viz:position x="{node_data[node_id].position.real}" y="{node_data[node_id].position.imag}"></viz:position>
                 <viz:color r="{node_data[node_id].color[0]}" g="{node_data[node_id].color[1]}" b="{node_data[node_id].color[2]}"></viz:color>
             </node>""")
         outf.write("""
