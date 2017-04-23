@@ -13,6 +13,7 @@ nsnd = {
     "Cascadium Dioxide": ["Cascade (Beta)", "Flare", "Doctor", "Penumbra Phantasm", "Black Rose / Green Sun", "Black Hole / Green Sun", "Sburban Jungle"],
     "Unnamed Jungle Club Remix (Extra)": ["Sburban Jungle"],
     "Tales of an Unknown Universe": [],
+    
     # M3l0m4ni4c soundcloud
     "At Shadow's Edge": ["Penumbra Phantasm", "Amen Break"],
     "Whirlwind (L8 for D8 Version)": ["Whirlwind", "Patient", "Penumbra Phantasm", "Doctor", "Showtime", "Crystalanthemums", "Crystamanthequins", "Spider's Claw", "Vriska's Theme"],
@@ -21,6 +22,7 @@ nsnd = {
     "Blacker Than Licorice": ["Three in the Morning", "Liquid Negrocity", "Descend", "Umbral Ultimatum", "Walk-Stab-Walk", "Cascade (Beta)", "The Ballad of Jack Noir", "Lotus", "Non Compos Mentis", "Three's a Crowd", "Calamity", "Explore", "Flight of the White Wolf", "Amen Break", "Harlequin"],
     "Whirlwind": ["Showtime", "Doctor", "Patient", "Savior of the Waking World", "Penumbra Phantasm"],
     "Ignition": ["Flare (Cascade Cut)", "MeGaLoVania"],
+
     # M3l0m4ni4c Sins album
     "Temmie Sleuth": ["Problem Sleuth Title Screen", "Temmie Village"],
     "Midnight Temmie": ["I'm a Member of the Midnight Crew", "Temmie Village"],
@@ -51,6 +53,12 @@ nsnd = {
     "Savior of the Waking Temmie": ["Savior of the Waking World", "Temmie Village"],
     "ShowTemmie": ["Showtime", "Temmie Village"],
     "Temmie Flares": ["Flare (Cascade Cut)", "Temmie Village"],
+
+    # ViKomprenas clyp.it
+    "Dentist": ["Doctor", "Ruins", "Patient", "Savior of the Waking Patient"],
+    "Another Elevator": ["Another Jungle", "Sburban Elevator"],
+    "Elevator #3": ["Jungle #3", "Sburban Elevator"],
+    "Another Paradigm": ["Endless Climb", "Rhapsody in Green", "MeGaLoVania", "The Paradox Paradigm", "Maestro", "Sburban Jungle", "Penumbra Phantasm", "Beatdown", "Look Where We Are", "Crystalanthemums", "Heir of Grief", "Showtime (Piano Refrain)", "Revelawesome", "Three in the Morning", "Ruins", "Jungle #3", "Tock", "Unintentional Touhou", "Courser"],
 }
 
 
