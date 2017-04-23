@@ -31,10 +31,6 @@ def _xmlencode(string):
     return string
 
 
-def _fruchterman_reingold(nodes_data):
-    return nodes_data # TBD
-
-
 class NodeData:
     def __init__(self):
         self.in_deg = 0
@@ -128,9 +124,6 @@ class Web:
                        BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
         for node_data in nodes_data:
             node_data.position = complex(make_component(), make_component())
-
-        print('Running Fruchterman-Reingold algorithm')
-        nodes_data = _fruchterman_reingold(nodes_data)
 
         print('Done building node data')
         return nodes_data
