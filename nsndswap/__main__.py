@@ -75,6 +75,7 @@ postprocess_title_table = {
     "Catchyegrabber (Skipper Plumbthroat's Song)": "Catchyegrabber",
     "Three in the Morning (Kali)": "Three in the Morning (Kali's 2 in the AM PM Edit)",
     "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
+    "Overture": "I - Overture",
     # a note to wheals: i can't believe you've done this
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",
 }
