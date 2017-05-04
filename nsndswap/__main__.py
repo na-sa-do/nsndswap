@@ -77,6 +77,8 @@ postprocess_title_table = {
     "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
     "Overture": "I - Overture",
     "Softbit (Original Version)": "Softbit (Original GFD PStFMBRD Version)",
+    "GameBro": "GameBro (Original 1990 Mix)",
+    "GameGrl": "GameGrl (Original 1993 Mix)",
     # a note to wheals + cookie: i can't believe you've done this
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",
 }
