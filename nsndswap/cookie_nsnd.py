@@ -35,10 +35,12 @@ class ParseModes(enum.Enum):
 
 
 class CookieParser(html.parser.HTMLParser):
-    mode = ParseModes.SEEKING_ALBUM
-    active_song = None
-    all_songs = []
-    got_new_this_round = False
+    def __init__(self):
+        super().__init__()
+        self.mode = ParseModes.SEEKING_ALBUM
+        self.active_song = None
+        self.all_songs = []
+        self.got_new_this_round = False
 
     def _finish_song(self):
         if self.active_song is not None:

@@ -18,9 +18,11 @@ class ParseModes(enum.Enum):
 
 
 class XzazParser(html.parser.HTMLParser):
-    mode = ParseModes.SEEKING_SONG
-    active_song = None
-    all_songs = []
+    def __init__(self):
+        super().__init__()
+        self.mode = ParseModes.SEEKING_SONG
+        self.active_song = None
+        self.all_songs = []
 
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
