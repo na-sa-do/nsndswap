@@ -15,7 +15,7 @@ nsnd = {
     "Cascadium Dioxide": ["Cascade (Beta)", "Flare", "Doctor", "Penumbra Phantasm", "Black Rose / Green Sun", "Black Hole / Green Sun", "Sburban Jungle"],
     "Unnamed Jungle Club Remix (Extra)": ["Sburban Jungle"],
     "Tales of an Unknown Universe": [],
-    
+
     # M3l0m4ni4c soundcloud
     "At Shadow's Edge": ["Penumbra Phantasm", "Amen Break"],
     "Whirlwind (L8 for D8 Version)": ["Whirlwind", "Patient", "Penumbra Phantasm", "Doctor", "Showtime", "Crystalanthemums", "Crystamanthequins", "Spider's Claw", "Vriska's Theme"],

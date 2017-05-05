@@ -37,9 +37,9 @@ class NodeData:
         self.out_deg = 0
         self.weighted_in_deg = 0
         self.weighted_out_deg = 0
-        self.color = (0, 0, 0) # between 0 and 256
+        self.color = (0, 0, 0)  # between 0 and 256
         self.size = 1
-        self.position = 0+0j
+        self.position = 0 + 0j
 
     @property
     def deg(self):
@@ -108,7 +108,7 @@ class Web:
         for data in nodes_data:
             largest_in = max(largest_in, data.in_deg)
             largest_out = max(largest_out, data.out_deg)
-        
+
         print('Computing weighted degrees, colors, sizes')
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
@@ -119,15 +119,16 @@ class Web:
             data.size = data.weighted_in_deg * (SIZE_FACTOR - 1) + 1
 
         print('Randomizing node locations')
+
         def make_component():
             return min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV),
                        BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
+
         for node_data in nodes_data:
             node_data.position = complex(make_component(), make_component())
 
         print('Done building node data')
         return nodes_data
-            
 
     def dump_gexf(self, outf):
         node_data = self._build_node_data()
