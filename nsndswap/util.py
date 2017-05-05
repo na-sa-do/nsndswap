@@ -10,7 +10,7 @@ class Track(object):
         self.references = references or []
 
     def __repr__(self):
-        return f'Track("{self.title}", {self.references})'
+        return f'Track({self.title!r}, {self.references!r})'
 
 
 def split_attrs(attrs):
