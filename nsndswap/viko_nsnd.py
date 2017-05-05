@@ -2,6 +2,8 @@
 # nsndswap/viko_nsnd.py
 # copyright 2017 ViKomprenas, 2-clause BSD license (LICENSE.md)
 
+from nsndswap.util import Track
+
 nsnd = {
     # A Shade of Two
     "criticalErr0r": ["Taureg"],
@@ -67,5 +69,4 @@ nsnd = {
 
 
 def parse():
-    from nsndswap.util import Track
     return [Track(x, y) for x, y in nsnd.items() if y is not NotImplementedError]
