@@ -32,7 +32,7 @@ class XzazParser(html.parser.HTMLParser):
             if 'class' not in attrs.keys():
                 self.active_song = self.all_songs.pop()
                 self.mode = ParseModes.FOUND_SONG
-                print(f'Resuming {self.active_song.title}')
+                print(f'Resuming "{self.active_song.title}"')
             elif 'original' in attrs['class']:
                 self.mode = ParseModes.SKIPPING_ORIGINAL_SONG
             elif 'hasquotes' in attrs['class']:
