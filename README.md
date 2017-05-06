@@ -12,7 +12,14 @@ For the most part, the copious logs can be ignored. This creates four files in t
 
 # Output files
 
-- `homestuck.gexf` contains details of all songs on the first page (Homestuck soundtrack, unofficialmspafans, Homestuck Gaiden, and miscellaneous other things).
-- `canwc.gexf` contains details of all songs on the second page (the Cool and New Web Comic soundtrack).
-- `almost_everything.gexf` contains both of the previous files' data.
-- `everything.gexf` contains the previous file's data and a few additions of my own (which you can find in `viko_nsnd.py`, if you're interested in their raw form).
+The following files are output to the `output/` directory:
+
+- `homestuck` contains details of all songs on the first page (Homestuck soundtrack, unofficialmspafans, Homestuck Gaiden, and miscellaneous other things).
+- `canwc` contains details of all songs on the second page (the Cool and New Web Comic soundtrack).
+- `almost_everything` contains both of the previous files' data.
+- `everything` contains the previous file's data and a few additions of my own (which you can find in `viko_nsnd.py`, if you're interested in their raw form).
+
+These files are dumped in two formats:
+
+- `.gexf` - directed graphs of references
+- `.titles.txt` - the titles, one per line

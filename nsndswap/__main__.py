@@ -23,20 +23,18 @@ def main():
 
     xzaz_web = nsndswap.web.Web()
     xzaz_web.append(xzaz_nsnd)
-    with open('homestuck.gexf', 'w') as f:
-        xzaz_web.dump_gexf(f)
+    dump(xzaz_web, 'homestuck')
+
     cookie_web = nsndswap.web.Web()
     cookie_web.append(cookie_nsnd)
-    with open('canwc.gexf', 'w') as f:
-        cookie_web.dump_gexf(f)
+    dump(cookie_web, 'canwc')
+
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
     all_web.append(cookie_nsnd)
-    with open('almost_everything.gexf', 'w') as f:
-        all_web.dump_gexf(f)
+    dump(all_web, 'almost_everything')
     all_web.append(viko_nsnd)
-    with open('everything.gexf', 'w') as f:
-        all_web.dump_gexf(f)
+    dump(all_web, 'everything')
 
 
 def get_nsnd_page(url):
@@ -95,6 +93,13 @@ def postprocess_title(title):
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
     return title
+
+
+def dump(web, name):
+    with open(f'output/{name}.gexf', 'w') as f:
+        web.dump_gexf(f)
+    with open(f'output/{name}.titles.txt', 'w') as f:
+        web.dump_titles(f)
 
 
 if __name__ == '__main__':

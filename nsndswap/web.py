@@ -161,3 +161,9 @@ class Web:
     </graph>
 </gexf>\n""")
         print('Done dumping web')
+
+    def dump_titles(self, outf):
+        print('Dumping titles')
+        for title in self.nodes:
+            outf.write(title + '\n')
+        print('Done dumping titles')
