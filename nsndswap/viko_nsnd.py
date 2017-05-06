@@ -65,6 +65,51 @@ nsnd = {
 
     # The Exquisite Corpse
     "Exquisite Corpse": ["Carne Vale", "A Taste for Adventure", "Endless Climb", "RCT Title Screen", "Sburban Jungle", "Courser", "Jungle #3", "MeGaLoVania"],
+
+    # YUM!: The Vore Album
+    "A Welcome to the Wonderful World of Vore": [],
+    "Can't Keep a Good Man Down": [],
+    "The Cannibal Cafe": ["Dinosaur Comics Theme"],
+    "Voreska": ["MeGaLoVania", "Spider's Claw"],
+    "Voriginal Content (feat. Mister Pumpkin)": [],
+    "Stomach Is An Instrument / Vorejazz": [],
+    "Vorintosh Plus": ["MACINTOSH PLUS - リサフランク420 / 現代のコンピュー"],
+    "the eighth track is about vriska": ["Spider's Claw", "Jungle #3", "Death by Glamour"],
+    "Dentist (Vore Cut)": ["Dentist"],
+    "this story has about 300 pages of worldbuilding and then someone gets encased in latex and suffocates and it's generally agreed to be a real sexy affair": [],
+    "A Farewell to the Wonderful World of Vore": ["A Welcome to the Wonderful World of Vore"],
+    "[BONUS] The Voreing Experience": [],
+
+    # Sealstuck Volume 1
+    "Sealumbra Phantasm": ["Penumbra Phantasm"],
+    "sealteamsixgoestotacobellfordinnerexcepteveryonesasealandwecheer": [],
+    "Sealburban Jugnle": ["Sburban Jungle"],
+    "it's an amusement park! it's a sealival!": ["le canrival"],
+    "A seal related undertale pun": ["CORE"],
+    "sealsleepytime.wav": [],
+    "caseal": ["casin"],
+    "Seal Who": ["Doctor Who Theme"],
+    "the seal rap": [],
+    "Necrosealfoxtasia": ["Necrofantasia"],
+    "Pumpkin Party in Seal Hitler's Water Apocalypse": ["Pumpkin Party in Sea Hitler's Water Apocalypse"],
+    "Dinoseal Comics": ["Dinosaur Comics Theme"],
+    "Sealache": ["Heartache"],
+    "Seal Intermission": [],
+    "Moonsealer": ["Moonsetter"],
+    "Seally Slippery Cave": ["Ice Path"],
+    "sealsetter": ["Sunsetter"],
+    "eriseals theme": ["Eridan's Theme"],
+    "sealwave": [],
+    "The Key of Seal": [],
+    "just driving my seal to work officer": [],
+    "Unintentionally Seal": ["Unintentionally Short"],
+    "i put seal noises over an old abandoned project": [],
+    #"アザラシ 赤ちゃん 420 / モダン樹皮": ["MACINTOSH PLUS - リサフランク420 / 現代のコンピュー",
+    "This isn't an old song that I bullshitted over, no sir": [],
+    "sealsounds.wav": [],
+    "Troubled Seas": [],
+    "Seal the Deal": [],
+    "A Seal Legend - A Seal is 2": ["A Baby Legend"],
 }
 
 
