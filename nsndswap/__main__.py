@@ -78,6 +78,7 @@ postprocess_title_table = {
     "GameBro": "GameBro (Original 1990 Mix)",
     "GameGrl": "GameGrl (Original 1993 Mix)",
     "Eternity Served Cold": "Eternity, Served Cold",
+    "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
     # a note to wheals + cookie: i can't believe you've done this
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",
 }
