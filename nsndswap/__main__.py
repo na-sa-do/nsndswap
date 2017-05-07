@@ -64,23 +64,22 @@ def postprocess(nsnd):
 
 postprocess_title_table = {
     "Beatdown": "Beatdown (Strider Style)",
-    "Showtime": "Showtime (Original Mix)",
-    "TBoSRE": "The Beginning of Something Really Excellent",
-    "IaMotMC": "I'm a Member of the Midnight Crew",
-    "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
-    "Upward Movement": "Upward Movement (Dave Owns)",
-    "Dave Fucking Owns At This Game": "Upward Movement (Dave Owns)",
     "Catchyegrabber": "Catchyegrabber (Skipper Plumbthroat's Song)",
-    "Three in the Morning (Kali)": "Three in the Morning (Kali's 2 in the AM PM Edit)",
-    "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
-    "Overture": "I - Overture",
-    "Softbit (Original Version)": "Softbit (Original GFD PStFMBRD Version)",
+    "Dave Fucking Owns At This Game": "Upward Movement (Dave Owns)",
+    "Eternity Served Cold": "Eternity, Served Cold",
     "GameBro": "GameBro (Original 1990 Mix)",
     "GameGrl": "GameGrl (Original 1993 Mix)",
-    "Eternity Served Cold": "Eternity, Served Cold",
+    "IaMotMC": "I'm a Member of the Midnight Crew",
+    "Overture": "I - Overture",
+    "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
+    "Showdown (who were you expecting, the easter bunny?)": "Showdown",  # goddammit cookie
+    "Showtime": "Showtime (Original Mix)",
+    "Softbit (Original Version)": "Softbit (Original GFD PStFMBRD Version)",
+    "TBoSRE": "The Beginning of Something Really Excellent",
+    "Three in the Morning (Kali)": "Three in the Morning (Kali's 2 in the AM PM Edit)",
+    "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
+    "Upward Movement": "Upward Movement (Dave Owns)",
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
-    # a note to wheals + cookie: i can't believe you've done this
-    "Showdown (who were you expecting, the easter bunny?)": "Showdown",
 }
 
 
