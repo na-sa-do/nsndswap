@@ -100,6 +100,10 @@ def dump(web, name):
         web.dump_gexf(f)
     with open(f'output/{name}.titles.txt', 'w') as f:
         web.dump_titles(f)
+    with open(f'output/{name}.txt', 'w') as f:
+        web.dump_plaintext(f)
+    with open(f'output/{name}.reverse.txt', 'w') as f:
+        web.dump_plaintext(f, reverse=True)
 
 
 if __name__ == '__main__':

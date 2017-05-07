@@ -167,3 +167,18 @@ class Web:
         for title in self.nodes:
             outf.write(title + '\n')
         print('Done dumping titles')
+
+    def dump_plaintext(self, outf, reverse=False):
+        reverse_str = 'reversed ' if reverse else ''
+        print(f'Dumping {reverse_str}plaintext')
+        for node_i in range(len(self.nodes)):
+            references = []
+            for ref in self.edges:
+                if ref[0 if not reverse else 1] == node_i:
+                    references.append(self.nodes[ref[1 if not reverse else 0]])
+            if references:
+                outf.write(f'{self.nodes[node_i]}:' + '\n  - '.join([''] + references).rstrip())
+            else:
+                outf.write(f'{self.nodes[node_i]}: none.')
+            outf.write('\n')
+        print(f'Done dumping {reverse_str}plaintext')
