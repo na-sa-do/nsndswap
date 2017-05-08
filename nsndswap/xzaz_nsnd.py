@@ -24,7 +24,7 @@ class Benchmarks(enum.IntEnum):
     ALTERNIABOUND = 1  # Light and Frost are Medium
     MAYHEM_B = 2  # ~~SIDE 1~~, ~~SIDE 2~~, ~~ADDITIONAL MAYHEM~~ are Universe B
     ONE_YEAR_OLDER = 3  # Game Over is OYO
-    OVERTURE_CANON_EDIT = 4  # Game Over is Stuckhome
+    COLLIDE = 4  # Game Over is Stuckhome
 
 
 class XzazParser(html.parser.HTMLParser):
@@ -124,7 +124,7 @@ class XzazParser(html.parser.HTMLParser):
         elif title == 'Game Over':
             if self.benchmark < Benchmarks.ONE_YEAR_OLDER or 'unofficial' in self.song_class:
                 return 'Game Over (Jailbreak Vol. 1)'
-            elif self.benchmark < Benchmarks.OVERTURE_CANON_EDIT:
+            elif self.benchmark < Benchmarks.COLLIDE:
                 return 'Game Over (One Year Older)'
             else:
                 return 'Game Over (Stuckhome Syndrome)'
@@ -138,6 +138,16 @@ class XzazParser(html.parser.HTMLParser):
                 return 'Red Miles (Vol. 9)'
             else:
                 return 'Red Miles (Land of Fans and Music 2)'
+        elif title == 'Disc 1':
+            if self.benchmark < Benchmarks.COLLIDE:
+                return '˚Disc 1˚'  # LOFAM3
+            else:
+                return '♪ Disc 1 ♪'  # Beforus
+        elif title == 'Disc 2':
+            if self.benchmark < Benchmarks.COLLIDE:
+                return '˚Disc 2˚'  # LOFAM3
+            else:
+                return '♫ Disc 2 ♫'  # Beforus
 
         # Update benchmark
         if update_benchmark:
@@ -150,9 +160,9 @@ class XzazParser(html.parser.HTMLParser):
             elif title == 'Cancerous Core' and self.benchmark < Benchmarks.ONE_YEAR_OLDER:
                 print('Reached benchmark: ONE_YEAR_OLDER')
                 self.benchmark = Benchmarks.ONE_YEAR_OLDER
-            elif title == 'Overture (Canon Edit)' and self.benchmark < Benchmarks.OVERTURE_CANON_EDIT:
-                print('Reached benchmark: OVERTURE_CANON_EDIT')
-                self.benchmark = Benchmarks.OVERTURE_CANON_EDIT
+            elif title == 'Creata (Canon Edit)' and self.benchmark < Benchmarks.COLLIDE:
+                print('Reached benchmark: COLLIDE')
+                self.benchmark = Benchmarks.COLLIDE
 
         return title
 
