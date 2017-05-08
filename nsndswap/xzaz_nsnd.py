@@ -15,6 +15,13 @@ class ParseStates(enum.Enum):
     SEEKING_REFERENCE = enum.auto()
     EATING_REFERENCE = enum.auto()
     DONE = enum.auto()
+    
+
+@enum.unique
+class Benchmarks(enum.IntEnum):
+    # This is used to manage some songs with duplicated names.
+    NONE = 0
+    ALTERNIABOUND = 1  # Light and Frost are Medium
 
 
 class XzazParser(html.parser.HTMLParser):
@@ -23,6 +30,7 @@ class XzazParser(html.parser.HTMLParser):
         self.mode = ParseStates.SEEKING_SONG
         self.active_song = None
         self.all_songs = []
+        self.benchmark = Benchmarks.NONE
 
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
@@ -42,6 +50,7 @@ class XzazParser(html.parser.HTMLParser):
 
     def handle_data(self, data):
         data = nsndswap.util.reencode(data)
+        data = self._check_duplicate_title(data)
         if self.mode != ParseStates.DONE and data == "?" * len(data):
             if self.mode in (ParseStates.SKIPPING_ORIGINAL_SONG, ParseStates.SEEKING_SONG):
                 print('Scanning a song with ??? (GODDAMMIT RJ)')
@@ -71,6 +80,27 @@ class XzazParser(html.parser.HTMLParser):
             self.mode = ParseStates.SEEKING_SONG
             self.all_songs.append(self.active_song)
             self.active_song = None
+
+    def _check_duplicate_title(self, title, update_benchmark=True):
+        # Check duplicates relative to benchmark
+        if title == 'Light':
+            if self.benchmark < Benchmarks.ALTERNIABOUND:
+                return 'Light (Vol. 5)'
+            else:
+                return 'Light (Medium)'
+        elif title == 'Frost':
+            if self.benchmark < Benchmarks.ALTERNIABOUND:
+                return 'Frost (Vol. 6)'
+            else:
+                return 'Frost (Medium)'
+
+        # Update benchmark
+        if update_benchmark:
+            if title == 'Rest a While' and self.benchmark < Benchmarks.ALTERNIABOUND:
+                print('Reached benchmark: ALTERNIABOUND')
+                self.benchmark = Benchmarks.ALTERNIABOUND
+
+        return title
 
 
 def parse(nsnd):
