@@ -54,6 +54,7 @@ class Web:
     def __init__(self):
         self.nodes = []  # list of strings
         self.edges = []  # list of edges, as (from, to) tuples
+        self._nodes_discovered_via_entries = []  # list of node indexes that we've seen the reflists for
 
     def _get_id_of(self, title):
         try:
@@ -74,6 +75,11 @@ class Web:
             print(f'Turning references into map for "{next_song.title}"')
 
             node_id = self._get_id_of(next_song.title)
+            if node_id in self._nodes_discovered_via_entries:
+                print('Illegal duplicated song, stopping')
+                raise SystemExit(2)
+            else:
+                self._nodes_discovered_via_entries.append(node_id)
 
             # document references
             for ref in next_song.references:
