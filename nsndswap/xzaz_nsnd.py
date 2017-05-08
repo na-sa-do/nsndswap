@@ -24,7 +24,7 @@ class Benchmarks(enum.IntEnum):
     ALTERNIABOUND = 1  # Light and Frost are Medium
     MAYHEM_B = 2  # ~~SIDE 1~~, ~~SIDE 2~~, ~~ADDITIONAL MAYHEM~~ are Universe B
     ONE_YEAR_OLDER = 3  # Game Over is OYO
-    COLLIDE = 4  # Game Over is Stuckhome
+    COLLIDE = 4  # Game Over and ==> are Stuckhome
 
 
 class XzazParser(html.parser.HTMLParser):
@@ -148,6 +148,15 @@ class XzazParser(html.parser.HTMLParser):
                 return '˚Disc 2˚'  # LOFAM3
             else:
                 return '♫ Disc 2 ♫'  # Beforus
+        elif title == '==>':
+            # There's one of these in canmt and one here
+            return '==> (Stuckhome Syndrome)'
+        elif title == 'daet with roze':
+            # as above
+            return 'daet with roze (Strife 2)'
+        elif title == 'Checkmate':
+            # as above
+            return 'Checkmate (coloUrs and mayhem)'
 
         # Update benchmark
         if update_benchmark:

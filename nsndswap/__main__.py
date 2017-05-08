@@ -33,7 +33,7 @@ def main():
     all_web.append(xzaz_nsnd)
     all_web.append(cookie_nsnd)
     dump(all_web, 'almost_everything')
-    all_web.append(viko_nsnd)
+    all_web.append(viko_nsnd, override_on_duplicate=['daet with roze (Strife 2)'])
     dump(all_web, 'everything')
 
 

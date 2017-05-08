@@ -57,7 +57,7 @@ nsnd = {
     "Temmie Flares": ["Flare (Cascade Cut)", "Temmie Village"],
 
     # ViKomprenas clyp.it
-    "Dentist": ["Doctor", "Ruins", "Patient", "Savior of the Waking Patient"],
+    "Dentist (ViKomprenas)": ["Doctor", "Ruins", "Patient", "Savior of the Waking Patient"],
     "Another Elevator": ["Another Jungle", "Sburban Elevator"],
     "Elevator #3": ["Jungle #3", "Sburban Elevator"],
     "Another Paradigm": ["Endless Climb", "Rhapsody in Green", "MeGaLoVania", "The Paradox Paradigm", "Maestro", "Sburban Jungle", "Penumbra Phantasm", "Beatdown", "Look Where We Are", "Crystalanthemums", "Heir of Grief", "Showtime (Piano Refrain)", "Revelawesome", "Three in the Morning", "Ruins", "Jungle #3", "Tock", "Unintentional Touhou", "Courser"],
@@ -111,6 +111,9 @@ nsnd = {
     "Troubled Seas": [],
     "Seal the Deal": [],
     "A Seal Legend - A Seal is 2": ["A Baby Legend"],
+
+    # slight fix
+    "daet with roze (Strife 2)": ["daet with roze (CANWC)"],
 }
 
 

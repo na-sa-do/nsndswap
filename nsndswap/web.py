@@ -66,7 +66,7 @@ class Web:
             assert self.nodes[r] is title
             return r
 
-    def append(self, nsnd):
+    def append(self, nsnd, *, override_on_duplicate=[]):
         for next_song in nsnd:
             assert isinstance(next_song, nsndswap.util.Track)
             if next_song.title == "":
@@ -76,8 +76,12 @@ class Web:
 
             node_id = self._get_id_of(next_song.title)
             if node_id in self._nodes_discovered_via_entries:
-                print('Illegal duplicated song, stopping')
-                raise SystemExit(2)
+                if next_song.title in override_on_duplicate:
+                    print(f'[W] Overriding "{next_song.title}" on duplicate')
+                    self.edges = [x for x in self.edges if x[0] != node_id]
+                else:
+                    print('Illegal duplicated song, stopping')
+                    raise SystemExit(2)
             else:
                 self._nodes_discovered_via_entries.append(node_id)
 

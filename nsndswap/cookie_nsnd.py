@@ -34,6 +34,12 @@ class ParseStates(enum.Enum):
     DONE = enum.auto()
 
 
+@enum.unique
+class Benchmarks(enum.IntEnum):
+    NONE = 0
+    PARTWAY_THROUGH_CANV5 = 1  # there are two tracks ON THE SAME DAMN ALBUM WITH THE SAME DAMN NAME
+
+
 class CookieParser(html.parser.HTMLParser):
     def __init__(self):
         super().__init__()
@@ -41,13 +47,52 @@ class CookieParser(html.parser.HTMLParser):
         self.active_song = None
         self.all_songs = []
         self.got_new_this_round = False
+        self.benchmark = Benchmarks.NONE
 
     def _finish_song(self):
         if self.active_song is not None:
             if self.active_song.title != "":
+                self.active_song.title = self._check_benchmarks(self.active_song.title.strip())
                 print(f'Finished "{self.active_song.title}"')
                 self.all_songs.append(self.active_song)
                 self.active_song = None
+
+    def _check_benchmarks(self, title, *, is_ref=False, update_benchmark=True):
+        val = self._check_benchmarks_inner(title, is_ref=is_ref, update_benchmark=update_benchmark)
+        if val != title:
+            print(f'[W] Disambiguated "{title}" to "{val}"')
+        return val
+
+    def _check_benchmarks_inner(self, title, *, is_ref=False, update_benchmark=True):
+        # Check
+        if title == 'Moondoctor':
+            if self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
+                return 'Moondoctor (Difarem)'
+            else:
+                return 'Moondoctor (Shwan)'
+        elif title == '==>':
+            # There's one of these in xzaz_nsnd and one here
+            return '==> (CANWC)'
+        elif title == 'daet with roze':
+            # as above
+            return 'daet with roze (CANWC)'
+        elif title == 'Checkmate' and not is_ref:
+            # as above
+            return 'Checkmate (CANWC)'
+        elif title == 'Dentist':
+            # as above, but viko_nsnd
+            return 'Dentist (Double Hats Eyewear)'
+        elif title == 'Doctor' and not is_ref:
+            # fucking hell
+            return 'Doctor (Zalgo)'
+
+        # Update
+        if update_benchmark:
+            if title == 'Dogtor (get it?)' and self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
+                print('Reached benchmark: PARTWAY_THROUGH_CANV5')
+                self.benchmark = Benchmarks.PARTWAY_THROUGH_CANV5
+        
+        return title
 
     def handle_starttag(self, tag, attrs):
         if self.mode == ParseStates.DONE:
