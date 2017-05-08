@@ -30,7 +30,7 @@ class Benchmarks(enum.IntEnum):
 class XzazParser(html.parser.HTMLParser):
     def __init__(self):
         super().__init__()
-        self.mode = ParseStates.SEEKING_SONG
+        self.state = ParseStates.SEEKING_SONG
         self.active_song = None
         self.all_songs = []
         self.benchmark = Benchmarks.NONE
@@ -39,52 +39,52 @@ class XzazParser(html.parser.HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = nsndswap.util.split_attrs(attrs)
         if tag == "hr":
-            self.mode = ParseStates.DONE
-        elif self.mode == ParseStates.SEEKING_SONG and tag == "td":
+            self.state = ParseStates.DONE
+        elif self.state == ParseStates.SEEKING_SONG and tag == "td":
             if 'class' not in attrs.keys():
                 self.active_song = self.all_songs.pop()
-                self.mode = ParseStates.FOUND_SONG
+                self.state = ParseStates.FOUND_SONG
                 print(f'Resuming "{self.active_song.title}"')
             else:
                 self.song_class = attrs['class']
                 if 'original' in attrs['class']:
-                    self.mode = ParseStates.SKIPPING_ORIGINAL_SONG
+                    self.state = ParseStates.SKIPPING_ORIGINAL_SONG
                 if 'hasquotes' in attrs['class']:
-                    self.mode = ParseStates.FOUND_SONG
-        elif self.mode == ParseStates.SEEKING_REFERENCE and tag == "td":
+                    self.state = ParseStates.FOUND_SONG
+        elif self.state == ParseStates.SEEKING_REFERENCE and tag == "td":
             self.song_class = attrs['class']
-            self.mode = ParseStates.EATING_REFERENCE
+            self.state = ParseStates.EATING_REFERENCE
 
     def handle_data(self, data):
         data = nsndswap.util.reencode(data)
         data = self._check_duplicate_title(data)
-        if self.mode != ParseStates.DONE and data == "?" * len(data):
-            if self.mode in (ParseStates.SKIPPING_ORIGINAL_SONG, ParseStates.SEEKING_SONG):
+        if self.state != ParseStates.DONE and data == "?" * len(data):
+            if self.state in (ParseStates.SKIPPING_ORIGINAL_SONG, ParseStates.SEEKING_SONG):
                 print('Scanning a song with ??? (GODDAMMIT RJ)')
                 self.active_song = nsndswap.util.Track(data)
             else:
                 print('Caught a question marks zone, ending now')
-                self.mode = ParseStates.DONE
-        elif self.mode == ParseStates.SKIPPING_ORIGINAL_SONG:
+                self.state = ParseStates.DONE
+        elif self.state == ParseStates.SKIPPING_ORIGINAL_SONG:
             self.all_songs.append(nsndswap.util.Track(data))
             print(f'Skipping "{self.all_songs[-1].title}" (flagged as original)')
-        elif self.mode == ParseStates.FOUND_SONG:
+        elif self.state == ParseStates.FOUND_SONG:
             self.active_song = nsndswap.util.Track(data)
             print(f'Scanning song "{self.active_song.title}"')
-        elif self.mode == ParseStates.EATING_REFERENCE:
+        elif self.state == ParseStates.EATING_REFERENCE:
             data = nsndswap.util.reencode(data)
             if data == "":
                 return
             print(f'Got "{self.active_song.title}" referencing "{data}"')
-            self.mode = ParseStates.SEEKING_REFERENCE
+            self.state = ParseStates.SEEKING_REFERENCE
             self.active_song.references.append(data)
 
     def handle_endtag(self, tag):
-        if self.mode == ParseStates.FOUND_SONG and tag == "td":
-            self.mode = ParseStates.SEEKING_REFERENCE
-        elif self.mode in (ParseStates.SEEKING_REFERENCE, ParseStates.SKIPPING_ORIGINAL_SONG) \
+        if self.state == ParseStates.FOUND_SONG and tag == "td":
+            self.state = ParseStates.SEEKING_REFERENCE
+        elif self.state in (ParseStates.SEEKING_REFERENCE, ParseStates.SKIPPING_ORIGINAL_SONG) \
                 and tag == "tr":
-            self.mode = ParseStates.SEEKING_SONG
+            self.state = ParseStates.SEEKING_SONG
             self.all_songs.append(self.active_song)
             self.active_song = None
 

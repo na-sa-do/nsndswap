@@ -43,7 +43,7 @@ class Benchmarks(enum.IntEnum):
 class CookieParser(html.parser.HTMLParser):
     def __init__(self):
         super().__init__()
-        self.mode = ParseStates.SEEKING_ALBUM
+        self.state = ParseStates.SEEKING_ALBUM
         self.active_song = None
         self.all_songs = []
         self.got_new_this_round = False
@@ -95,18 +95,18 @@ class CookieParser(html.parser.HTMLParser):
         return title
 
     def handle_starttag(self, tag, attrs):
-        if self.mode == ParseStates.DONE:
+        if self.state == ParseStates.DONE:
             return
         attrs = nsndswap.util.split_attrs(attrs)
         if tag == "table" and "class" in attrs.keys() and "no-artist" in attrs["class"]:
             print('Reached unreleased?, ending')
-            self.mode = ParseStates.DONE
-        elif self.mode == ParseStates.SEEKING_ALBUM and tag == "tr":
-            self.mode = ParseStates.SKIPPING_ALBUM_HEADER
-        elif self.mode == ParseStates.SEEKING_SONG and tag == "tr" and 'class' in attrs.keys() and 'no-sep' in attrs['class']:
-            self.mode = ParseStates.RESUMING
-        elif self.mode != ParseStates.SKIPPING_ALBUM_HEADER and tag == "td":
-            self.mode = {
+            self.state = ParseStates.DONE
+        elif self.state == ParseStates.SEEKING_ALBUM and tag == "tr":
+            self.state = ParseStates.SKIPPING_ALBUM_HEADER
+        elif self.state == ParseStates.SEEKING_SONG and tag == "tr" and 'class' in attrs.keys() and 'no-sep' in attrs['class']:
+            self.state = ParseStates.RESUMING
+        elif self.state != ParseStates.SKIPPING_ALBUM_HEADER and tag == "td":
+            self.state = {
                 ParseStates.SEEKING_SONG: ParseStates.SKIPPING_TRACK_NUM,
                 ParseStates.SKIPPING_TRACK_NUM: ParseStates.EATING_TITLE,
                 ParseStates.EATING_TITLE: ParseStates.SKIPPING_ARTIST,
@@ -115,41 +115,41 @@ class CookieParser(html.parser.HTMLParser):
                 ParseStates.SKIPPING_ALBUM_ARTIST: ParseStates.SEEKING_REFERENCE,
                 ParseStates.SEEKING_REFERENCE: ParseStates.EATING_REFERENCE,
                 ParseStates.EATING_REFERENCE: ParseStates.EATING_REFERENCE,
-            }[self.mode]
-            if self.mode in (ParseStates.EATING_TITLE, ParseStates.SKIPPING_TRACK_NUM):  # ???
+            }[self.state]
+            if self.state in (ParseStates.EATING_TITLE, ParseStates.SKIPPING_TRACK_NUM):  # ???
                 self._finish_song()
                 self.active_song = nsndswap.util.Track("")
 
     def handle_endtag(self, tag):
-        if self.mode == ParseStates.DONE:
+        if self.state == ParseStates.DONE:
             return
-        if self.mode in (ParseStates.SKIPPING_ALBUM_HEADER, ParseStates.SEEKING_REFERENCE) and tag == "tr":
-            self.mode = ParseStates.SEEKING_SONG
+        if self.state in (ParseStates.SKIPPING_ALBUM_HEADER, ParseStates.SEEKING_REFERENCE) and tag == "tr":
+            self.state = ParseStates.SEEKING_SONG
         elif tag == "td":
-            if self.mode == ParseStates.EATING_REFERENCE:
-                self.mode = ParseStates.SEEKING_REFERENCE
+            if self.state == ParseStates.EATING_REFERENCE:
+                self.state = ParseStates.SEEKING_REFERENCE
                 if self.active_song.references[-1] != "":
                     print(f'Got a reference from "{self.active_song.title}" to "{self.active_song.references[-1]}"')
                 self.got_new_this_round = False
-            elif self.mode == ParseStates.EATING_TITLE:
-                self.mode = ParseStates.SKIPPING_ARTIST
+            elif self.state == ParseStates.EATING_TITLE:
+                self.state = ParseStates.SKIPPING_ARTIST
                 if self.active_song.title == "":
                     self.active_song = self.all_songs.pop()
                     print(f'Resuming "{self.active_song.title}"')
                 else:
                     print(f'Scanning "{self.active_song.title}"')
         elif tag == "table":
-            if self.mode != ParseStates.SEEKING_REFERENCE:
-                print(f'[W] Reached unexpected end of album in mode {self.mode}')
+            if self.state != ParseStates.SEEKING_REFERENCE:
+                print(f'[W] Reached unexpected end of album in state {self.state}')
                 self._finish_song()
-                self.mode = ParseStates.SEEKING_ALBUM
+                self.state = ParseStates.SEEKING_ALBUM
 
     def handle_data(self, data):
-        if self.mode == ParseStates.DONE:
+        if self.state == ParseStates.DONE:
             return
-        if self.mode == ParseStates.EATING_TITLE:
+        if self.state == ParseStates.EATING_TITLE:
             self.active_song.title += nsndswap.util.reencode(data)
-        elif self.mode == ParseStates.EATING_REFERENCE:
+        elif self.state == ParseStates.EATING_REFERENCE:
             assert self.active_song.title != ""
             if len(self.active_song.references) is 0 or not self.got_new_this_round:
                 self.active_song.references.append("")
