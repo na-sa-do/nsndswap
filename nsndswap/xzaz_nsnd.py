@@ -22,6 +22,7 @@ class Benchmarks(enum.IntEnum):
     # This is used to manage some songs with duplicated names.
     NONE = 0
     ALTERNIABOUND = 1  # Light and Frost are Medium
+    MAYHEM_B = 2  # ~~SIDE 1~~, ~~SIDE 2~~, ~~ADDITIONAL MAYHEM~~ are Universe B
 
 
 class XzazParser(html.parser.HTMLParser):
@@ -93,12 +94,30 @@ class XzazParser(html.parser.HTMLParser):
                 return 'Frost (Vol. 6)'
             else:
                 return 'Frost (Medium)'
+        elif title == '~~SIDE 1~~':
+            if self.benchmark < Benchmarks.MAYHEM_B:
+                return '~~SIDE 1~~ (coloUrs and mayhem: Universe A)'
+            else:
+                return '~~SIDE 1~~ (coloUrs and mayhem: Universe B)'
+        elif title == '~~SIDE 2~~':
+            if self.benchmark < Benchmarks.MAYHEM_B:
+                return '~~SIDE 2~~ (coloUrs and mayhem: Universe A)'
+            else:
+                return '~~SIDE 2~~ (coloUrs and mayhem: Universe B)'
+        elif title == '~~ADDITIONAL MAYHEM~~':
+            if self.benchmark < Benchmarks.MAYHEM_B:
+                return '~~ADDITIONAL MAYHEM~~ (coloUrs and mayhem: Universe A)'
+            else:
+                return '~~ADDITIONAL MAYHEM~~ (coloUrs and mayhem: Universe B)'
 
         # Update benchmark
         if update_benchmark:
             if title == 'Rest a While' and self.benchmark < Benchmarks.ALTERNIABOUND:
                 print('Reached benchmark: ALTERNIABOUND')
                 self.benchmark = Benchmarks.ALTERNIABOUND
+            elif title == 'Temporal Shenanigans' and self.benchmark < Benchmarks.MAYHEM_B:
+                print('Reached benchmark: MAYHEM_B')
+                self.benchmark = Benchmarks.MAYHEM_B
 
         return title
 
