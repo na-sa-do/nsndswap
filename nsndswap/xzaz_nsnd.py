@@ -9,12 +9,12 @@ import nsndswap.util
 
 @enum.unique
 class ParseStates(enum.Enum):
-    SEEKING_SONG = 0
-    FOUND_SONG = 1
-    SKIPPING_ORIGINAL_SONG = 2
-    SEEKING_REFERENCE = 3
-    EATING_REFERENCE = 4
-    DONE = 5
+    SEEKING_SONG = enum.auto()
+    FOUND_SONG = enum.auto()
+    SKIPPING_ORIGINAL_SONG = enum.auto()
+    SEEKING_REFERENCE = enum.auto()
+    EATING_REFERENCE = enum.auto()
+    DONE = enum.auto()
 
 
 class XzazParser(html.parser.HTMLParser):
