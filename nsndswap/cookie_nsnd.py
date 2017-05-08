@@ -21,17 +21,17 @@ import nsndswap.util
 
 @enum.unique
 class ParseStates(enum.Enum):
-    SEEKING_ALBUM = -2
-    SKIPPING_ALBUM_HEADER = -1
-    SEEKING_SONG = 0
-    SKIPPING_TRACK_NUM = 1
-    EATING_TITLE = 2
-    SKIPPING_ARTIST = 3
-    SKIPPING_ALBUM_ARTIST = 4
-    SEEKING_REFERENCE = 5
-    EATING_REFERENCE = 6
-    RESUMING = 7
-    DONE = 8
+    SEEKING_ALBUM = enum.auto()
+    SKIPPING_ALBUM_HEADER = enum.auto()
+    SEEKING_SONG = enum.auto()
+    SKIPPING_TRACK_NUM = enum.auto()
+    EATING_TITLE = enum.auto()
+    SKIPPING_ARTIST = enum.auto()
+    SKIPPING_ALBUM_ARTIST = enum.auto()
+    SEEKING_REFERENCE = enum.auto()
+    EATING_REFERENCE = enum.auto()
+    RESUMING = enum.auto()
+    DONE = enum.auto()
 
 
 class CookieParser(html.parser.HTMLParser):
