@@ -111,9 +111,6 @@ nsnd = {
     "Troubled Seas": [],
     "Seal the Deal": [],
     "A Seal Legend - A Seal is 2": ["A Baby Legend"],
-
-    # slight fix
-    "daet with roze (Strife 2)": ["daet with roze (CANWC)"],
 }
 
 

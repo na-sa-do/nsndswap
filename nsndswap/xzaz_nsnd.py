@@ -65,6 +65,9 @@ class XzazParser(html.parser.HTMLParser):
             else:
                 print('Caught a question marks zone, ending now')
                 self.state = ParseStates.DONE
+        elif data == 'daet with roze':
+            print('Skipping daet with roze manually to avoid duplication with cookie_nsnd')
+            self.state = ParseStates.SKIPPING_ORIGINAL_SONG
         elif self.state == ParseStates.SKIPPING_ORIGINAL_SONG:
             self.all_songs.append(nsndswap.util.Track(data))
             print(f'Skipping "{self.all_songs[-1].title}" (flagged as original)')
@@ -151,9 +154,6 @@ class XzazParser(html.parser.HTMLParser):
         elif title == '==>':
             # There's one of these in canmt and one here
             return '==> (Stuckhome Syndrome)'
-        elif title == 'daet with roze':
-            # as above
-            return 'daet with roze (Strife 2)'
         elif title == 'Checkmate':
             # as above
             return 'Checkmate (coloUrs and mayhem)'

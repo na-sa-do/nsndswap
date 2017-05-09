@@ -73,9 +73,6 @@ class CookieParser(html.parser.HTMLParser):
         elif title == '==>':
             # There's one of these in xzaz_nsnd and one here
             return '==> (CANWC)'
-        elif title == 'daet with roze':
-            # as above
-            return 'daet with roze (CANWC)'
         elif title == 'Checkmate' and not is_ref:
             # as above
             return 'Checkmate (CANWC)'
