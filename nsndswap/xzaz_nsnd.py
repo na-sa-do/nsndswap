@@ -155,6 +155,9 @@ class XzazParser(html.parser.HTMLParser):
         elif title == 'Checkmate':
             # as above
             return 'Checkmate (coloUrs and mayhem)'
+        elif title == 'Premonition':
+            # as above, but in viko_nsnd
+            return 'Premonition (Stuckhome Syndrome)'
 
         # Update benchmark
         if update_benchmark:

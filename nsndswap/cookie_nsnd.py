@@ -78,10 +78,10 @@ class CookieParser(html.parser.HTMLParser):
             return 'Checkmate (CANWC)'
         elif title == 'Dentist':
             # as above, but viko_nsnd
-            return 'Dentist (Double Hats Eyewear)'
-        elif title == 'Doctor' and not is_ref:
-            # fucking hell
-            return 'Doctor (Zalgo)'
+            return 'Dentist (CANWC)'
+        elif title == 'Anticipation':
+            # as above
+            return 'Anticipation (CANWC)'
 
         # Update
         if update_benchmark:
