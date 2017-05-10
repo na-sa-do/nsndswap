@@ -1,3 +1,4 @@
 output/
 *.xsd
 nsnd.html
+*.class
