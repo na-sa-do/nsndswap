@@ -87,6 +87,14 @@ forbidden_names = [
     'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation'
 ]
 
+special_cases = {
+    # (title, reference): new_reference
+    ('Detective Cherry Inspector', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('Explored', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('go down (cool and new Mix)', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('Something Familiar', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('Something Familiar', 'Game Over'): 'Game Over (One Year Older)',
+}
 
 def postprocess_title(title, context):
     title = (title.replace('RCT', 'Rollercoaster Tycoon')
@@ -97,6 +105,8 @@ def postprocess_title(title, context):
                   .strip())
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
+    if (context, title) in special_cases.keys():
+        title = special_cases[(context, title)]
     if title in forbidden_names:
         print(f'Got a forbidden name "{title}", aborting (context: "{context}")')
         raise SystemExit(1)
