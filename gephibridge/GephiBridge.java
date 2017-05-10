@@ -9,6 +9,8 @@ import org.gephi.io.importer.api.ImportController;
 import org.gephi.io.processor.plugin.DefaultProcessor;
 import org.gephi.layout.plugin.fruchterman.FruchtermanReingold;
 import org.gephi.layout.plugin.fruchterman.FruchtermanReingoldBuilder;
+import org.gephi.layout.plugin.noverlap.NoverlapLayout;
+import org.gephi.layout.plugin.noverlap.NoverlapLayoutBuilder;
 import org.gephi.project.api.ProjectController;
 import org.gephi.project.api.Workspace;
 import org.openide.util.Lookup;
@@ -35,6 +37,15 @@ public class GephiBridge {
             fr.goAlgo();
         }
         fr.endAlgo();
+        NoverlapLayout no = (NoverlapLayout) new NoverlapLayoutBuilder().buildLayout();
+        no.setGraphModel(gc.getGraphModel());
+        no.initAlgo();
+        no.resetPropertiesValues();
+        for (int i = 0; i < 50 && no.canAlgo(); i++) {
+            System.out.println("Running NO iteration number " + String.valueOf(i));
+            no.goAlgo();
+        }
+        no.endAlgo();
 
         ExportController ec = Lookup.getDefault().lookup(ExportController.class);
         GraphExporter gexfExporter = (GraphExporter) ec.getExporter("gexf");
