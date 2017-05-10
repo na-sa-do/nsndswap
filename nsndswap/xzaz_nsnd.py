@@ -144,11 +144,6 @@ class XzazParser(html.parser.HTMLParser):
                 return '˚Disc 1˚'  # LOFAM3
             else:
                 return '♪ Disc 1 ♪'  # Beforus
-        elif title == 'Disc 2':
-            if self.benchmark < Benchmarks.COLLIDE:
-                return '˚Disc 2˚'  # LOFAM3
-            else:
-                return '♫ Disc 2 ♫'  # Beforus
         elif title == '==>':
             # There's one of these in canmt and one here
             return '==> (Stuckhome Syndrome)'

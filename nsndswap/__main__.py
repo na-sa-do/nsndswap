@@ -57,8 +57,8 @@ def get_nsnd_page(url):
 def postprocess(nsnd):
     nsnd = [x for x in nsnd if x and x.title != ""]
     for track in nsnd:
-        track.title = postprocess_title(track.title)
-        track.references = [postprocess_title(title) for title in track.references if title != ""]
+        track.title = postprocess_title(track.title, "")
+        track.references = [postprocess_title(title, track.title) for title in track.references if title != ""]
     return nsnd
 
 
@@ -82,8 +82,13 @@ postprocess_title_table = {
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
 }
 
+forbidden_names = [
+    # Things that need manual disambiguation
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation'
+]
 
-def postprocess_title(title):
+
+def postprocess_title(title, context):
     title = (title.replace('RCT', 'Rollercoaster Tycoon')
                   .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
                   .replace(' (unreleased)', '')
@@ -92,6 +97,9 @@ def postprocess_title(title):
                   .strip())
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
+    if title in forbidden_names:
+        print(f'Got a forbidden name "{title}", aborting (context: "{context}")')
+        raise SystemExit(1)
     return title
 
 
