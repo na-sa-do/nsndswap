@@ -2,6 +2,8 @@ import java.io.File;
 import java.lang.String;
 
 import org.gephi.graph.api.GraphController;
+import org.gephi.io.exporter.api.ExportController;
+import org.gephi.io.exporter.spi.GraphExporter;
 import org.gephi.io.importer.api.Container;
 import org.gephi.io.importer.api.ImportController;
 import org.gephi.io.processor.plugin.DefaultProcessor;
@@ -33,5 +35,10 @@ public class GephiBridge {
             fr.goAlgo();
         }
         fr.endAlgo();
+
+        ExportController ec = Lookup.getDefault().lookup(ExportController.class);
+        GraphExporter gexfExporter = (GraphExporter) ec.getExporter("gexf");
+        gexfExporter.setWorkspace(workspace);
+        ec.exportFile(new File(args[0]), gexfExporter);
     }
 }
