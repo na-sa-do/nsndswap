@@ -145,13 +145,13 @@ class CookieParser(html.parser.HTMLParser):
         if self.state == ParseStates.DONE:
             return
         if self.state == ParseStates.EATING_TITLE:
-            self.active_song.title += nsndswap.util.reencode(data)
+            self.active_song.title += data
         elif self.state == ParseStates.EATING_REFERENCE:
             assert self.active_song.title != ""
             if len(self.active_song.references) is 0 or not self.got_new_this_round:
                 self.active_song.references.append("")
                 self.got_new_this_round = True
-            self.active_song.references[-1] += nsndswap.util.reencode(data)
+            self.active_song.references[-1] += data
 
 
 def parse(nsnd):

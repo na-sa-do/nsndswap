@@ -18,7 +18,3 @@ def split_attrs(attrs):
     for attr in attrs:
         ret[attr[0]] = attr[1]
     return ret
-
-
-def reencode(string):
-    return string.encode('utf-8').decode('ascii', 'ignore')

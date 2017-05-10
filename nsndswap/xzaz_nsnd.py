@@ -56,7 +56,6 @@ class XzazParser(html.parser.HTMLParser):
             self.state = ParseStates.EATING_REFERENCE
 
     def handle_data(self, data):
-        data = nsndswap.util.reencode(data)
         data = self._check_duplicate_title(data)
         if self.state != ParseStates.DONE and data == "?" * len(data):
             if self.state in (ParseStates.SKIPPING_ORIGINAL_SONG, ParseStates.SEEKING_SONG):
@@ -75,7 +74,6 @@ class XzazParser(html.parser.HTMLParser):
             self.active_song = nsndswap.util.Track(data)
             print(f'Scanning song "{self.active_song.title}"')
         elif self.state == ParseStates.EATING_REFERENCE:
-            data = nsndswap.util.reencode(data)
             if data == "":
                 return
             print(f'Got "{self.active_song.title}" referencing "{data}"')
