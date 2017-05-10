@@ -1,6 +1,6 @@
 # `nsndswap`
 
-A Python program that parses [this website](http://xzazupsilon.webs.com/nsnd.html) and [this one](https://wheals.github.io/canwc/nsnd.html), and outputs [gexf files](https://gephi.org/gexf/format/). Made because Makin wanted to automate maintenance of [this page](http://recordcrash.com/nsnd/nsnd_ultimate.html) (offline as of 2017-05-05).
+A Python program that parses [this website](http://xzazupsilon.webs.com/nsnd.html) and [this one](https://wheals.github.io/canwc/nsnd.html), and outputs [gexf files](https://gephi.org/gexf/format/).
 
 # How to use
 
