@@ -163,7 +163,7 @@ nsnd = {
     "Alphys": [],
     "It's Showtime!": [],
     "Metal Crusher": ["Noisemaster's Theme"],
-    "Another Medium": ["Waterfall"],
+    "Another Medium": ["Waterfall", "Patient"],
     "Uwa!! So HEATS!!♫": ["Uwa!! So Temperate♫"],
     "Stronger Monsters": ["Enemy Approaching"],
     "Hotel": ["Once Upon a Time"],
