@@ -95,10 +95,7 @@ class CookieParser(html.parser.HTMLParser):
         if self.state == ParseStates.DONE:
             return
         attrs = nsndswap.util.split_attrs(attrs)
-        if tag == "table" and "class" in attrs.keys() and "no-artist" in attrs["class"]:
-            print('Reached unreleased?, ending')
-            self.state = ParseStates.DONE
-        elif self.state == ParseStates.SEEKING_ALBUM and tag == "tr":
+        if self.state == ParseStates.SEEKING_ALBUM and tag == "tr":
             self.state = ParseStates.SKIPPING_ALBUM_HEADER
         elif self.state == ParseStates.SEEKING_SONG and tag == "tr" and 'class' in attrs.keys() and 'no-sep' in attrs['class']:
             self.state = ParseStates.RESUMING
@@ -125,7 +122,7 @@ class CookieParser(html.parser.HTMLParser):
         elif tag == "td":
             if self.state == ParseStates.EATING_REFERENCE:
                 self.state = ParseStates.SEEKING_REFERENCE
-                if self.active_song.references[-1] != "":
+                if len(self.active_song.references) > 0 and self.active_song.references[-1] != "":
                     print(f'Got a reference from "{self.active_song.title}" to "{self.active_song.references[-1]}"')
                 self.got_new_this_round = False
             elif self.state == ParseStates.EATING_TITLE:
