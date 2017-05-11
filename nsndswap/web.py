@@ -128,9 +128,9 @@ class Web:
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
-            data.color = [_tween(data.weighted_deg, 254, 179),
-                          _tween(data.weighted_deg, 240, 0),
-                          _tween(data.weighted_deg, 217, 0)]
+            data.color = [_tween(data.weighted_deg, 224, 179),
+                          _tween(data.weighted_deg, 190, 0),
+                          _tween(data.weighted_deg, 177, 0)]
             data.color = tuple(round(x) for x in data.color)
             data.size = data.weighted_in_deg * (SIZE_FACTOR - 1) + 1
 
