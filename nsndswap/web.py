@@ -17,6 +17,11 @@ COLOR_RED_OFFSET = 32
 SIZE_FACTOR = 60
 
 
+def _tween(amount, start, end):
+    difference = end - start
+    return start + (difference * amount)
+
+
 def _xmlencode(string):
     chars = {
         # note that this one has to be first, or else the other &s are caught
@@ -47,7 +52,7 @@ class NodeData:
 
     @property
     def weighted_deg(self):
-        return (self.weighted_in_deg + self.weighted_out_deg) / 2
+        return max(self.weighted_in_deg, self.weighted_out_deg)
 
 
 class Web:
@@ -123,9 +128,10 @@ class Web:
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
-            data.color = [data.weighted_in_deg * COLOR_RED_FACTOR, data.weighted_out_deg * COLOR_GREEN_FACTOR, 0]
-            data.color = tuple([round(data.color[0]) + COLOR_RED_OFFSET, round(data.color[1]) + COLOR_GREEN_OFFSET, COLOR_BLUE_CONSTANT])
-            assert len(data.color) == 3
+            data.color = [_tween(data.weighted_deg, 254, 179),
+                          _tween(data.weighted_deg, 240, 0),
+                          _tween(data.weighted_deg, 217, 0)]
+            data.color = tuple(round(x) for x in data.color)
             data.size = data.weighted_in_deg * (SIZE_FACTOR - 1) + 1
 
         print('Randomizing node locations')
