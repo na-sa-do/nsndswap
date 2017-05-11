@@ -89,9 +89,9 @@ forbidden_names = [
 
 special_cases = {
     # (title, reference): new_reference
-    ('Detective Cherry Inspector', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('Detective Cherry Inspector', 'Under the Hat'): 'Trollcops',
     ('Explored', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
-    ('go down (cool and new Mix)', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('go down (cool and new Mix)', 'Under the Hat'): 'Under the Hat (One Year Older)',
     ('Something Familiar', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
     ('Something Familiar', 'Game Over'): 'Game Over (One Year Older)',
 }
