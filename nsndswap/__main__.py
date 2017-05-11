@@ -91,6 +91,14 @@ forbidden_names = [
 
 special_cases = {
     # (title, reference): new_reference
+    ('Trollcops', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('~~SIDE 2~~ (coloUrs and mayhem: Universe A)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe A)',
+    ('~~SIDE 2~~ (coloUrs and mayhem: Universe B)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe B)',
+    ('Under the Hat (One Year Older)', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('Dance-Stab-Dance', 'Under the Hat'): 'Under the Hat (One Year Older)',
+    ('Emissary of Dance', 'Checkmate'): 'Checkmate (coloUrs and mayhem: Universe B)',
+    ('Premonition Overdrive', 'Premonition'): 'Premonition (Stuckhome Syndrome)',
+    ('You Killed My Father (Prepare To Die)', 'Checkmate'): 'Checkmate (coloUrs and mayhem: Universe B)',
     ('Detective Cherry Inspector', 'Under the Hat'): 'Trollcops',
     ('Explored', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
     ('go down (cool and new Mix)', 'Under the Hat'): 'Under the Hat (One Year Older)',

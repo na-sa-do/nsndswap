@@ -56,7 +56,6 @@ class XzazParser(html.parser.HTMLParser):
             self.state = ParseStates.EATING_REFERENCE
 
     def handle_data(self, data):
-        data = self._check_duplicate_title(data)
         if self.state != ParseStates.DONE and data == "?" * len(data):
             if self.state in (ParseStates.SKIPPING_ORIGINAL_SONG, ParseStates.SEEKING_SONG):
                 print('Scanning a song with ??? (GODDAMMIT RJ)')
@@ -68,9 +67,11 @@ class XzazParser(html.parser.HTMLParser):
             print('Skipping daet with roze manually to avoid duplication with cookie_nsnd')
             self.state = ParseStates.SKIPPING_ORIGINAL_SONG
         elif self.state == ParseStates.SKIPPING_ORIGINAL_SONG:
+            data = self._check_duplicate_title(data)
             self.all_songs.append(nsndswap.util.Track(data))
             print(f'Skipping "{self.all_songs[-1].title}" (flagged as original)')
         elif self.state == ParseStates.FOUND_SONG:
+            data = self._check_duplicate_title(data)
             self.active_song = nsndswap.util.Track(data)
             print(f'Scanning song "{self.active_song.title}"')
         elif self.state == ParseStates.EATING_REFERENCE:
@@ -149,7 +150,7 @@ class XzazParser(html.parser.HTMLParser):
             return '==> (Stuckhome Syndrome)'
         elif title == 'Checkmate':
             # as above
-            return 'Checkmate (coloUrs and mayhem)'
+            return 'Checkmate (coloUrs and mayhem: Universe B)'
         elif title == 'Premonition':
             # as above, but in viko_nsnd
             return 'Premonition (Stuckhome Syndrome)'
