@@ -4,7 +4,7 @@ A Python program that parses [this website](http://xzazupsilon.webs.com/nsnd.htm
 
 # How to use
 
-Run `run.sh`. For the most part, the copious logs can be ignored. This creates four files in the working directory: `homestuck.gexf`, `canwc.gexf`, `almost_everything.gexf`, and `everything.gexf`, containing different subsets of the data used. All node positions are randomized so that a positioning algorithm in Gephi has better luck.
+Run `run.sh`. For the most part, the copious logs can be ignored.
 
 # Output files
 
