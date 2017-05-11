@@ -31,6 +31,7 @@ public class GephiBridge {
         fr.setGraphModel(gc.getGraphModel());
         fr.initAlgo();
         fr.resetPropertiesValues();
+        fr.setArea(20_000f);
         fr.setSpeed(3d);
         for (int i = 0; i < 2000 && fr.canAlgo(); i++) {
             System.out.println("Running FR iteration number " + String.valueOf(i));
