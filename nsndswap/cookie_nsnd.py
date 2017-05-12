@@ -39,6 +39,7 @@ class ParseStates(enum.Enum):
 class Benchmarks(enum.IntEnum):
     NONE = 0
     PARTWAY_THROUGH_CANV5 = 1  # there are two tracks ON THE SAME DAMN ALBUM WITH THE SAME DAMN NAME
+    IN_THE_BEGINNING = 2
 
 
 class CookieParser(html.parser.HTMLParser):
@@ -71,12 +72,35 @@ class CookieParser(html.parser.HTMLParser):
                 return 'Moondoctor (Difarem)'
             else:
                 return 'Moondoctor (Shwan)'
+        elif title == 'Showup':
+            if self.benchmark < Benchmarks.IN_THE_BEGINNING:
+                return 'Showup (loading)'
+            else:
+                return 'Showup (Viridian)'
+        elif title.replace('\n', '').replace('  ', ' ') == 'Three in the Morning (4 1/3 Hours Late Remix)':
+            if self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
+                return 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)'
+            else:
+                return 'Three in the Morning (4 1/3 Hours Late Remix) (Greatest Hits)'
+        elif title == 'Fake Fruit Fiesta':
+            if self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
+                return 'Fake Fruit Fiesta (Volume 2)'
+            else:
+                return 'Fake Fruit Fiesta (Greatest Hits)'
+        elif title == 'Ruses':
+            if self.benchmark < Benchmarks.IN_THE_BEGINNING:
+                return 'Ruses (CANWC Sound Test)'
+            else:
+                return 'Ruses (Median)'
         elif title == '==>':
             # There's one of these in xzaz_nsnd and one here
             return '==> (CANWC)'
         elif title == 'Checkmate' and not is_ref:
             # as above
             return 'Checkmate (CANWC)'
+        elif title == 'Light':
+            # as above
+            return 'Light (CANWC)'
         elif title == 'Dentist':
             # as above, but viko_nsnd
             return 'Dentist (CANWC)'
@@ -89,6 +113,10 @@ class CookieParser(html.parser.HTMLParser):
             if title == 'Dogtor (get it?)' and self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
                 print('Reached benchmark: PARTWAY_THROUGH_CANV5')
                 self.benchmark = Benchmarks.PARTWAY_THROUGH_CANV5
+            elif title == 'In  the Beginning' and self.benchmark < Benchmarks.IN_THE_BEGINNING:
+                # YES THERE ARE TWO SPACES IN THE ORIGINAL
+                print('Reached benchmark: IN_THE_BEGINNING')
+                self.benchmark = Benchmarks.IN_THE_BEGINNING
         
         return title
 
