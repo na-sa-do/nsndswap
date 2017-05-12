@@ -31,6 +31,7 @@ class ParseStates(enum.Enum):
     SEEKING_REFERENCE = enum.auto()
     EATING_REFERENCE = enum.auto()
     RESUMING = enum.auto()
+    SKIPPING_BLANK_TITLE_IN_RESUME = enum.auto()
     DONE = enum.auto()
 
 
@@ -104,7 +105,8 @@ class CookieParser(html.parser.HTMLParser):
                 ParseStates.SEEKING_SONG: ParseStates.SKIPPING_TRACK_NUM,
                 ParseStates.SKIPPING_TRACK_NUM: ParseStates.EATING_TITLE,
                 ParseStates.EATING_TITLE: ParseStates.SKIPPING_ARTIST,
-                ParseStates.RESUMING: ParseStates.SKIPPING_ARTIST,
+                ParseStates.RESUMING: ParseStates.SKIPPING_BLANK_TITLE_IN_RESUME,
+                ParseStates.SKIPPING_BLANK_TITLE_IN_RESUME: ParseStates.SKIPPING_ARTIST,
                 ParseStates.SKIPPING_ARTIST: ParseStates.SKIPPING_ALBUM_ARTIST,
                 ParseStates.SKIPPING_ALBUM_ARTIST: ParseStates.SEEKING_REFERENCE,
                 ParseStates.SEEKING_REFERENCE: ParseStates.EATING_REFERENCE,
