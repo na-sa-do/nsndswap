@@ -38,6 +38,7 @@ class XzazParser(html.parser.HTMLParser):
         self.benchmark = Benchmarks.NONE
         self.song_class = None
         self.am_in_unreleased = False
+        self.allow_resume = False
 
     def handle_starttag(self, tag, attrs):
         if self.state == ParseStates.DONE:
@@ -51,9 +52,12 @@ class XzazParser(html.parser.HTMLParser):
             self.state = ParseStates.SEEKING_SONG
         elif self.state == ParseStates.SEEKING_SONG and tag == "td":
             if 'class' not in attrs.keys():
-                self.active_song = self.all_songs.pop()
-                self.state = ParseStates.SEEKING_REFERENCE
-                print(f'Resuming "{self.active_song.title}"')
+                if self.allow_resume:
+                    self.active_song = self.all_songs.pop()
+                    self.state = ParseStates.SEEKING_REFERENCE
+                    print(f'Resuming "{self.active_song.title}"')
+                else:
+                    print('Skipped a resume')
             else:
                 self.song_class = attrs['class']
                 if 'original' in attrs['class']:
@@ -78,10 +82,12 @@ class XzazParser(html.parser.HTMLParser):
             self.all_songs.append(nsndswap.util.Track(data))
             print(f'Skipping "{self.all_songs[-1].title}" (flagged as original)')
             self.state = ParseStates.SEEKING_SONG
+            self.allow_resume = False
         elif self.state == ParseStates.FOUND_SONG:
             data = self._check_duplicate_title(data)
             self.active_song = nsndswap.util.Track(data)
             self.state = ParseStates.SEEKING_REFERENCE
+            self.allow_resume = True
             print(f'Scanning song "{self.active_song.title}"')
         elif self.state == ParseStates.EATING_REFERENCE:
             if data == "":
