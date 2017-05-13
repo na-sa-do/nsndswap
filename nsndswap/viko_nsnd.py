@@ -214,6 +214,22 @@ nsnd = {
     "Power of 'NEO'": ["Battle Against a True Hero"],
     "MEGALOVANIA": ["Megalovania"],
     "Good Night": ["Once Upon a Time"],
+
+    # UNDERTALE miscellany
+    "Empty House": ["Fallen Down"],
+    "Meat Factory": [],
+    "Happy Town": [],
+    "Trouble Dingle": [],
+    "Gaster's Theme": [],
+    "Grandpa Semi": ["Metal Crusher"],
+    "King Description": ["Determination"],
+    "Dance of Dog": [],
+    "Sigh of Dog": [],
+    "Alphys (Beta)": ["Alphys"],
+    "Spear of Justice (Beta)": ["Undyne", "Ruins (Undertale)"],
+    "Dog Hole": [],
+    "Undertale Scrapped Fast Ending Theme": ["Enemy Approaching"],
+    "Undertale (Beta)": ["Once Upon a Time"],
 }
 
 
