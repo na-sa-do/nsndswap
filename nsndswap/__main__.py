@@ -80,6 +80,10 @@ postprocess_title_table = {
     "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
     "Upward Movement": "Upward Movement (Dave Owns)",
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
+    "Sunset (by Cerulean)": "Sunset",
+    "7 GRAND END (Noisemaker's part)": "7 GRAND END",
+    "The Will to Fight": "The Will to Fight (Original Mix)",
+    "BL1ND JUST1C3: 1NV3ST1G4T1ON!!": "BL1ND JUST1C3 : 1NV3ST1G4T1ON !!",
 }
 
 forbidden_names = [
@@ -116,8 +120,10 @@ def postprocess_title(title, context):
     title = (title.replace('RCT', 'Rollercoaster Tycoon')
                   .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
                   .replace(' (unreleased)', '')
+                  .replace(' (??)', '')
                   .replace('\n', '')
                   .replace('  ', ' ')
+                  .replace('’', "'")
                   .strip())
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
