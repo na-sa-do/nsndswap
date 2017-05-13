@@ -17,7 +17,7 @@ class ParseStates(enum.Enum):
     SEEKING_UNRELEASED = enum.auto()
     UNRELEASED_SKIP = enum.auto()
     DONE = enum.auto()
-    
+
 
 @enum.unique
 class Benchmarks(enum.IntEnum):

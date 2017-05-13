@@ -111,6 +111,7 @@ special_cases = {
     ('Stress (Vol. 9)', 'Stress'): 'Stress (George Buzinkai)',
 }
 
+
 def postprocess_title(title, context):
     title = (title.replace('RCT', 'Rollercoaster Tycoon')
                   .replace('ICBSITC', 'I Can Barely Sleep in This Casino')

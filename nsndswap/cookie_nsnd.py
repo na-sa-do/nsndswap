@@ -117,7 +117,7 @@ class CookieParser(html.parser.HTMLParser):
                 # YES THERE ARE TWO SPACES IN THE ORIGINAL
                 print('Reached benchmark: IN_THE_BEGINNING')
                 self.benchmark = Benchmarks.IN_THE_BEGINNING
-        
+
         return title
 
     def handle_starttag(self, tag, attrs):
