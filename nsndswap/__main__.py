@@ -31,7 +31,7 @@ def main():
 
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
-    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S'])
+    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro',])
     dump(all_web, 'almost_everything')
     all_web.append(viko_nsnd, override_on_duplicate=['daet with roze (Strife 2)'])
     dump(all_web, 'everything')
@@ -56,7 +56,6 @@ def get_nsnd_page(url):
 
 def postprocess(nsnd):
     nsnd = [x for x in nsnd if x and x.title != ""]
-    got_crystals = False
     for track in nsnd:
         track.title = postprocess_title(track.title, "")
         track.references = [postprocess_title(title, track.title) for title in track.references if title != ""]
@@ -85,7 +84,7 @@ postprocess_title_table = {
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup',
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
 ]
@@ -108,6 +107,8 @@ special_cases = {
     ('[reverie vaporwave]', 'Game Over'): 'Game Over (One Year Older)',
     ('Three in the Morning (4 1/3 Hours Late Remix; CaNon edit)', 'Three in the Morning (4 1/3 Hours Late Remix)'): 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)',
     ('Three in the morning (Dif\'s JUST GO THE FUCK TO SLEEP ALREADY mix)', 'Three in the Morning (4 1/3 Hours Late Remix)'): 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)',
+    ('Final Confrontation', 'Game Over'): 'Game Over (One Year Older)',
+    ('Stress (Vol. 9)', 'Stress'): 'Stress (George Buzinkai)',
 }
 
 def postprocess_title(title, context):

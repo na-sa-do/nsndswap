@@ -14,6 +14,8 @@ class ParseStates(enum.Enum):
     SKIPPING_ORIGINAL_SONG = enum.auto()
     SEEKING_REFERENCE = enum.auto()
     EATING_REFERENCE = enum.auto()
+    SEEKING_UNRELEASED = enum.auto()
+    UNRELEASED_SKIP = enum.auto()
     DONE = enum.auto()
     
 
@@ -35,15 +37,22 @@ class XzazParser(html.parser.HTMLParser):
         self.all_songs = []
         self.benchmark = Benchmarks.NONE
         self.song_class = None
+        self.am_in_unreleased = False
 
     def handle_starttag(self, tag, attrs):
+        if self.state == ParseStates.DONE:
+            return
         attrs = nsndswap.util.split_attrs(attrs)
         if tag == "hr":
-            self.state = ParseStates.DONE
+            print('Reached unreleased!')
+            self.state = ParseStates.UNRELEASED_SKIP
+            self.am_in_unreleased = True
+        elif self.state == ParseStates.UNRELEASED_SKIP and tag == "td":
+            self.state = ParseStates.SEEKING_SONG
         elif self.state == ParseStates.SEEKING_SONG and tag == "td":
             if 'class' not in attrs.keys():
                 self.active_song = self.all_songs.pop()
-                self.state = ParseStates.FOUND_SONG
+                self.state = ParseStates.SEEKING_REFERENCE
                 print(f'Resuming "{self.active_song.title}"')
             else:
                 self.song_class = attrs['class']
@@ -56,23 +65,26 @@ class XzazParser(html.parser.HTMLParser):
             self.state = ParseStates.EATING_REFERENCE
 
     def handle_data(self, data):
-        if self.state != ParseStates.DONE and data == "?" * len(data):
-            if self.state in (ParseStates.SKIPPING_ORIGINAL_SONG, ParseStates.SEEKING_SONG):
-                print('Scanning a song with ??? (GODDAMMIT RJ)')
-                self.active_song = nsndswap.util.Track(data)
-            else:
-                print('Caught a question marks zone, ending now')
-                self.state = ParseStates.DONE
-        elif data == 'daet with roze':
+        if self.state == ParseStates.DONE:
+            return
+        if data == 'daet with roze':
             print('Skipping daet with roze manually to avoid duplication with cookie_nsnd')
             self.state = ParseStates.SKIPPING_ORIGINAL_SONG
+        elif data == 'Non-Homestuck songs':
+            print('Reached non-Homestuck songs, ending')
+            self.state = ParseStates.DONE
+        elif data == '????':
+            print('Ignoring a ????')
+            self.state = ParseStates.SEEKING_UNRELEASED
         elif self.state == ParseStates.SKIPPING_ORIGINAL_SONG:
             data = self._check_duplicate_title(data)
             self.all_songs.append(nsndswap.util.Track(data))
             print(f'Skipping "{self.all_songs[-1].title}" (flagged as original)')
+            self.state = ParseStates.SEEKING_SONG
         elif self.state == ParseStates.FOUND_SONG:
             data = self._check_duplicate_title(data)
             self.active_song = nsndswap.util.Track(data)
+            self.state = ParseStates.SEEKING_REFERENCE
             print(f'Scanning song "{self.active_song.title}"')
         elif self.state == ParseStates.EATING_REFERENCE:
             if data == "":
@@ -82,11 +94,13 @@ class XzazParser(html.parser.HTMLParser):
             self.active_song.references.append(data)
 
     def handle_endtag(self, tag):
+        if self.state == ParseStates.DONE:
+            return
         if self.state == ParseStates.FOUND_SONG and tag == "td":
-            self.state = ParseStates.SEEKING_REFERENCE
+            self.state = ParseStates.SEEKING_REFERENCE if not self.am_in_unreleased else ParseStates.UNRELEASED_SKIP
         elif self.state in (ParseStates.SEEKING_REFERENCE, ParseStates.SKIPPING_ORIGINAL_SONG) \
                 and tag == "tr":
-            self.state = ParseStates.SEEKING_SONG
+            self.state = ParseStates.SEEKING_SONG if not self.am_in_unreleased else ParseStates.UNRELEASED_SKIP
             self.all_songs.append(self.active_song)
             self.active_song = None
 
@@ -154,6 +168,18 @@ class XzazParser(html.parser.HTMLParser):
         elif title == 'Premonition':
             # as above, but in viko_nsnd
             return 'Premonition (Stuckhome Syndrome)'
+        elif title == 'Stress':
+            # one is under unreleased, one is Vol. 9
+            if self.am_in_unreleased:
+                return 'Stress (George Buzinkai)'
+            else:
+                return 'Stress (Vol. 9)'
+        elif title == 'Contention':
+            # as above
+            if self.am_in_unreleased:
+                return 'Contention (Toby Fox & Bill Bolin)'
+            else:
+                return 'Contention (Land of Fans and Music 3)'
 
         # Update benchmark
         if update_benchmark:
