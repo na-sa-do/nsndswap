@@ -67,10 +67,7 @@ class XzazParser(html.parser.HTMLParser):
     def handle_data(self, data):
         if self.state == ParseStates.DONE:
             return
-        if data == 'daet with roze':
-            print('Skipping daet with roze manually to avoid duplication with cookie_nsnd')
-            self.state = ParseStates.SKIPPING_ORIGINAL_SONG
-        elif data == 'Non-Homestuck songs':
+        if data == 'Non-Homestuck songs':
             print('Reached non-Homestuck songs, ending')
             self.state = ParseStates.DONE
         elif data == '????':

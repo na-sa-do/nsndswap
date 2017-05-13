@@ -31,9 +31,9 @@ def main():
 
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
-    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro',])
+    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze'])
     dump(all_web, 'almost_everything')
-    all_web.append(viko_nsnd, override_on_duplicate=['daet with roze (Strife 2)'])
+    all_web.append(viko_nsnd)
     dump(all_web, 'everything')
 
 
