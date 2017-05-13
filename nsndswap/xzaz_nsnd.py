@@ -183,6 +183,12 @@ class XzazParser(html.parser.HTMLParser):
                 return 'Contention (Toby Fox & Bill Bolin)'
             else:
                 return 'Contention (Land of Fans and Music 3)'
+        elif title == 'Mother':
+            # as above
+            if self.am_in_unreleased:
+                return 'Mother (Malcolm Brown)'
+            else:
+                return 'Mother (One Year Older)'
 
         # Update benchmark
         if update_benchmark:

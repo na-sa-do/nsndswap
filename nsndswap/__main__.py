@@ -31,7 +31,7 @@ def main():
 
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
-    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze'])
+    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish'])
     dump(all_web, 'almost_everything')
     all_web.append(viko_nsnd)
     dump(all_web, 'everything')
@@ -63,6 +63,8 @@ def postprocess(nsnd):
 
 
 postprocess_title_table = {
+    "7 GRAND END (Noisemaker's part)": "7 GRAND END",
+    "BL1ND JUST1C3: 1NV3ST1G4T1ON!!": "BL1ND JUST1C3 : 1NV3ST1G4T1ON !!",
     "Beatdown": "Beatdown (Strider Style)",
     "Catchyegrabber": "Catchyegrabber (Skipper Plumbthroat's Song)",
     "Dave Fucking Owns At This Game": "Upward Movement (Dave Owns)",
@@ -75,20 +77,18 @@ postprocess_title_table = {
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",  # goddammit cookie
     "Showtime": "Showtime (Original Mix)",
     "Softbit (Original Version)": "Softbit (Original GFD PStFMBRD Version)",
+    "Sunset (by Cerulean)": "Sunset",
     "TBoSRE": "The Beginning of Something Really Excellent",
+    "The Will to Fight": "The Will to Fight (Original Mix)",
     "Three in the Morning (Kali)": "Three in the Morning (Kali's 2 in the AM PM Edit)",
     "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
     "Upward Movement": "Upward Movement (Dave Owns)",
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
-    "Sunset (by Cerulean)": "Sunset",
-    "7 GRAND END (Noisemaker's part)": "7 GRAND END",
-    "The Will to Fight": "The Will to Fight (Original Mix)",
-    "BL1ND JUST1C3: 1NV3ST1G4T1ON!!": "BL1ND JUST1C3 : 1NV3ST1G4T1ON !!",
 }
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention',
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
 ]
@@ -113,6 +113,7 @@ special_cases = {
     ('Three in the morning (Dif\'s JUST GO THE FUCK TO SLEEP ALREADY mix)', 'Three in the Morning (4 1/3 Hours Late Remix)'): 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)',
     ('Final Confrontation', 'Game Over'): 'Game Over (One Year Older)',
     ('Stress (Vol. 9)', 'Stress'): 'Stress (George Buzinkai)',
+    ('Lilith In Starlight', 'Mother'): 'Mother (Malcolm Brown)',
 }
 
 
