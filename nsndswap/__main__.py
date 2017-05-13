@@ -64,14 +64,12 @@ def postprocess(nsnd):
 
 postprocess_title_table = {
     "7 GRAND END (Noisemaker's part)": "7 GRAND END",
-    "BL1ND JUST1C3: 1NV3ST1G4T1ON!!": "BL1ND JUST1C3 : 1NV3ST1G4T1ON !!",
     "Beatdown": "Beatdown (Strider Style)",
     "Catchyegrabber": "Catchyegrabber (Skipper Plumbthroat's Song)",
     "Dave Fucking Owns At This Game": "Upward Movement (Dave Owns)",
     "Eternity Served Cold": "Eternity, Served Cold",
     "GameBro": "GameBro (Original 1990 Mix)",
     "GameGrl": "GameGrl (Original 1993 Mix)",
-    "IaMotMC": "I'm a Member of the Midnight Crew",
     "Overture": "I - Overture",
     "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",  # goddammit cookie
@@ -84,6 +82,30 @@ postprocess_title_table = {
     "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
     "Upward Movement": "Upward Movement (Dave Owns)",
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
+    "3 in the Morning (Pianokind)": "Three in the Morning (Pianokind)",
+    "it's literally just XROM let's not pretend it isn't": "XROM",
+    "Lilith in Starlight": "Lilith In Starlight",
+    "Jambox (by Noisemaker)": "Jambox",
+    "Anbroids v2.0": "Anbroids V2.0",
+    "Title Screen (Jailbreak)": "Title Screen",
+    "Skaian Dreams Remix": "Skaian Dreams (Remix)",
+    "Sad Jhon :( (Album Cut)": "Sad Jhon :(",
+    "cool and new Jungle": "cool and new Jungle (Beta Mix)",
+    "Let the Squiddles Sleep": "Let the Squiddles Sleep (End Theme)",
+    "Baby Legend": "A Baby Legend - The Baby is 2",
+
+    # Discs!
+    "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
+    "~~~~DISC 2~~~~": "Disc 2 (SBURB OST)",
+    "~~~~BONUS~~~~": "Bonus (SBURB OST)",
+    "•~DISC 1~• (LOFAM 2)": "Disc 1 (Land of Fans and Music 2)",
+    "•~DISC 1~•": "Disc 1 (Land of Fans and Music 2)",
+    "•~DISC 2~•": "Disc 2 (Land of Fans and Music 2)",
+    "˚Disc 1˚": "Disc 1 (Land of Fans and Music 3)",
+    "˚Disc 2˚": "Disc 2 (Land of Fans and Music 3)",
+    "♪ Disc 1 ♪": "Disc 1 (Beforus)",
+    "♫ Disc 2 ♫": "Disc 2 (Beforus)",
+    "♬ Disc 3 ♬": "Disc 3 (Beforus)",
 }
 
 forbidden_names = [
@@ -120,6 +142,7 @@ special_cases = {
 def postprocess_title(title, context):
     title = (title.replace('RCT', 'Rollercoaster Tycoon')
                   .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
+                  .replace('IaMotMC', "I'm a Member of the Midnight Crew")
                   .replace(' (unreleased)', '')
                   .replace(' (??)', '')
                   .replace('\n', '')

@@ -230,6 +230,13 @@ nsnd = {
     "Dog Hole": [],
     "Dogtroid": ["Dogsong"],
     "Undertale (Beta)": ["Once Upon a Time"],
+
+    # Misc to fix the ridiculous amount of stuff in .unknown.txt
+    "Savior of the Dreaming Dead (Cascade Cut)": ["Savior of the Dreaming Dead", "Penumbra Phantasm"],
+    "SPIDER DANCE FROM UNDERTALE BUT NOW ITS SKA I GUESS???": ["Spider Dance"],
+    "Pseudumbra Fauxtasm": ["Penumbra Phantasm"],
+    "My Grand Dad is the Green Sun": ["Flare", "Meet the Flintstones"],
+    "The Ballad of Jack Noir (vocal version)": ["The Ballad of Jack Noir"],
 }
 
 
