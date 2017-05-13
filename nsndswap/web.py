@@ -184,6 +184,13 @@ class Web:
             outf.write(title + '\n')
         print('Done dumping titles')
 
+    def dump_unknown_references(self, outf):
+        print('Dumping unknown references')
+        unknownrefs = set(self.nodes) - set(self.nodes[x] for x in self._nodes_discovered_via_entries)
+        for title in unknownrefs:
+            outf.write(title + '\n')
+        print('Done dumping unknown references')
+
     def dump_plaintext(self, outf, reverse=False):
         reverse_str = 'reversed ' if reverse else ''
         print(f'Dumping {reverse_str}plaintext')

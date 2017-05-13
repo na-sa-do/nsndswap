@@ -138,6 +138,8 @@ def dump(web, name):
         web.dump_plaintext(f)
     with open(f'output/{name}.reverse.txt', 'w') as f:
         web.dump_plaintext(f, reverse=True)
+    with open(f'output/{name}.unknown.txt', 'w') as f:
+        web.dump_unknown_references(f)
 
 
 if __name__ == '__main__':

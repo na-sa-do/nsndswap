@@ -15,9 +15,10 @@ The following files are output to the `output/` directory:
 - `almost_everything` contains both of the previous files' data.
 - `everything` contains the previous file's data and a few additions of my own (which you can find in `viko_nsnd.py`, if you're interested in their raw form).
 
-These files are dumped in four formats:
+These files are dumped in five formats:
 
 - `.gexf` - directed graphs of references
 - `.txt` - simple _ad hoc_ plain-text format
 - `.titles.txt` - the titles, one per line
 - `.reverse.txt` - the format in `.txt`, but showing incoming references rather than outgoing
+- `.unknown.txt` - things which are referenced, but which don't have reference lists of their own
