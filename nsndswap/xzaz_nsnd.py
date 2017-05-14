@@ -92,9 +92,12 @@ class XzazParser(html.parser.HTMLParser):
         elif self.state == ParseStates.EATING_REFERENCE:
             if data == "":
                 return
-            print(f'Got "{self.active_song.title}" referencing "{data}"')
+            if data == "[see CANWC list]":
+                print(f'Skipping "{self.active_song.title} linking to cookie list')
+            else:
+                print(f'Got "{self.active_song.title}" referencing "{data}"')
+                self.active_song.references.append(data)
             self.state = ParseStates.SEEKING_REFERENCE
-            self.active_song.references.append(data)
 
     def handle_endtag(self, tag):
         if self.state == ParseStates.DONE:
