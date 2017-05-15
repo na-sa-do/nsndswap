@@ -56,13 +56,14 @@ nsnd = {
     "ShowTemmie": ["Showtime", "Temmie Village"],
     "Temmie Flares": ["Flare (Cascade Cut)", "Temmie Village"],
 
-    # ViKomprenas clyp.it
+    # ViKomprenas soundcloud
     "Dentist (ViKomprenas)": ["Doctor", "Ruins", "Patient", "Savior of the Waking Patient"],
     "Another Elevator": ["Another Jungle", "Sburban Elevator"],
     "Elevator #3": ["Jungle #3", "Sburban Elevator"],
     "Another Paradigm": ["Endless Climb", "Rhapsody in Green", "MeGaLoVania", "The Paradox Paradigm", "Maestro", "Sburban Jungle", "Penumbra Phantasm", "Beatdown", "Look Where We Are", "Crystalanthemums", "Heir of Grief", "Showtime (Piano Refrain)", "Revelawesome", "Three in the Morning", "Ruins", "Jungle #3", "Tock", "Unintentional Touhou", "Courser"],
     "Radiation Sickness": ["Gaster's Theme", "Penumbra Phantasm", "Heartache", "Earthsea Borealis", "the rose rap"],
     "unfinished medley for power464646": ["Carbon Nadsat/Cuestick Genius", "Rhapsody in Green", "Havoc", "Eternity, Served Cold", "Showdown", "Riches to Ruins Movements I & II", "Negastrife", "PPiSHWA", "Carne Vale"],
+    "Saiddit Lullaby": ["Colt Blooded", "Look Where We Are"],
 
     # The Exquisite Corpse
     "Exquisite Corpse": ["Carne Vale", "A Taste for Adventure", "Endless Climb", "RCT Title Screen", "Sburban Jungle", "Courser", "Jungle #3", "MeGaLoVania"],
