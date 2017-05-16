@@ -171,6 +171,9 @@ class XzazParser(html.parser.HTMLParser):
         elif title == 'Checkmate':
             # as above
             return 'Checkmate (coloUrs and mayhem: Universe B)'
+        elif title == 'Fanfare':
+            # as above
+            return 'Fanfare (Jailbreak Vol. 1)'
         elif title == 'Premonition':
             # as above, but in viko_nsnd
             return 'Premonition (Stuckhome Syndrome)'

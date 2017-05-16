@@ -71,7 +71,13 @@ class Web:
             assert self.nodes[r] is title
             return r
 
-    def append(self, nsnd, *, override_on_duplicate=[]):
+    def append(self, nsnd, *, override_on_duplicate=[], skip_on_duplicate=[]):
+        duplicates_shared = set(override_on_duplicate) & set(skip_on_duplicate)
+        if len(duplicates_shared) > 0:
+            print('override_on_duplicate and skip_on_duplicate share entries, aborting!')
+            print('The duplicate entries are:')
+            print(', '.join(duplicates_shared))
+            raise SystemExit(2)
         for next_song in nsnd:
             assert isinstance(next_song, nsndswap.util.Track)
             if next_song.title == "":
@@ -84,6 +90,9 @@ class Web:
                 if next_song.title in override_on_duplicate:
                     print(f'[W] Overriding "{next_song.title}" on duplicate')
                     self.edges = [x for x in self.edges if x[0] != node_id]
+                elif next_song.title in skip_on_duplicate:
+                    print(f'[W] Skipping "{next_song.title}" on duplicate')
+                    continue
                 else:
                     print('Illegal duplicated song, stopping')
                     raise SystemExit(2)
