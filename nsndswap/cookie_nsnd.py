@@ -174,7 +174,10 @@ class CookieParser(html.parser.HTMLParser):
     def handle_data(self, data):
         if self.state == ParseStates.DONE:
             return
-        if self.state == ParseStates.EATING_TITLE:
+        if data == 'Non-Homestuck music (Homestuck and CANWC musicians only)':
+            print('Ending cookie_nsnd at non-homestuck section')
+            self.state = ParseStates.DONE
+        elif self.state == ParseStates.EATING_TITLE:
             self.active_song.title += data
         elif self.state == ParseStates.EATING_REFERENCE:
             assert self.active_song.title != ""
