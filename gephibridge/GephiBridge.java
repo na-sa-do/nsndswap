@@ -34,7 +34,7 @@ public class GephiBridge {
         fr.setArea(20_000f);
         fr.setSpeed(3d);
         for (int i = 0; i < 2000 && fr.canAlgo(); i++) {
-            System.out.println("Running FR iteration number " + String.valueOf(i));
+            System.out.println("Running FR iteration number " + String.valueOf(i) + " on " + args[0]);
             fr.goAlgo();
         }
         fr.endAlgo();
@@ -43,7 +43,7 @@ public class GephiBridge {
         no.initAlgo();
         no.resetPropertiesValues();
         for (int i = 0; i < 50 && no.canAlgo(); i++) {
-            System.out.println("Running NO iteration number " + String.valueOf(i));
+            System.out.println("Running NO iteration number " + String.valueOf(i) + " on " + args[0]);
             no.goAlgo();
         }
         no.endAlgo();
