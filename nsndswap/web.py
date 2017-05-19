@@ -165,7 +165,7 @@ class Web:
         <description>This is a list of references (remixes, arrangements, samples, etc.) in Homestuck music.</description>
     </meta>
     <graph mode="static" defaultedgetype="directed">
-        <nodes>\n""")
+        <nodes>""")
         for node_id in range(len(self.nodes)):
             outf.write(f"""
             <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\" >
@@ -175,7 +175,7 @@ class Web:
             </node>""")
         outf.write("""
         </nodes>
-        <edges>\n""")
+        <edges>""")
         for edge_id in range(len(self.edges)):
             outf.write(f"""
             <edge id="{edge_id}" source="{self.edges[edge_id][0]}" target="{self.edges[edge_id][1]}">
