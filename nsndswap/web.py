@@ -211,8 +211,7 @@ class Web:
                 if ref[0 if not reverse else 1] == node_i:
                     references.append(self.nodes[ref[1 if not reverse else 0]])
             if references:
-                outf.write(f'{self.nodes[node_i]}:' + '\n  - '.join([''] + references).rstrip())
-            else:
-                outf.write(f'{self.nodes[node_i]}: none.')
-            outf.write('\n')
+                outf.write(f'{self.nodes[node_i]}:' + '\n  - '.join([''] + references).rstrip() + '\n')
+            elif node_i in self._nodes_discovered_via_entries:
+                outf.write(f'{self.nodes[node_i]}: none.\n')
         print(f'Done dumping {reverse_str}plaintext')
