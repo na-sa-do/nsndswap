@@ -245,7 +245,7 @@ nsnd = {
     "Colt Blooded": ["Glass Houses"],
     "Incubation": [],
     "What A Hoot": [],
-    "Saoshyant": NotImplementedError,
+    "Saoshyant": ["Hobbyist"],
     "Alloy": [],
     "Conflict!": [],
     "Sticky Steps": [],
