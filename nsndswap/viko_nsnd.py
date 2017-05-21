@@ -300,6 +300,10 @@ nsnd = {
     "Untruly Yours": [],
     "Burnout Flounce": [],
     "Ex Nihilo": [],
+
+    # ndividedbyzero soundcloud
+    "Retconjuration": ["Wind chime foley", "Homestuck Anthem"],
+    "Juju Breaker": ["Purple Bard", "Sburban Jungle", "Black Rose / Green Sun", "Explore", "English", "Eternity, Served Cold"],
 }
 
 
