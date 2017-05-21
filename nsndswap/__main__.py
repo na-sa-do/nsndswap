@@ -30,6 +30,10 @@ def main():
     cookie_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])
     dump(cookie_web, 'canwc')
 
+    viko_web = nsndswap.web.Web()
+    viko_web.append(viko_nsnd)
+    dump(viko_web, 'viko')
+
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
     all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])

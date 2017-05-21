@@ -12,7 +12,8 @@ The following datasets are output to the `output/` directory:
 
 - `homestuck` contains details of all songs on the first page (Homestuck soundtrack, unofficialmspafans, Homestuck Gaiden, and miscellaneous other things).
 - `canwc` contains details of all songs on the second page (the Cool and New Web Comic soundtrack).
-- `everything` contains the previous files' data and a few additions of my own (which you can find in `viko_nsnd.py`, if you're interested in their raw form).
+- `viko` contains a few additions I maintain (the raw form is in `viko_nsnd.py`.
+- `everything` contains all the previous files' data.
 
 These are dumped in five formats:
 
