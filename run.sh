@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 set -eu
+if [[ -d output ]]; then
+    echo Erasing output directory
+    rm -r output
+fi
+mkdir output
 
 python3 -m nsndswap
 
