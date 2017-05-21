@@ -33,7 +33,7 @@ def main():
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
     all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])
-    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide'])
+    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction'])
     dump(all_web, 'everything')
 
 
