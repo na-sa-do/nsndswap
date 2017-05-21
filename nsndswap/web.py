@@ -145,12 +145,14 @@ class Web:
 
         print('Randomizing node locations')
 
-        def make_component():
-            return min(max(random.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV),
+        def make_component(r):
+            return min(max(r.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV),
                        BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
 
-        for node_data in nodes_data:
-            node_data.position = complex(make_component(), make_component())
+        for i in range(len(nodes_data)):
+            r = random.Random()
+            r.seed(self.nodes[i])
+            nodes_data[i].position = complex(make_component(r), make_component(r))
 
         print('Done building node data')
         return nodes_data
