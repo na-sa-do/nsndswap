@@ -97,6 +97,7 @@ postprocess_title_table = {
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
     "Let the Squiddles Sleep": "Let the Squiddles Sleep (End Theme)",
     "Baby Legend": "A Baby Legend - The Baby is 2",
+    "Foley": "Wind chime foley",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
