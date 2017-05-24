@@ -71,13 +71,13 @@ postprocess_title_table = {
     "7 GRAND END (Noisemaker's part)": "7 GRAND END",
     "Anbroids v2.0": "Anbroids V2.0",
     "Baby Legend": "A Baby Legend - The Baby is 2",
-    "Beatdown": "Beatdown (Strider Style)",
+    "Beatdown (Strider Style)": "Beatdown",
     "Catchyegrabber": "Catchyegrabber (Skipper Plumbthroat's Song)",
     "Dave Fucking Owns At This Game": "Upward Movement (Dave Owns)",
     "Eternity Served Cold": "Eternity, Served Cold",
     "Foley": "Wind chime foley",
-    "GameBro": "GameBro (Original 1990 Mix)",
-    "GameGrl": "GameGrl (Original 1993 Mix)",
+    "GameBro (Original 1990 Mix)": "GameBro",
+    "GameGrl (Original 1993 Mix)": "GameGrl",
     "Jambox (by Noisemaker)": "Jambox",
     "Let the Squiddles Sleep": "Let the Squiddles Sleep (End Theme)",
     "Lilith in Starlight": "Lilith In Starlight",
@@ -85,7 +85,7 @@ postprocess_title_table = {
     "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
     "Sad Jhon :( (Album Cut)": "Sad Jhon :(",
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",  # goddammit cookie
-    "Showtime": "Showtime (Original Mix)",
+    "Showtime (Original Mix)": "Showtime",
     "Skaian Dreams Remix": "Skaian Dreams (Remix)",
     "Softbit (Original Version)": "Softbit (Original GFD PStFMBRD Version)",
     "Sunset (by Cerulean)": "Sunset",
@@ -146,7 +146,7 @@ special_cases = {
 
 
 def postprocess_title(title, context):
-    title = (title.replace('RCT', 'Rollercoaster Tycoon')
+    title = (title.replace('\u200b', ' ')
                   .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
                   .replace('IaMotMC', "I'm a Member of the Midnight Crew")
                   .replace(' (unreleased)', '')
@@ -154,6 +154,7 @@ def postprocess_title(title, context):
                   .replace('\n', '')
                   .replace('  ', ' ')
                   .replace('’', "'")
+                  .replace('…', '...')
                   .strip())
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]

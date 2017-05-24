@@ -170,7 +170,7 @@ class Web:
         <nodes>""")
         for node_id in range(len(self.nodes)):
             outf.write(f"""
-            <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\" >
+            <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\">
                 <viz:size value="{node_data[node_id].size}"></viz:size>
                 <viz:position x="{node_data[node_id].position.real}" y="{node_data[node_id].position.imag}"></viz:position>
                 <viz:color r="{node_data[node_id].color[0]}" g="{node_data[node_id].color[1]}" b="{node_data[node_id].color[2]}"></viz:color>
