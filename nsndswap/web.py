@@ -100,7 +100,7 @@ class Web:
                 self._nodes_discovered_via_entries.append(node_id)
 
             # document references
-            for ref in next_song.references:
+            for ref in self.nodes:
                 if ref == "":
                     print('Skipping a null reference')
                     continue
@@ -114,11 +114,6 @@ class Web:
                     continue
                 self.edges += [edge]
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
-
-            if 'Courser' not in next_song.references:
-                courser_node_id = self._get_id_of('Courser')
-                print('Adding Courser')
-                self.edges += [(node_id, courser_node_id)]
 
     def _build_node_data(self):
         nodes_data = [NodeData() for _ in self.nodes]
