@@ -76,7 +76,10 @@ postprocess_title_table = {
     "Beatdown (Strider Style)": "Beatdown",
     "Catchyegrabber": "Catchyegrabber (Skipper Plumbthroat's Song)",
     "Dave Fucking Owns At This Game": "Upward Movement (Dave Owns)",
+    "Dersite": "Something Familiar",
+    "Doct̸̀o̴̕r̵": "Doctor (Zalgo)",
     "Eternity Served Cold": "Eternity, Served Cold",
+    "Final Confrontation": "Something Familiar",
     "Foley": "Wind chime foley",
     "GameBro (Original 1990 Mix)": "GameBro",
     "GameGrl (Original 1993 Mix)": "GameGrl",
@@ -100,11 +103,8 @@ postprocess_title_table = {
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
     "it's literally just XROM let's not pretend it isn't": "XROM",
-    "Doct̸̀o̴̕r̵": "Doctor (Zalgo)",
-    "• ~ DIKS 1 ~ •": "Diks 1 (cool and new volume 7)",
     "• ~ 2 SKID~ •": "2 Skid (cool and new volume 7)",
-    "Final Confrontation": "Something Familiar",
-    "Dersite": "Something Familiar",
+    "• ~ DIKS 1 ~ •": "Diks 1 (cool and new volume 7)",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
