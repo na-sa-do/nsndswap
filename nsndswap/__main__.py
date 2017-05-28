@@ -100,6 +100,9 @@ postprocess_title_table = {
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
     "it's literally just XROM let's not pretend it isn't": "XROM",
+    "Doct̸̀o̴̕r̵": "Doctor (Zalgo)",
+    "• ~ DIKS 1 ~ •": "Diks 1 (cool and new volume 7)",
+    "• ~ 2 SKID~ •": "2 Skid (cool and new volume 7)",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
@@ -181,6 +184,8 @@ def dump(web, name):
         web.dump_plaintext(f, reverse=True)
     with open(f'output/{name}.unknown.txt', 'w') as f:
         web.dump_unknown_references(f)
+    with open(f'output/{name}.unicode.txt', 'w') as f:
+        web.dump_unicode_titles(f)
 
 
 if __name__ == '__main__':

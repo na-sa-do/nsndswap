@@ -215,3 +215,10 @@ class Web:
             elif node_i in self._nodes_discovered_via_entries:
                 outf.write(f'{self.nodes[node_i]}: none.\n')
         print(f'Done dumping {reverse_str}plaintext')
+
+    def dump_unicode_titles(self, outf):
+        print('Dumping unicode titles')
+        for node in self.nodes:
+            if node != node.encode('ascii', 'ignore').decode('ascii'):
+                outf.write(f'{node}\n')
+        print('Done dumping unicode titles')
