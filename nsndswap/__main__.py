@@ -103,6 +103,8 @@ postprocess_title_table = {
     "Doct̸̀o̴̕r̵": "Doctor (Zalgo)",
     "• ~ DIKS 1 ~ •": "Diks 1 (cool and new volume 7)",
     "• ~ 2 SKID~ •": "2 Skid (cool and new volume 7)",
+    "Final Confrontation": "Something Familiar",
+    "Dersite": "Something Familiar",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
