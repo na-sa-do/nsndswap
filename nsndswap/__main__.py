@@ -147,10 +147,10 @@ special_cases = {
     ('[reverie vaporwave]', 'Game Over'): 'Game Over (One Year Older)',
     ('Three in the Morning (4 1/3 Hours Late Remix; CaNon edit)', 'Three in the Morning (4 1/3 Hours Late Remix)'): 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)',
     ('Three in the morning (Dif\'s JUST GO THE FUCK TO SLEEP ALREADY mix)', 'Three in the Morning (4 1/3 Hours Late Remix)'): 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)',
-    ('Final Confrontation', 'Game Over'): 'Game Over (One Year Older)',
     ('Stress (Vol. 9)', 'Stress'): 'Stress (George Buzinkai)',
     ('Lilith In Starlight', 'Mother'): 'Mother (Malcolm Brown)',
     ('[S] Ascend, Descend', 'Fanfare'): 'Showtime (Imp Strife Mix)',
+    ('Over the hat', 'Under the Hat'): 'Under the Hat (One Year Older)',
 }
 
 

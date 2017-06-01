@@ -14,6 +14,8 @@
 # phrase into two (or more!) separate data regions, probably an artifact of the
 # formatting being applied badly. Anyway, that's... relatively straightforward.
 
+# Addendum 2017-05-30: Not all albums have art. Shit.
+
 import html.parser
 import enum
 import nsndswap.util
@@ -22,7 +24,7 @@ import nsndswap.util
 @enum.unique
 class ParseStates(enum.Enum):
     SEEKING_ALBUM = enum.auto()
-    SKIPPING_ALBUM_HEADER = enum.auto()
+    READING_ALBUM_HEADER = enum.auto()
     SEEKING_SONG = enum.auto()
     SKIPPING_TRACK_NUM = enum.auto()
     EATING_TITLE = enum.auto()
@@ -50,6 +52,7 @@ class CookieParser(html.parser.HTMLParser):
         self.all_songs = []
         self.got_new_this_round = False
         self.benchmark = Benchmarks.NONE
+        self.current_album_has_art = False
 
     def _finish_song(self):
         if self.active_song is not None:
@@ -128,17 +131,17 @@ class CookieParser(html.parser.HTMLParser):
             return
         attrs = nsndswap.util.split_attrs(attrs)
         if self.state == ParseStates.SEEKING_ALBUM and tag == "tr":
-            self.state = ParseStates.SKIPPING_ALBUM_HEADER
+            self.state = ParseStates.READING_ALBUM_HEADER
         elif self.state == ParseStates.SEEKING_SONG and tag == "tr" and 'class' in attrs.keys() and 'no-sep' in attrs['class']:
             self.state = ParseStates.RESUMING
-        elif self.state != ParseStates.SKIPPING_ALBUM_HEADER and tag == "td":
+        elif self.state != ParseStates.READING_ALBUM_HEADER and tag == "td":
             self.state = {
                 ParseStates.SEEKING_SONG: ParseStates.SKIPPING_TRACK_NUM,
                 ParseStates.SKIPPING_TRACK_NUM: ParseStates.EATING_TITLE,
                 ParseStates.EATING_TITLE: ParseStates.SKIPPING_ARTIST,
                 ParseStates.RESUMING: ParseStates.SKIPPING_BLANK_TITLE_IN_RESUME,
                 ParseStates.SKIPPING_BLANK_TITLE_IN_RESUME: ParseStates.SKIPPING_ARTIST,
-                ParseStates.SKIPPING_ARTIST: ParseStates.SKIPPING_ALBUM_ARTIST,
+                ParseStates.SKIPPING_ARTIST: ParseStates.SKIPPING_ALBUM_ARTIST if self.current_album_has_art else ParseStates.SEEKING_REFERENCE,
                 ParseStates.SKIPPING_ALBUM_ARTIST: ParseStates.SEEKING_REFERENCE,
                 ParseStates.SEEKING_REFERENCE: ParseStates.EATING_REFERENCE,
                 ParseStates.EATING_REFERENCE: ParseStates.EATING_REFERENCE,
@@ -150,7 +153,7 @@ class CookieParser(html.parser.HTMLParser):
     def handle_endtag(self, tag):
         if self.state == ParseStates.DONE:
             return
-        if self.state in (ParseStates.SKIPPING_ALBUM_HEADER, ParseStates.SEEKING_REFERENCE) and tag == "tr":
+        if self.state in (ParseStates.READING_ALBUM_HEADER, ParseStates.SEEKING_REFERENCE) and tag == "tr":
             self.state = ParseStates.SEEKING_SONG
         elif tag == "td":
             if self.state == ParseStates.EATING_REFERENCE:
@@ -166,6 +169,7 @@ class CookieParser(html.parser.HTMLParser):
                 else:
                     print(f'Scanning "{self.active_song.title}"')
         elif tag == "table":
+            self.current_album_has_art = False
             if self.state != ParseStates.SEEKING_REFERENCE:
                 print(f'[W] Reached unexpected end of album in state {self.state}')
                 self._finish_song()
@@ -177,6 +181,9 @@ class CookieParser(html.parser.HTMLParser):
         if data == 'Non-Homestuck music (Homestuck and CANWC musicians only)':
             print('Ending cookie_nsnd at non-homestuck section')
             self.state = ParseStates.DONE
+        elif self.state == ParseStates.READING_ALBUM_HEADER and data.strip().startswith('T'):
+            print('Noticed that this album has art')
+            self.current_album_has_art = True
         elif self.state == ParseStates.EATING_TITLE:
             self.active_song.title += data
         elif self.state == ParseStates.EATING_REFERENCE:

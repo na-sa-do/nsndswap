@@ -101,7 +101,7 @@ class Web:
 
             # document references
             for ref in next_song.references:
-                if ref == "":
+                if ref.lower() in ("", "n/a"):
                     print('Skipping a null reference')
                     continue
                 ref_node_id = self._get_id_of(ref)
