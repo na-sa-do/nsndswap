@@ -103,8 +103,7 @@ postprocess_title_table = {
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
     "it's literally just XROM let's not pretend it isn't": "XROM",
-    "• ~ 2 SKID~ •": "2 Skid (cool and new volume 7)",
-    "• ~ DIKS 1 ~ •": "Diks 1 (cool and new volume 7)",
+    "MACINTOSH PLUS": "MACINTOSH PLUS - リサフランク420 / 現代のコンピュー",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
@@ -120,6 +119,8 @@ postprocess_title_table = {
     "♪ Disc 1 ♪": "Disc 1 (Beforus)",
     "♫ Disc 2 ♫": "Disc 2 (Beforus)",
     "♬ Disc 3 ♬": "Disc 3 (Beforus)",
+    "• ~ 2 SKID~ •": "2 Skid (cool and new volume 7)",
+    "• ~ DIKS 1 ~ •": "Diks 1 (cool and new volume 7)",
 }
 
 forbidden_names = [
