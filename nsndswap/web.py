@@ -14,7 +14,8 @@ COLOR_GREEN_FACTOR = 127
 COLOR_GREEN_OFFSET = 32
 COLOR_RED_FACTOR = 127
 COLOR_RED_OFFSET = 32
-SIZE_FACTOR = 100
+SIZE_FACTOR = 197
+SIZE_OFFSET = 3
 
 
 def _tween(amount, start, end):
@@ -141,7 +142,8 @@ class Web:
                           _tween(data.weighted_in_deg, 190, 0),
                           _tween(data.weighted_in_deg, 177, 0)]
             data.color = tuple(round(x) for x in data.color)
-            data.size = data.weighted_in_deg * (SIZE_FACTOR - 1) + 1
+            # don't ask me where this off-by-one comes from
+            data.size = data.weighted_in_deg * (SIZE_FACTOR) + SIZE_OFFSET - 1
 
         print('Randomizing node locations')
 
