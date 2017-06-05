@@ -4,18 +4,16 @@
 
 import datetime
 import random
+import colorsys
 import nsndswap.util
 
 
 BOX_SIDE_MAXDEV = 5
 BOX_SIDE_STDDEV = 100
-COLOR_BLUE_CONSTANT = 0
-COLOR_GREEN_FACTOR = 127
-COLOR_GREEN_OFFSET = 32
-COLOR_RED_FACTOR = 127
-COLOR_RED_OFFSET = 32
 SIZE_FACTOR = 197
 SIZE_OFFSET = 3
+SATURATION = 0.25
+VALUE = 0.9
 
 
 def _tween(amount, start, end):
@@ -134,18 +132,14 @@ class Web:
             largest_in = max(largest_in, data.in_deg)
             largest_out = max(largest_out, data.out_deg)
 
-        print('Computing weighted degrees, colors, sizes')
+        print('Computing weighted degrees, sizes')
         for data in nodes_data:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
-            data.color = [_tween(data.weighted_in_deg, 224, 179),
-                          _tween(data.weighted_in_deg, 190, 0),
-                          _tween(data.weighted_in_deg, 177, 0)]
-            data.color = tuple(round(x) for x in data.color)
             # don't ask me where this off-by-one comes from
             data.size = data.weighted_in_deg * (SIZE_FACTOR) + SIZE_OFFSET - 1
 
-        print('Randomizing node locations')
+        print('Randomizing node locations and colors')
 
         def make_component(r):
             return min(max(r.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV),
@@ -155,6 +149,8 @@ class Web:
             r = random.Random()
             r.seed(self.nodes[i])
             nodes_data[i].position = complex(make_component(r), make_component(r))
+            nodes_data[i].color = tuple(round(x * 255) for x
+                in colorsys.hsv_to_rgb(r.random(), SATURATION, VALUE))
 
         print('Done building node data')
         return nodes_data
