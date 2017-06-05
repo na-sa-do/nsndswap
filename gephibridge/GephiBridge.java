@@ -16,6 +16,8 @@ import org.gephi.project.api.Workspace;
 import org.openide.util.Lookup;
 
 public class GephiBridge {
+    private static final float AREA_FACTOR = 1.461560947f; // area per node
+
     public static void main(String[] args) throws Exception {
         ProjectController pc = Lookup.getDefault().lookup(ProjectController.class);
         pc.newProject();
@@ -31,8 +33,8 @@ public class GephiBridge {
         fr.setGraphModel(gc.getGraphModel());
         fr.initAlgo();
         fr.resetPropertiesValues();
-        fr.setArea(20_000f);
-        fr.setSpeed(3d);
+        fr.setArea(GephiBridge.AREA_FACTOR * gc.getGraphModel().getGraph().getNodeCount());
+        fr.setSpeed(2d);
         for (int i = 0; i < 2000 && fr.canAlgo(); i++) {
             System.out.println("Running FR iteration number " + String.valueOf(i) + " on " + args[0]);
             fr.goAlgo();
