@@ -2,6 +2,7 @@ import java.io.File;
 import java.lang.String;
 
 import org.gephi.graph.api.GraphController;
+import org.gephi.graph.api.GraphModel;
 import org.gephi.io.exporter.api.ExportController;
 import org.gephi.io.exporter.spi.GraphExporter;
 import org.gephi.io.importer.api.Container;
@@ -9,6 +10,8 @@ import org.gephi.io.importer.api.ImportController;
 import org.gephi.io.processor.plugin.DefaultProcessor;
 import org.gephi.layout.plugin.fruchterman.FruchtermanReingold;
 import org.gephi.layout.plugin.fruchterman.FruchtermanReingoldBuilder;
+import org.gephi.layout.plugin.labelAdjust.LabelAdjust;
+import org.gephi.layout.plugin.labelAdjust.LabelAdjustBuilder;
 import org.gephi.layout.plugin.noverlap.NoverlapLayout;
 import org.gephi.layout.plugin.noverlap.NoverlapLayoutBuilder;
 import org.gephi.project.api.ProjectController;
@@ -29,8 +32,9 @@ public class GephiBridge {
         ic.process(container, new DefaultProcessor(), workspace);
 
         GraphController gc = Lookup.getDefault().lookup(GraphController.class);
+        GraphModel gm = gc.getGraphModel();
         FruchtermanReingold fr = new FruchtermanReingoldBuilder().buildLayout();
-        fr.setGraphModel(gc.getGraphModel());
+        fr.setGraphModel(gm);
         fr.initAlgo();
         fr.resetPropertiesValues();
         fr.setArea(GephiBridge.AREA_FACTOR * gc.getGraphModel().getGraph().getNodeCount());
@@ -41,7 +45,7 @@ public class GephiBridge {
         }
         fr.endAlgo();
         NoverlapLayout no = (NoverlapLayout) new NoverlapLayoutBuilder().buildLayout();
-        no.setGraphModel(gc.getGraphModel());
+        no.setGraphModel(gm);
         no.initAlgo();
         no.resetPropertiesValues();
         for (int i = 0; i < 50 && no.canAlgo(); i++) {
@@ -49,6 +53,15 @@ public class GephiBridge {
             no.goAlgo();
         }
         no.endAlgo();
+        LabelAdjust la = new LabelAdjustBuilder().buildLayout();
+        la.setGraphModel(gm);
+        la.initAlgo();
+        la.resetPropertiesValues();
+        for (int i = 0; i < 50 && la.canAlgo(); i++) {
+            System.out.println("Running LA iteration number " + String.valueOf(i) + " on " + args[0]);
+            la.goAlgo();
+        }
+        la.endAlgo();
 
         ExportController ec = Lookup.getDefault().lookup(ExportController.class);
         GraphExporter gexfExporter = (GraphExporter) ec.getExporter("gexf");
