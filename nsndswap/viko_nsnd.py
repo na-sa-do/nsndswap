@@ -79,7 +79,7 @@ nsnd = {
     "the eighth track is about vriska": ["Spider's Claw", "Jungle #3", "Death by Glamour"],
     "Dentist (Vore Cut)": ["Dentist (ViKomprenas)"],
     "this story has about 300 pages of worldbuilding and then someone gets encased in latex and suffocates and it's generally agreed to be a real sexy affair": [],
-    "A Farewell to the Wonderful World of Vore": ["A Welcome to the Wonderful World of Vore"],
+    "A Farewell to the Wonderful World of Vore": [],
     "[BONUS] The Voreing Experience": [],
 
     # Sealstuck Volume 1
