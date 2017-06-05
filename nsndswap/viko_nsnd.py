@@ -70,12 +70,12 @@ nsnd = {
 
     # YUM!: The Vore Album
     "A Welcome to the Wonderful World of Vore": [],
-    "Can't Keep a Good Man Down": [],
+    "Can't Keep a Good Man Down": ["A Welcome to the Wonderful World of Vore"],
     "The Cannibal Cafe": ["Dinosaur Comics Theme"],
     "Voreska": ["MeGaLoVania", "Spider's Claw"],
     "Voriginal Content (feat. Mister Pumpkin)": [],
-    "Stomach Is An Instrument / Vorejazz": [],
-    "Vorintosh Plus": ["MACINTOSH PLUS - リサフランク420 / 現代のコンピュー"],
+    "Stomach Is An Instrument / Vorejazz": ["A Welcome to the Wonderful World of Vore"],
+    "Vorintosh Plus": ["A Welcome to the Wonderful World of Vore", "MACINTOSH PLUS - リサフランク420 / 現代のコンピュー"],
     "the eighth track is about vriska": ["Spider's Claw", "Jungle #3", "Death by Glamour"],
     "Dentist (Vore Cut)": ["Dentist (ViKomprenas)"],
     "this story has about 300 pages of worldbuilding and then someone gets encased in latex and suffocates and it's generally agreed to be a real sexy affair": [],
