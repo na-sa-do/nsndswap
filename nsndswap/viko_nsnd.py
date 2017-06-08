@@ -127,7 +127,7 @@ nsnd = {
     "Determination": [],
     "Home": ["Once Upon a Time"],
     "Home (Music Box)": ["Home"],
-    "Heartache": [],
+    "Heartache": ["Enemy Approaching"],
     "sans.": [],
     "Nyeh Heh Heh!": [],
     "Snowy": [],
