@@ -184,6 +184,9 @@ class CookieParser(html.parser.HTMLParser):
         elif self.state == ParseStates.READING_ALBUM_HEADER and data.strip().startswith('T'):
             print('Noticed that this album has art')
             self.current_album_has_art = True
+        elif self.state == ParseStates.READING_ALBUM_HEADER and data.strip().startswith('Album'):
+            print('Noticed that this has an album column, pretending it\'s art')
+            self.current_album_has_art = True
         elif self.state == ParseStates.EATING_TITLE:
             self.active_song.title += data
         elif self.state == ParseStates.EATING_REFERENCE:

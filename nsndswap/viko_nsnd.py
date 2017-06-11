@@ -212,7 +212,7 @@ nsnd = {
     "Last Goodbye": ["Once Upon a Time"],
     "But the Earth Refused to Die": ["Ruins (Undertale)"],
     "Battle Against a True Hero": ["Ruins (Undertale)", "Alphys"],
-    "Power of 'NEO'": ["Battle Against a True Hero"],
+    "Power of \"NEO\"": ["Battle Against a True Hero"],
     "MEGALOVANIA": ["Megalovania"],
     "Good Night": ["Once Upon a Time"],
 

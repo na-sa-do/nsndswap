@@ -36,7 +36,7 @@ def main():
 
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
-    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])
+    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])
     all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction'])
     dump(all_web, 'everything')
 
@@ -70,6 +70,7 @@ postprocess_title_table = {
     "3 in the Morning (Pianokind)": "Three in the Morning (Pianokind)",
     "7 GRAND END (Noisemaker's part)": "7 GRAND END",
     "Anbroids v2.0": "Anbroids V2.0",
+    "BL1ND JUST1C3: 1NV3ST1G4T1ON!!": "BL1ND JUST1C3 : 1NV3ST1G4T1ON !!",
     "Baby Legend": "A Baby Legend - The Baby is 2",
     "Bad Apple!! (feat. Nomico)": "Bad Apple!!",
     "Bad Apple!! feat. Nomico": "Bad Apple!!",
@@ -79,6 +80,8 @@ postprocess_title_table = {
     "Dersite": "Something Familiar",
     "Doct̸̀o̴̕r̵": "Doctor (Zalgo)",
     "Eternity Served Cold": "Eternity, Served Cold",
+    "Even in Dance": "Even In Dance",
+    "Fighter Kanaya (Album Cut)": "Fighter Kanaya",
     "Final Confrontation": "Something Familiar",
     "Foley": "Wind chime foley",
     "GameBro (Original 1990 Mix)": "GameBro",
@@ -86,9 +89,11 @@ postprocess_title_table = {
     "Jambox (by Noisemaker)": "Jambox",
     "Let the Squiddles Sleep": "Let the Squiddles Sleep (End Theme)",
     "Lilith in Starlight": "Lilith In Starlight",
+    "MACINTOSH PLUS": "MACINTOSH PLUS - リサフランク420 / 現代のコンピュー",
     "Overture": "I - Overture",
     "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
     "Sad Jhon :( (Album Cut)": "Sad Jhon :(",
+    "Shop (Undertale)": "Shop",
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",  # goddammit
     "Showtime (Original Mix)": "Showtime",
     "Skaian Dreams Remix": "Skaian Dreams (Remix)",
@@ -101,9 +106,9 @@ postprocess_title_table = {
     "Title Screen (Jailbreak)": "Title Screen",
     "Upward Movement": "Upward Movement (Dave Owns)",
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
+    "You Killed My Father (Prepare to Die)": "You Killed My Father (Prepare To Die)",
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
     "it's literally just XROM let's not pretend it isn't": "XROM",
-    "MACINTOSH PLUS": "MACINTOSH PLUS - リサフランク420 / 現代のコンピュー",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
@@ -128,6 +133,8 @@ forbidden_names = [
     'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
+    # Typos
+    'Horscatska',
 ]
 
 special_cases = {
