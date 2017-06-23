@@ -16,6 +16,8 @@ class ParseStates(enum.Enum):
     EATING_REFERENCE = enum.auto()
     SEEKING_UNRELEASED = enum.auto()
     UNRELEASED_SKIP = enum.auto()
+    SEEKING_UNHOMESTUCK = enum.auto()
+    EATING_UNHOMESTUCK = enum.auto()
     DONE = enum.auto()
 
 
@@ -67,13 +69,16 @@ class XzazParser(html.parser.HTMLParser):
         elif self.state == ParseStates.SEEKING_REFERENCE and tag == "td":
             self.song_class = attrs['class']
             self.state = ParseStates.EATING_REFERENCE
+        elif self.state == ParseStates.SEEKING_UNHOMESTUCK and tag == "td":
+            if 'class' in attrs.keys() and attrs['class'] == 'unhomestuck':
+                self.state = ParseStates.EATING_UNHOMESTUCK
 
     def handle_data(self, data):
         if self.state == ParseStates.DONE:
             return
         if data == 'Non-Homestuck songs':
-            print('Reached non-Homestuck songs, ending')
-            self.state = ParseStates.DONE
+            print('Reached non-Homestuck songs')
+            self.state = ParseStates.SEEKING_UNHOMESTUCK
         elif data == '????':
             print('Ignoring a ????')
             self.state = ParseStates.SEEKING_UNRELEASED
@@ -98,6 +103,13 @@ class XzazParser(html.parser.HTMLParser):
                 print(f'Got "{self.active_song.title}" referencing "{data}"')
                 self.active_song.references.append(data)
             self.state = ParseStates.SEEKING_REFERENCE
+        elif self.state == ParseStates.EATING_UNHOMESTUCK:
+            if data == "":
+                return
+            data = self._check_duplicate_title(data)
+            print(f'Got unhomestuck song "{data}"')
+            self.all_songs.append(nsndswap.util.Track(data))
+            self.state = ParseStates.SEEKING_UNHOMESTUCK
 
     def handle_endtag(self, tag):
         if self.state == ParseStates.DONE:
@@ -109,6 +121,9 @@ class XzazParser(html.parser.HTMLParser):
             self.state = ParseStates.SEEKING_SONG if not self.am_in_unreleased else ParseStates.UNRELEASED_SKIP
             self.all_songs.append(self.active_song)
             self.active_song = None
+        elif tag == 'body':
+            self.state = ParseStates.DONE
+            print('Finished at </body>')
 
     def _check_duplicate_title(self, title, *, update_benchmark=True):
         val = self._check_duplicate_title_inner(title, update_benchmark=update_benchmark)
@@ -123,11 +138,22 @@ class XzazParser(html.parser.HTMLParser):
                 return 'Light (Vol. 5)'
             else:
                 return 'Light (Medium)'
+        if title == 'Let It Snow':
+            if self.benchmark < Benchmarks.ALTERNIABOUND:
+                return 'Let It Snow (Homestuck for the Holidays)'
+            else:
+                print('LIS')
+                return 'Let It Snow (original)'
         elif title == 'Frost':
             if self.benchmark < Benchmarks.ALTERNIABOUND:
                 return 'Frost (Vol. 6)'
             else:
                 return 'Frost (Medium)'
+        elif title == "I Don't Want to Miss a Thing":
+            if self.benchmark < Benchmarks.ALTERNIABOUND:
+                return "I Don't Want to Miss a Thing (Bowman cover)"
+            else:
+                return "I Don't Want to Miss a Thing (original)"
         elif title == '~~SIDE 1~~':
             if self.benchmark < Benchmarks.MAYHEM_B:
                 return '~~SIDE 1~~ (coloUrs and mayhem: Universe A)'

@@ -37,7 +37,7 @@ def main():
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
     all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])
-    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg'])
+    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams'])
     dump(all_web, 'everything')
 
 
@@ -109,6 +109,7 @@ postprocess_title_table = {
     "You Killed My Father (Prepare to Die)": "You Killed My Father (Prepare To Die)",
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
     "it's literally just XROM let's not pretend it isn't": "XROM",
+    "the version we had of this was unusable...": "the version we had of this was unusable and we had like one day to replace it so yazshu whipped out his kazoo and here we are",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
@@ -130,7 +131,7 @@ postprocess_title_table = {
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared",
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing",
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
     # Typos
@@ -159,6 +160,12 @@ special_cases = {
     ('Lilith In Starlight', 'Mother'): 'Mother (Malcolm Brown)',
     ('[S] Ascend, Descend', 'Fanfare'): 'Showtime (Imp Strife Mix)',
     ('Over the hat', 'Under the Hat'): 'Under the Hat (One Year Older)',
+    ('Let It Snow (Homestuck for the Holidays)', 'Let It Snow'): 'Let It Snow (original)',
+    ("I Don't Want to Miss a Thing (Bowman cover)", "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (original)",
+    ('missathing.midi', "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (Bowman cover)",  # pending composer's word as of 2017-06-23
+    ("I don't wanna smoke an e-cig", "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (original)",
+    ('the version we had of this was unusable and we had like one day to replace it so yazshu whipped out his kazoo and here we are', "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (Bowman cover)",
+    ("Don't want to hit those notes", "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (Bowman cover)",
 }
 
 
