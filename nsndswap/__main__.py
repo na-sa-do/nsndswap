@@ -76,6 +76,7 @@ postprocess_title_table = {
     "Bad Apple!! (feat. Nomico)": "Bad Apple!!",
     "Bad Apple!! feat. Nomico": "Bad Apple!!",
     "Beatdown (Strider Style)": "Beatdown",
+    "Brofessor Layton (EPHaB)": "Brofessor Layton (Every Problem Has a Brolution)",
     "Catchyegrabber": "Catchyegrabber (Skipper Plumbthroat's Song)",
     "Dave Fucking Owns At This Game": "Upward Movement (Dave Owns)",
     "Dersite": "Something Familiar",
@@ -89,6 +90,7 @@ postprocess_title_table = {
     "GameGrl (Original 1993 Mix)": "GameGrl",
     "It Don't Mean A Thing": "It Don't Mean a Thing (If It Ain't Got That Swing)",
     "Jambox (by Noisemaker)": "Jambox",
+    "Layton's Theme": "Professor Layton's Theme",
     "Let the Squiddles Sleep": "Let the Squiddles Sleep (End Theme)",
     "Lilith in Starlight": "Lilith In Starlight",
     "Love You": "Love You (Feferi's Theme)",
@@ -103,7 +105,6 @@ postprocess_title_table = {
     "Softbit (Original Version)": "Softbit (Original GFD PStFMBRD Version)",
     "Sunset (by Cerulean)": "Sunset",
     "TBoSRE": "The Beginning of Something Really Excellent",
-    "Layton's Theme": "Professor Layton's Theme",
     "The Will to Fight": "The Will to Fight (Original Mix)",
     "Three in the Morning (Kali)": "Three in the Morning (Kali's 2 in the AM PM Edit)",
     "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
@@ -170,6 +171,7 @@ special_cases = {
     ('the version we had of this was unusable and we had like one day to replace it so yazshu whipped out his kazoo and here we are', "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (Bowman cover)",
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe A)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe A)',
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe B)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe B)',
+    ('S*x (Feat. Femorafreak)', 'Witch Doctor'): 'Witch Doctor (Ross Bagdasarian Sr.)',
 }
 
 
