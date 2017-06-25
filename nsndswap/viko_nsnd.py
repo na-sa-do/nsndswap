@@ -304,6 +304,45 @@ nsnd = {
     # ndividedbyzero soundcloud
     "Retconjuration": ["Wind chime foley", "Homestuck Anthem"],
     "Juju Breaker": ["Purple Bard", "Sburban Jungle", "Black Rose / Green Sun", "Explore", "English", "Eternity, Served Cold"],
+
+    # meems720 soundcloud
+    # i can't believe i've done this
+    "Old Secret Cover (Remastered Remix)": ["Old Secret"],
+    "Endless": ["Endless Climb"],
+    "Doctor (Remastered Remix)": ["Doctor"],
+    "Dissension (Remastered Remix)": ["Dissension"],
+    "Chorale For Jaspers (Remastered Remix)": ["Chorale for Jaspers"],
+    "Carefree": ["Carefree Action"],
+    "Black (Remastered Remix)": ["Black"],
+    "Beatdown (Remastered Remix)": ["Beatdown (Strider Style)"],
+    "Atomic Ebonpyre": ["Atomyk Ebonpyre"],  # sic
+    "Aggrieve (Remastered Remix)": ["Aggrieve"],
+    "Upward Movement (Remastered Remix)": ["Upward Movement"],
+    "Skies Of Skaia (Remastered Remix)": ["Skies of Skaia"],
+    "Showtime Piano Refrain (Remastered Remix)": ["Showtime (Piano Refrain)"],
+    "Showtime Original Mix (Remastered Remix)": ["Showtime"],
+    "Sburban Jungle Remix": ["Sburban Jungle"],
+    "Sburban Countdown (Remastered Remix)": ["Sburban Countdown"],
+    "Revelawexome": ["Revelawesome"],  # sic
+    "Pony Chorale (Remastered Remix)": ["Pony Chorale"],
+    "Harlequin (Remastered Remix)": ["Harlequin"],
+    "Guardian (Remastered Remix)": ["Guardian"],
+    "Gardner": ["Gardener"],  # sic
+    "Explore (Remastered Remix)": ["Explore"],
+    "Carne Vale Remastered Remix": ["Carne Vale"],
+    "Eternity Served Cold Covered Remixed Remastered": ["Eternity, Served Cold"],
+    "Nuclear Remastered Remix": ["Nuclear"],
+    "Cascade Remixed Remastered": ["Cascade"],
+    "Terezi Owns Remastered Remix": ["Terezi Owns"],
+    "Savior Of The Waking World (Remastered Remix)": ["Savior of the Waking World"],
+    "Lotus (Remastered Remix)": ["Lotus"],
+    "Heir Conditioning Remastered Remix": ["Heir Conditioning"],
+    "Kall And Kontakt Remastered Remix Remastered Reimagined": ["CONFERANCE CALL ~~LAST CONTACT~~"],
+    "Rex Duodecim Angelus Remastered Remix": ["Rex Duodecim Angelus"],
+    "Bearburban Jungle": ["Sburban Jungle"],
+    "Megalovania Orchestral Remix": ["MeGaLoVania"],  # does this count as homestuck????
+    "MegalovAAAAAAAAAAAAAAAnia": ["MeGaLoVania"],  # what about this
+    "Bearlovania": ["MeGaLoVania"],  # or this
 }
 
 
