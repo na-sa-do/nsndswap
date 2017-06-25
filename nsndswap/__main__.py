@@ -69,6 +69,7 @@ def postprocess(nsnd):
 postprocess_title_table = {
     "3 in the Morning (Pianokind)": "Three in the Morning (Pianokind)",
     "7 GRAND END (Noisemaker's part)": "7 GRAND END",
+    "AAAAAAAAAA": "AAAAAAAAAAAA",
     "Anbroids v2.0": "Anbroids V2.0",
     "At the Price of Oblivion": "At The Price of Oblivion",
     "BL1ND JUST1C3: 1NV3ST1G4T1ON!!": "BL1ND JUST1C3 : 1NV3ST1G4T1ON !!",
@@ -97,6 +98,7 @@ postprocess_title_table = {
     "MACINTOSH PLUS": "MACINTOSH PLUS - リサフランク420 / 現代のコンピュー",
     "Overture": "I - Overture",
     "PPiSHWA": "Pumpkin Party in Sea Hitler's Water Apocalypse",
+    "Problem Sleuth Title Screen": "Problem Sleuth Title Theme",
     "Sad Jhon :( (Album Cut)": "Sad Jhon :(",
     "Shop (Undertale)": "Shop",
     "Showdown (who were you expecting, the easter bunny?)": "Showdown",  # goddammit
@@ -113,6 +115,7 @@ postprocess_title_table = {
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
     "You Killed My Father (Prepare to Die)": "You Killed My Father (Prepare To Die)",
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
+    "i transcribed a pokemon song but...": "i transcribed a pokemon song but due to time constraints i fucked up the ending",
     "it's literally just XROM let's not pretend it isn't": "XROM",
     "the version we had of this was unusable...": "the version we had of this was unusable and we had like one day to replace it so yazshu whipped out his kazoo and here we are",
 
