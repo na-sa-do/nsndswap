@@ -107,12 +107,16 @@ postprocess_title_table = {
     "Softbit (Original Version)": "Softbit (Original GFD PStFMBRD Version)",
     "Sunset (by Cerulean)": "Sunset",
     "TBoSRE": "The Beginning of Something Really Excellent",
+    "The Endless Black (aka Clockwork Negrocity)": "The Endless Black (Clockwork Negrocity)",
+    "The Endless Black": "The Endless Black (Clockwork Negrocity)",
     "The Will to Fight": "The Will to Fight (Original Mix)",
     "Three in the Morning (Kali)": "Three in the Morning (Kali's 2 in the AM PM Edit)",
     "Three in the Morning (RJ)": "Three in the Morning (RJ's I Can Barely Sleep In This Casino Remix)",
     "Title Screen (Jailbreak)": "Title Screen",
+    "Unintentional Anime": "Unintentional Anime (Piano Version)",
     "Upward Movement": "Upward Movement (Dave Owns)",
     "Walk-Stab-Walk": "Walk-Stab-Walk (R&E)",
+    "Welcome to Flavortown": "Welcome to Flavortown (Battle Against a Bodacious Foe)",
     "You Killed My Father (Prepare to Die)": "You Killed My Father (Prepare To Die)",
     "cool and new Jungle": "cool and new Jungle (Beta Mix)",
     "i transcribed a pokemon song but...": "i transcribed a pokemon song but due to time constraints i fucked up the ending",
@@ -180,7 +184,7 @@ special_cases = {
 
 def postprocess_title(title, context):
     title = (title.replace('\u200b', ' ')
-                  .replace('ICBSITC', 'I Can Barely Sleep in This Casino')
+                  .replace('ICBSITC', 'I Can Barely Sleep In This Casino')
                   .replace('IaMotMC', "I'm a Member of the Midnight Crew")
                   .replace(' (unreleased)', '')
                   .replace(' (??)', '')
