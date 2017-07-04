@@ -35,8 +35,9 @@ def _xmlencode(string):
     return string
 
 
-class NodeData:
+class NodeSnapshot:
     def __init__(self):
+        self.original_index = None
         self.in_deg = 0
         self.out_deg = 0
         self.weighted_in_deg = 0
@@ -114,26 +115,28 @@ class Web:
                 self.edges += [edge]
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
 
-    def _build_node_data(self):
-        nodes_data = [NodeData() for _ in self.nodes]
+    def make_snapshot(self):
+        snapshot = [NodeSnapshot() for _ in self.nodes]
 
-        print('Adding degrees to node_data')
+        print('Adding basics and degrees to snapshot')
         for i in range(len(self.nodes)):
+            snapshot[i].index = i
+            snapshot[i].name = self.nodes[i]
             for ref in self.edges:
                 if ref[0] == i:
-                    nodes_data[i].out_deg += 1
+                    snapshot[i].out_deg += 1
                 elif ref[1] == i:
-                    nodes_data[i].in_deg += 1
+                    snapshot[i].in_deg += 1
 
         print('Computing largest degree (for weighted degrees)')
         largest_in = 1
         largest_out = 1
-        for data in nodes_data:
+        for data in snapshot:
             largest_in = max(largest_in, data.in_deg)
             largest_out = max(largest_out, data.out_deg)
 
         print('Computing weighted degrees, sizes')
-        for data in nodes_data:
+        for data in snapshot:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
             # don't ask me where this off-by-one comes from
@@ -145,18 +148,18 @@ class Web:
             return min(max(r.gauss(0, BOX_SIDE_STDDEV), -BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV),
                        BOX_SIDE_STDDEV * BOX_SIDE_MAXDEV)
 
-        for i in range(len(nodes_data)):
+        for i in range(len(snapshot)):
             r = random.Random()
             r.seed(self.nodes[i])
-            nodes_data[i].position = complex(make_component(r), make_component(r))
-            nodes_data[i].color = tuple(round(x * 255) for x
+            snapshot[i].position = complex(make_component(r), make_component(r))
+            snapshot[i].color = tuple(round(x * 255) for x
                 in colorsys.hsv_to_rgb(r.random(), SATURATION, VALUE))
 
         print('Done building node data')
-        return nodes_data
+        return snapshot
 
     def dump_gexf(self, outf):
-        node_data = self._build_node_data()
+        snapshot = self.make_snapshot()
         print('Dumping web')
         outf.write(f"""<?xml version="1.0" encoding="UTF-8" ?>
 <gexf xmlns="http://www.gexf.net/1.3" version="1.3" xmlns:viz="http://www.gexf.net/1.3/viz">
@@ -169,9 +172,9 @@ class Web:
         for node_id in range(len(self.nodes)):
             outf.write(f"""
             <node id=\"{node_id}\" label=\"{_xmlencode(self.nodes[node_id])}\">
-                <viz:size value="{node_data[node_id].size}"></viz:size>
-                <viz:position x="{node_data[node_id].position.real}" y="{node_data[node_id].position.imag}"></viz:position>
-                <viz:color r="{node_data[node_id].color[0]}" g="{node_data[node_id].color[1]}" b="{node_data[node_id].color[2]}"></viz:color>
+                <viz:size value="{snapshot[node_id].size}"></viz:size>
+                <viz:position x="{snapshot[node_id].position.real}" y="{snapshot[node_id].position.imag}"></viz:position>
+                <viz:color r="{snapshot[node_id].color[0]}" g="{snapshot[node_id].color[1]}" b="{snapshot[node_id].color[2]}"></viz:color>
             </node>""")
         outf.write("""
         </nodes>
