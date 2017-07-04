@@ -220,3 +220,9 @@ class Web:
             if node != node.encode('ascii', 'ignore').decode('ascii'):
                 outf.write(f'{node}\n')
         print('Done dumping unicode titles')
+
+    def dump_pickle(self, outf):
+        from pickle import dump
+        print('Pickling the web')
+        dump(self, outf)
+        print('Done pickling')

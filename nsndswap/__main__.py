@@ -216,6 +216,8 @@ def dump(web, name):
         web.dump_unknown_references(f)
     with open(f'output/{name}.unicode.txt', 'w') as f:
         web.dump_unicode_titles(f)
+    with open(f'output/{name}.pkl', 'wb') as f:
+        web.dump_pickle(f)
 
 
 if __name__ == '__main__':

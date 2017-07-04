@@ -22,3 +22,4 @@ These are dumped in five formats:
 - `.titles.txt` - the titles, one per line
 - `.reverse.txt` - the format in `.txt`, but showing incoming references rather than outgoing
 - `.unknown.txt` - titles, one per line, of things which are referenced, but which don't have reference lists of their own (useful for checking for name misspellings and such)
+- `.pkl` - pickled version of the `Web` itself (subject to change, obviously)
