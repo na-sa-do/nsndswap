@@ -104,15 +104,18 @@ class CookieParser(html.parser.HTMLParser):
         elif title == 'Light':
             # as above
             return 'Light (CANWC)'
-        elif title == 'Fanfare':
+        elif title == 'Sunrise':
             # as above
-            return 'Showtime (Imp Strife Mix)'
+            return 'Sunrise (CANWC)'
         elif title == 'Dentist':
             # as above, but viko_nsnd
             return 'Dentist (CANWC)'
         elif title == 'Anticipation':
             # as above
             return 'Anticipation (CANWC)'
+        elif title == 'Fanfare':
+            # HA HA HA HA HA HA HA
+            return 'Showtime (Imp Strife Mix)'
 
         # Update
         if update_benchmark:

@@ -200,6 +200,9 @@ class XzazParser(html.parser.HTMLParser):
         elif title == 'Fanfare':
             # as above
             return 'Fanfare (Jailbreak Vol. 1)'
+        elif title == 'Sunrise':
+            # as above
+            return 'Sunrise (One Year Older)'
         elif title == 'Premonition':
             # as above, but in viko_nsnd
             return 'Premonition (Stuckhome Syndrome)'

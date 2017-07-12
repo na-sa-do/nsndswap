@@ -305,8 +305,10 @@ nsnd = {
     "Retconjuration": ["Wind chime foley", "Homestuck Anthem"],
     "Juju Breaker": ["Purple Bard", "Sburban Jungle", "Black Rose / Green Sun", "Explore", "English", "Eternity, Served Cold"],
 
-    # meems720 soundcloud
+    # Remastered Remixes Vol. 1
     # i can't believe i've done this
+    # homestuck-related remixes only
+    # titles are from when they were on meems's soundcloud
     "Old Secret Cover (Remastered Remix)": ["Old Secret"],
     "Endless": ["Endless Climb"],
     "Doctor (Remastered Remix)": ["Doctor"],

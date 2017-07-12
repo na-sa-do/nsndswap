@@ -143,7 +143,7 @@ postprocess_title_table = {
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing",
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
     # Typos
@@ -179,6 +179,8 @@ special_cases = {
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe A)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe A)',
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe B)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe B)',
     ('S*x (Feat. Femorafreak)', 'Witch Doctor'): 'Witch Doctor (Ross Bagdasarian Sr.)',
+    ('Spacetime Starstriker', '==>'): '==> (CANWC)',
+    ("Andrew Hussie's Wild Ride", 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
 }
 
 
