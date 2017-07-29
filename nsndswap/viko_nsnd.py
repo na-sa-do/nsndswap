@@ -232,8 +232,9 @@ nsnd = {
     "Dogtroid": ["Dogsong"],
     "Undertale (Beta)": ["Once Upon a Time"],
 
-    # Misc to fix the ridiculous amount of stuff in .unknown.txt
+    # Misc
     "SPIDER DANCE FROM UNDERTALE BUT NOW ITS SKA I GUESS???": ["Spider Dance"],
+    "Sunset (Toby Fox)": ["Sunsetter"],
 
     # Redditstuck Vol. 1
     "Cogs": [],
@@ -345,6 +346,24 @@ nsnd = {
     "Megalovania Orchestral Remix": ["MeGaLoVania"],  # does this count as homestuck????
     "MegalovAAAAAAAAAAAAAAAnia": ["MeGaLoVania"],  # what about this
     "Bearlovania": ["MeGaLoVania"],  # or this
+
+    # cosmicTerrorist soundcloud
+    "Mannequin (cosmicTerrorist)": ["Mannequin"],
+    "Solid Griscosity": ["Liquid Negrocity"],
+    "Sunset (cosmicTerrorist)": ["Sunset (Toby Fox)"],
+    "Last Breath of the Heir": ["Showtime (Piano Refrain)", "Doctor", "Penumbra Phantasm", "Harlequin", "Liquid Negrocity"],
+    "Doctor Percocets": ["Doctor", "Mask Off", "Penumbra Phantasm"],
+    "Patient (Full Mix)": ["Patient"]
+    "Omnipotential Bark": ["Walk-Stab-Walk", "Sburban Jungle", "Atomic Bonsai", "Umbral Ultimatum", "Penumbra Phantasm", "Cascade", "Liquid Negrocity", "Dissension"],
+    "Savior of the Hard Rock World": ["Savior of the Waking World"],
+    "Waking Up": ["Penumbra Phantasm", "Doctor", "Get Up"],
+    "8 BIT Liquid Negrocity": ["Liquid Negrocity"],
+    "Breath Of Air": ["Doctor", "Penumbra Phantasm"],
+    "Climbing for Eternity": ["Endless Climb"],
+    "The Legend of the Sovereign Slayer": ["Liquid Negrocity", "The Ballad of Jack Noir"],
+    "Strider Squadron": ["Upward Movement", "Beatdown", "Atomyk Ebonpyre", "Candles and Clockwork", "Unite Synchronization", "Sburban Jungle"],
+    "It's Showtime (Homestuck Version)": ["Showtime", "It's Showtime"],
+    "Doctor Lotus": ["Doctor", "Lotus"],
 }
 
 
