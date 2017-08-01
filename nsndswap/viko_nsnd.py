@@ -353,7 +353,7 @@ nsnd = {
     "Sunset (cosmicTerrorist)": ["Sunset (Toby Fox)"],
     "Last Breath of the Heir": ["Showtime (Piano Refrain)", "Doctor", "Penumbra Phantasm", "Harlequin", "Liquid Negrocity"],
     "Doctor Percocets": ["Doctor", "Mask Off", "Penumbra Phantasm"],
-    "Patient (Full Mix)": ["Patient"]
+    "Patient (Full Mix)": ["Patient"],
     "Omnipotential Bark": ["Walk-Stab-Walk", "Sburban Jungle", "Atomic Bonsai", "Umbral Ultimatum", "Penumbra Phantasm", "Cascade", "Liquid Negrocity", "Dissension"],
     "Savior of the Hard Rock World": ["Savior of the Waking World"],
     "Waking Up": ["Penumbra Phantasm", "Doctor", "Get Up"],
@@ -364,6 +364,17 @@ nsnd = {
     "Strider Squadron": ["Upward Movement", "Beatdown", "Atomyk Ebonpyre", "Candles and Clockwork", "Unite Synchronization", "Sburban Jungle"],
     "It's Showtime (Homestuck Version)": ["Showtime", "It's Showtime"],
     "Doctor Lotus": ["Doctor", "Lotus"],
+
+    # Phase
+    "Epoch": ["Beatdown"], # combined
+    "Advanced Medical Action": ["Doctor"],
+    "StarLight": [],
+    "Edge Of Oblivion": ["At The Price of Oblivion"],
+    "Strife In Sea Hitlers Palace": ["PPiSHWA"], # sic
+    "Awaken": ["MeGaLoVania", "Sburban Jungle", "Showtime"],
+    "DeadTone": ["Dead Beat"],
+    # Skipping Creatrix (duplicated w/ 9)
+    "Final Fight": ["Doctor", "Even in Death", "Showtime", "MeGaLoVania", "PPiSHWA", "Beatdown"],
 }
 
 
