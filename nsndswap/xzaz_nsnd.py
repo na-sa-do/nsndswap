@@ -224,6 +224,17 @@ class XzazParser(html.parser.HTMLParser):
                 return 'Mother (Malcolm Brown)'
             else:
                 return 'Mother (One Year Older)'
+        elif title == 'Mutiny':
+            # as above
+            if self.am_in_unreleased:
+                return 'Mutiny (Bill Bolin)'
+            else:
+                return 'Mutiny (Ancestral)'
+        elif title == 'Swan Song':
+            if self.am_in_unreleased:
+                return 'Swan Song (Set It Off)'
+            else:
+                return 'Swan Song (Ancestral)'
 
         # Update benchmark
         if update_benchmark:

@@ -143,7 +143,7 @@ postprocess_title_table = {
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise',
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise', 'Mutiny', 'Swan Song',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
     # Typos
@@ -181,6 +181,17 @@ special_cases = {
     ('S*x (Feat. Femorafreak)', 'Witch Doctor'): 'Witch Doctor (Ross Bagdasarian Sr.)',
     ('Spacetime Starstriker', '==>'): '==> (CANWC)',
     ("Andrew Hussie's Wild Ride", 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
+    ('Descend', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('The Dance of Oblivion', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ("There's a Balcony", 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('the march of jaed', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Unbreakable Unity', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Sunslammer is my music waifu', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ("Bolin's Cereal Journey", 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Of Bork and Yifs', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('24x SHOWDOWN COMBO', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Mutiny (crapapella)', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Swan Song (Ancestral)', 'Swan Song'): 'Swan Song (Set It Off)',
 }
 
 
