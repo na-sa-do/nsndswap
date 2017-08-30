@@ -364,6 +364,7 @@ nsnd = {
     "Strider Squadron": ["Upward Movement", "Beatdown", "Atomyk Ebonpyre", "Candles and Clockwork", "Unite Synchronization", "Sburban Jungle"],
     "It's Showtime (Homestuck Version)": ["Showtime", "It's Showtime"],
     "Doctor Lotus": ["Doctor", "Lotus"],
+    "Legion of the Signless": ["Crustacean", "Chorale for Jaspers", "English"],
 
     # Phase
     "Epoch": ["Beatdown"],  # combined
