@@ -375,6 +375,16 @@ nsnd = {
     "DeadTone": ["Dead Beat"],
     # Skipping Creatrix (duplicated w/ 9)
     "Final Fight": ["Doctor", "Even in Death", "Showtime", "MeGaLoVania", "PPiSHWA", "Beatdown"],
+
+    # TirantBacon soundcloud
+    "Non Compos Mentis Remix": ["Non Compos Mentis"],
+    "Tomahawk Head - Shameful MIDI / soundfont swap edition": ["Tomahawk Head"],
+    "Meganumbra Phantasm": ["Penumbra Phantasm", "Doctor"],
+    "Crystalanthemix (WIP)": ["Crystalanthemums"],
+    "earthlovania music dongers": ["Sunsetter", "MeGaLoVania", "Skies of Skaia"],
+    "Jhons Rom (Old)": [],
+    "I'm extremely sorry for this.": ["Walls Covered in Blood", "Soulja Boy"],
+    "Admiral Bone-To-Pick (Wub Machine Remix)": ["Admiral Bone-To-Pick"],
 }
 
 
