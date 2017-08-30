@@ -366,11 +366,11 @@ nsnd = {
     "Doctor Lotus": ["Doctor", "Lotus"],
 
     # Phase
-    "Epoch": ["Beatdown"], # combined
+    "Epoch": ["Beatdown"],  # combined
     "Advanced Medical Action": ["Doctor"],
     "StarLight": [],
     "Edge Of Oblivion": ["At The Price of Oblivion"],
-    "Strife In Sea Hitlers Palace": ["PPiSHWA"], # sic
+    "Strife In Sea Hitlers Palace": ["PPiSHWA"],  # sic
     "Awaken": ["MeGaLoVania", "Sburban Jungle", "Showtime"],
     "DeadTone": ["Dead Beat"],
     # Skipping Creatrix (duplicated w/ 9)
