@@ -42,6 +42,7 @@ class Benchmarks(enum.IntEnum):
     NONE = 0
     PARTWAY_THROUGH_CANV5 = 1  # there are two tracks ON THE SAME DAMN ALBUM WITH THE SAME DAMN NAME
     IN_THE_BEGINNING = 2
+    GAMESCANTE = 3
 
 
 class CookieParser(html.parser.HTMLParser):
@@ -70,6 +71,7 @@ class CookieParser(html.parser.HTMLParser):
 
     def _check_benchmarks_inner(self, title, *, is_ref=False, update_benchmark=True):
         # Check
+        title = title.replace('\n', '').replace('  ', ' ')
         if title == 'Moondoctor':
             if self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
                 return 'Moondoctor (Difarem)'
@@ -80,7 +82,7 @@ class CookieParser(html.parser.HTMLParser):
                 return 'Showup (loading)'
             else:
                 return 'Showup (Viridian)'
-        elif title.replace('\n', '').replace('  ', ' ') == 'Three in the Morning (4 1/3 Hours Late Remix)':
+        elif title == 'Three in the Morning (4 1/3 Hours Late Remix)':
             if self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
                 return 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)'
             else:
@@ -95,6 +97,61 @@ class CookieParser(html.parser.HTMLParser):
                 return 'Ruses (CANWC Sound Test)'
             else:
                 return 'Ruses (Median)'
+        elif title == 'Downwards':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Downwards (9)'
+            else:
+                return 'Downwards (Greatest Hits 2)'
+        elif title == 'Midnight':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Midnight (Intermishin)'
+            else:
+                return 'Midnight (Greatest Hits 2)'
+        elif title.strip().replace('  ', ' ') == 'Meme Voyage':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Meme Voyage (vol. s*x)'
+            else:
+                return 'Meme Voyage (Greatest Hits 2)'
+        elif title == 'Vegetal Colina':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Vegetal Colina (CANH2)'
+            else:
+                return 'Vegetal Colina (Greatest Hits 2)'
+        elif title == 'Enter with Caliborn: Destruction Adventure':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Enter with Caliborn: Destruction Adventure (CANH2)'
+            else:
+                return 'Enter with Caliborn: Destruction Adventure (Greatest Hits 2)'
+        elif title == '“Libera me” from Bowman' or title == '"Libera me" from Bowman':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return '"Libera me" from Bowman (Bowmania)'
+            else:
+                return '"Libera me" from Bowman (Greatest Hits 2)'
+        elif title == 'Fighting Spirit ~Double Ascended Form~':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Fighting Spirit ~Double Ascended Form~ (vol. 8)'
+            else:
+                return 'Fighting Spirit ~Double Ascended Form~ (Greatest Hits 2)'
+        elif title == '1 Through 15':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return '1 Through 15 (Intermishin)'
+            else:
+                return '1 Throgh 15 (Greatest Hits 2)'
+        elif title == '72.0x SHOWDOWN COMBO':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return '72.0x SHOWDOWN COMBO (CANH2)'
+            else:
+                return '72.0x SHOWDOWN COMBO (Greatest Hits 2)'
+        elif title == 'Welcome to Flavortown (Battle Against a Bodacious Foe)':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Welcome to Flavortown (locomotif)'
+            else:
+                return 'Welcome to Flavortown (Greatest Hits 2)'
+        elif title == 'you have got to be SHITTONG me (temp title)':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'you have got to be SHITTONG me (9)'
+            else:
+                return 'you have got to be SHITTONG me (Greatest Hits 2)'
         elif title == '==>':
             # There's one of these in xzaz_nsnd and one here
             return '==> (CANWC)'
@@ -122,10 +179,12 @@ class CookieParser(html.parser.HTMLParser):
             if title == 'Dogtor (get it?)' and self.benchmark < Benchmarks.PARTWAY_THROUGH_CANV5:
                 print('Reached benchmark: PARTWAY_THROUGH_CANV5')
                 self.benchmark = Benchmarks.PARTWAY_THROUGH_CANV5
-            elif title == 'In  the Beginning' and self.benchmark < Benchmarks.IN_THE_BEGINNING:
-                # YES THERE ARE TWO SPACES IN THE ORIGINAL
+            elif title == 'In the Beginning' and self.benchmark < Benchmarks.IN_THE_BEGINNING:
                 print('Reached benchmark: IN_THE_BEGINNING')
                 self.benchmark = Benchmarks.IN_THE_BEGINNING
+            elif title == 'Gamescante' and self.benchmark < Benchmarks.GAMESCANTE:
+                print('Reached benchmark: GAMESCANTE')
+                self.benchmark = Benchmarks.GAMESCANTE
 
         return title
 

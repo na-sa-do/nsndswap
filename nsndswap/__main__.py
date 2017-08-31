@@ -122,6 +122,10 @@ postprocess_title_table = {
     "i transcribed a pokemon song but...": "i transcribed a pokemon song but due to time constraints i fucked up the ending",
     "it's literally just XROM let's not pretend it isn't": "XROM",
     "the version we had of this was unusable...": "the version we had of this was unusable and we had like one day to replace it so yazshu whipped out his kazoo and here we are",
+    "Welcome to Flavortown (call and new 2: locomotif)": "Welcome to Flavortown (Battle Against a Bodacious Foe) (call and new 2: locomotif)",
+    "Welcome to Flavortown (Greatest Hits 2)": "Welcome to Flavortown (Battle Against a Bodacious Foe) (Greatest Hits 2)",
+    "you have got to be SHITTONG me (9)": "you have got to be SHITTONG me (temp title) (9)",
+    "you have got to be SHITTONG me (Greatest Hits 2)": "you have got to be SHITTONG me (temp title) (Greatest Hits 2)",
 
     # Discs!
     "~~~~DISC 1~~~~": "Disc 1 (SBURB OST)",
@@ -143,7 +147,7 @@ postprocess_title_table = {
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise', 'Mutiny', 'Swan Song',
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise', 'Mutiny', 'Swan Song', 'Downwards', 'Midnight', 'Meme Voyage', 'Vegetal Colina', 'Enter with Caliborn: Destruction Adventure', '"Libera me" from Bowman', 'Fighting Spirit ~Double Ascended Form~', '1 Through 15', '72.0x SHOWDOWN COMBO', 'Welcome to Flavortown (Battle Against a Bodacious Foe)', 'Welcome to Flavortown', 'you have got to be SHITTONG me (temp title)', 'you have got to be SHITTONG me',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
     # Typos
@@ -192,6 +196,13 @@ special_cases = {
     ('24x SHOWDOWN COMBO', 'Mutiny'): 'Mutiny (Bill Bolin)',
     ('Mutiny (crapapella)', 'Mutiny'): 'Mutiny (Bill Bolin)',
     ('Swan Song (Ancestral)', 'Swan Song'): 'Swan Song (Set It Off)',
+    ('Variating Sides', '1 Through 15'): '1 Through 15 (Intermishin)',
+    ('Variating Sides', 'Midnight'): 'Midnight (Intermishin)',
+    ('Step Back, Doors Closing; Step Back To Allow The Doors To Close', 'Welcome to Flavortown (Battle Against a Bodacious Foe)'): 'Welcome to Flavortown (Battle Against a Bodacious Foe) (call and new 2: locomotif)',
+    ('Downwards (9)', '1 Through 15'): '1 Through 15 (Intermishin)',
+    ('Downwards (9)', 'Fighting Spirit ~Double Ascended Form~'): 'Fighting Spirit ~Double Ascended Form~ (V8lume)',
+    ('Last Chance [Bonus]', '1 Through 15'): '1 Through 15 (Intermishin)',
+    ('Greifstrife', '1 Through 15'): '1 Through 15 (Intermishin)',
 }
 
 
@@ -205,6 +216,10 @@ def postprocess_title(title, context):
                   .replace('  ', ' ')
                   .replace('’', "'")
                   .replace('…', '...')
+                  .replace('vol. s*x', 'cool and new volume s*x: hair transplant')
+                  .replace('CANH2', 'Cool and New Homestuck 2')
+                  .replace('vol. 8', 'V8lume')
+                  .replace('(locomotif)', '(call and new 2: locomotif)')  # replacement string includes original so we have to avoid hitting already-correct titles if there are any
                   .strip())
     if title in postprocess_title_table.keys():
         title = postprocess_title_table[title]
