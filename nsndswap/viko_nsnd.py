@@ -365,6 +365,8 @@ nsnd = {
     "It's Showtime (Homestuck Version)": ["Showtime", "It's Showtime"],
     "Doctor Lotus": ["Doctor", "Lotus"],
     "Legion of the Signless": ["Crustacean", "Chorale for Jaspers", "English"],
+    "8-bit Keepers": ["Keepers"],
+    "Calliope: Escape": [],
 
     # Phase
     "Epoch": ["Beatdown"],  # combined
@@ -386,6 +388,9 @@ nsnd = {
     "Jhons Rom (Old)": [],
     "I'm extremely sorry for this.": ["Walls Covered in Blood", "Soulja Boy"],
     "Admiral Bone-To-Pick (Wub Machine Remix)": ["Admiral Bone-To-Pick"],
+
+    # Cerulean soundcloud
+    "The Last Voyage": ["Eridan's Theme"],
 }
 
 
