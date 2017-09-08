@@ -276,7 +276,7 @@ nsnd = {
     "Calm Before Storm": [],
     "Glass Houses": [],
     "To Cross The Void": [],
-    "Frieden": [],
+    "Frieden": ["Ruhe"],
     "Where Are We Now": ["Look Where We Are"],
     "(I Can't Get No) Smooth Pencils": [],
     "Pizza Bagels": [],
@@ -391,6 +391,30 @@ nsnd = {
 
     # Cerulean soundcloud
     "The Last Voyage": ["Eridan's Theme"],
+
+    # Redditstuck Vol. 3: Small Medium at Large
+    # List compiled by Bin
+    "Burnt Bridges": [],
+    "Down Vice Street": [],
+    "Down Lick Street": [],
+    "Sparkle Fairy": [],
+    "(That's) Inadvisable": [],
+    "COblivion": [],
+    "Clear Voyance": ["Gnade"],
+    "Swing and a Miss": ["Pinkie's Brew"],
+    "Attendre": [],
+    "Bushito": [],
+    "Smut Mania": [],
+    "Pony Blooded": [],
+    "Kotomundi": [],
+    "Ypsilanti": [],
+    "Hubris": [],
+    "Robot": [],
+    "sev": ["Kotomundi", "Hyperion", "Calmshit"],
+    "Bygone": [],
+    "Ruhe": [],
+    "Coltish": [],
+    "Unreal City": [],
 }
 
 
