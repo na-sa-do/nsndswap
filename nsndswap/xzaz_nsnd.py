@@ -25,10 +25,11 @@ class ParseStates(enum.Enum):
 class Benchmarks(enum.IntEnum):
     # This is used to manage some songs with duplicated names.
     NONE = 0
-    ALTERNIABOUND = 1  # Light and Frost are Medium
-    MAYHEM_B = 2  # ~~SIDE 1~~, ~~SIDE 2~~, ~~ADDITIONAL MAYHEM~~ are Universe B
-    ONE_YEAR_OLDER = 3  # Game Over is OYO
-    COLLIDE = 4  # Game Over and ==> are Stuckhome
+    ALTERNIABOUND = 1
+    MAYHEM_B = 2
+    ONE_YEAR_OLDER = 3
+    COLLIDE = 4
+    LOFAM4 = 5
 
 
 class XzazParser(html.parser.HTMLParser):
@@ -191,6 +192,11 @@ class XzazParser(html.parser.HTMLParser):
                 return '˚Disc 1˚'  # LOFAM3
             else:
                 return '♪ Disc 1 ♪'  # Beforus
+        elif title == 'The End of Something Really Excellent':
+            if self.benchmark < Benchmarks.LOFAM4:
+                return 'The End of Something Really Excellent (Stuckhome Syndrome)'
+            else:
+                return 'The End of Something Really Excellent (Land of Fans and Music 4)'
         elif title == '==>':
             # There's one of these in canmt and one here
             return '==> (Stuckhome Syndrome)'
@@ -203,6 +209,12 @@ class XzazParser(html.parser.HTMLParser):
         elif title == 'Sunrise':
             # as above
             return 'Sunrise (One Year Older)'
+        elif title == 'Midnight':
+            # as above
+            return 'Midnight (Land of Fans and Music 4)'
+        elif title == 'Strife Mayhem':
+            # as above
+            return 'Strife Mayhem (Land of Fans and Music 4)'
         elif title == 'Premonition':
             # as above, but in viko_nsnd
             return 'Premonition (Stuckhome Syndrome)'
@@ -235,6 +247,10 @@ class XzazParser(html.parser.HTMLParser):
                 return 'Swan Song (Set It Off)'
             else:
                 return 'Swan Song (Ancestral)'
+        elif title == 'Main Theme':
+            return 'Breath of the Wild Theme'
+        elif title == 'Title Theme':
+            return 'RollerCoaster Tycoon Theme'
 
         # Update benchmark
         if update_benchmark:
@@ -250,6 +266,9 @@ class XzazParser(html.parser.HTMLParser):
             elif title == 'Creata (Canon Edit)' and self.benchmark < Benchmarks.COLLIDE:
                 print('Reached benchmark: COLLIDE')
                 self.benchmark = Benchmarks.COLLIDE
+            elif title == 'Merge' and self.benchmark < Benchmarks.LOFAM4:
+                print('Reached benchmark: LOFAM4')
+                self.benchmark = Benchmarks.LOFAM4
 
         return title
 

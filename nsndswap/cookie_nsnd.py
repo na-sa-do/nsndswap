@@ -164,6 +164,9 @@ class CookieParser(html.parser.HTMLParser):
         elif title == 'Sunrise':
             # as above
             return 'Sunrise (CANWC)'
+        elif title == 'Strife Mayhem':
+            # as above
+            return 'Strife Mayhem (CANWC)'
         elif title == 'Dentist':
             # as above, but viko_nsnd
             return 'Dentist (CANWC)'

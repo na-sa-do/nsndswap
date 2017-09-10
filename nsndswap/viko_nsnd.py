@@ -302,10 +302,6 @@ nsnd = {
     "Burnout Flounce": [],
     "Ex Nihilo": [],
 
-    # ndividedbyzero soundcloud
-    "Retconjuration": ["Wind chime foley", "Homestuck Anthem"],
-    "Juju Breaker": ["Purple Bard", "Sburban Jungle", "Black Rose / Green Sun", "Explore", "English", "Eternity, Served Cold"],
-
     # Remastered Remixes Vol. 1
     # i can't believe i've done this
     # homestuck-related remixes only

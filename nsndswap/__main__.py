@@ -36,8 +36,8 @@ def main():
 
     all_web = nsndswap.web.Web()
     all_web.append(xzaz_nsnd)
-    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])
-    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams'])
+    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch', 'Midnight Suffer', 'The Gemoni Mustard Blood', 'Formation', 'hors', 'Jungle #3', 'Revisit/Rewind', 'Resend', 'Aura of Colour', 'Ringleader', 'Collision Course (Davepeta\'s Movement)', 'Horizontal Headshot', 'Raise of the Conductor\'s Baton'], skip_on_duplicate=['Showtime (Imp Strife Mix)', 'A History of Babies', 'Throguh Song', 'The Baby is You', 'bootes', 'rose pragnant', 'the rose rap', 'uh oh', 'vs bros', 'a baby is born', 'Old Secret', 'Conflict!'])
+    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams', 'Spider Dance', 'Reunited'])
     dump(all_web, 'everything')
 
 
@@ -147,7 +147,7 @@ postprocess_title_table = {
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise', 'Mutiny', 'Swan Song', 'Downwards', 'Midnight', 'Meme Voyage', 'Vegetal Colina', 'Enter with Caliborn: Destruction Adventure', '"Libera me" from Bowman', 'Fighting Spirit ~Double Ascended Form~', '1 Through 15', '72.0x SHOWDOWN COMBO', 'Welcome to Flavortown (Battle Against a Bodacious Foe)', 'Welcome to Flavortown', 'you have got to be SHITTONG me (temp title)', 'you have got to be SHITTONG me',
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Dentist', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise', 'Mutiny', 'Swan Song', 'Downwards', 'Midnight', 'Meme Voyage', 'Vegetal Colina', 'Enter with Caliborn: Destruction Adventure', '"Libera me" from Bowman', 'Fighting Spirit ~Double Ascended Form~', '1 Through 15', '72.0x SHOWDOWN COMBO', 'Welcome to Flavortown (Battle Against a Bodacious Foe)', 'Welcome to Flavortown', 'you have got to be SHITTONG me (temp title)', 'you have got to be SHITTONG me', 'The End of Something Really Excellent', 'Strife Mayhem',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
     # Typos
@@ -203,6 +203,8 @@ special_cases = {
     ('the version we had of this was unusable and we had like one day to replace it so yazshu whipped out his kazoo and here we are', "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (Bowman cover)",
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe A)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe A)',
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe B)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe B)',
+    ('HOMOSUCK. DIRECTOR\'S CUT, OF THE YEAR EDITION.', 'Frost'): 'Frost (Vol. 6)',
+    ('The End of Something Really Excellent (Land of Fans and Music 4)', 'Frost'): 'Frost (Vol. 6)',
 }
 
 
