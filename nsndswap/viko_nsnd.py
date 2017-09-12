@@ -363,6 +363,7 @@ nsnd = {
     "Legion of the Signless": ["Crustacean", "Chorale for Jaspers", "English"],
     "8-bit Keepers": ["Keepers"],
     "Calliope: Escape": [],
+    "The Sun Is The Largest Star Setted In The Universe": ["Sunsetter", "Starsetter", "Sburban Jungle"],
 
     # Phase
     "Epoch": ["Beatdown"],  # combined
@@ -387,6 +388,7 @@ nsnd = {
 
     # Cerulean soundcloud
     "The Last Voyage": ["Eridan's Theme"],
+    "Moonlight Slaughter": ["Liquid Negrocity"],
 
     # Redditstuck Vol. 3: Small Medium at Large
     # List compiled by Bin
@@ -411,6 +413,9 @@ nsnd = {
     "Ruhe": [],
     "Coltish": [],
     "Unreal City": [],
+
+    # Commander Cello soundcloud
+    "Dead Dignitary": ["Liquid Negrocity"],
 }
 
 
