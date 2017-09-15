@@ -387,6 +387,7 @@ nsnd = {
     "Admiral Bone-To-Pick (Wub Machine Remix)": ["Admiral Bone-To-Pick"],
 
     # Cerulean soundcloud
+    "Life Support": ["Doctor"],
     "The Last Voyage": ["Eridan's Theme"],
     "Moonlight Slaughter": ["Liquid Negrocity"],
 
