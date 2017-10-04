@@ -385,6 +385,7 @@ nsnd = {
     "Jhons Rom (Old)": [],
     "I'm extremely sorry for this.": ["Walls Covered in Blood", "Soulja Boy"],
     "Admiral Bone-To-Pick (Wub Machine Remix)": ["Admiral Bone-To-Pick"],
+    "Gaia King": ["Gaia Queen"],
 
     # Cerulean soundcloud
     "Life Support": ["Doctor"],
@@ -417,6 +418,9 @@ nsnd = {
 
     # Commander Cello soundcloud
     "Dead Dignitary": ["Liquid Negrocity"],
+
+    # FriendlyCoy soundcloud
+    "showtimejit.mp3": ["Jit's untitled haunting refrain for Hiveswap"],
 }
 
 
