@@ -420,7 +420,13 @@ nsnd = {
     "Dead Dignitary": ["Liquid Negrocity"],
 
     # FriendlyCoy soundcloud
-    "showtimejit.mp3": ["Jit's untitled haunting refrain for Hiveswap"],
+    "showtimejit.mp3": ["Joey: Play Haunting Refrain"],
+
+    # Jit tumblr
+    "Joey: Play Haunting Refrain": [],
+
+    # GoldenSkylord soundcloud
+    "FLburnward": ["Doctor"],
 }
 
 
