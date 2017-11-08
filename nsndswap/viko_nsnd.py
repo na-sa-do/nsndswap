@@ -364,6 +364,7 @@ nsnd = {
     "8-bit Keepers": ["Keepers"],
     "Calliope: Escape": [],
     "The Sun Is The Largest Star Setted In The Universe": ["Sunsetter", "Starsetter", "Sburban Jungle"],
+    "Soft As The Clouds": ["Softly", "Softbit", "TBoSRE", "Sunsetter", "Penumbra Phantasm", "Dissension"],
 
     # Phase
     "Epoch": ["Beatdown"],  # combined
