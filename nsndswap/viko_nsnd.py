@@ -428,6 +428,9 @@ nsnd = {
 
     # GoldenSkylord soundcloud
     "FLburnward": ["Doctor"],
+
+    # Dissectum/Rom/Doctor Chaos soundcloud
+    "Seethe": ["Flare"],
 }
 
 
