@@ -431,6 +431,9 @@ nsnd = {
 
     # Dissectum/Rom/Doctor Chaos soundcloud
     "Seethe": ["Flare"],
+
+    # Xoro Laventer soundcloud
+    "Starcrusher": ["I absolutely LOATHE this Drummer."],
 }
 
 
