@@ -94,6 +94,7 @@ postprocess_title_table = {
     "Layton's Theme": "Professor Layton's Theme",
     "Let the Squiddles Sleep": "Let the Squiddles Sleep (End Theme)",
     "Lilith in Starlight": "Lilith In Starlight",
+    "Love You (Feferi's Theme)": "Love You",
     "Love You": "Love You (Feferi's Theme)",
     "MACINTOSH PLUS": "MACINTOSH PLUS - リサフランク420 / 現代のコンピュー",
     "Overture": "I - Overture",

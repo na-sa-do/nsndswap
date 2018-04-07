@@ -365,6 +365,7 @@ nsnd = {
     "Calliope: Escape": [],
     "The Sun Is The Largest Star Setted In The Universe": ["Sunsetter", "Starsetter", "Sburban Jungle"],
     "Soft As The Clouds": ["Softly", "Softbit", "TBoSRE", "Sunsetter", "Penumbra Phantasm", "Dissension"],
+    "Battle Against a Furry Dictator": ["Prospit Dreamers", "Furry Monarch"],
 
     # Phase
     "Epoch": ["Beatdown"],  # combined
@@ -434,6 +435,19 @@ nsnd = {
 
     # Xoro Laventer soundcloud
     "Starcrusher": ["I absolutely LOATHE this Drummer."],
+
+    # Act Omega - Early Access
+    "Year One": ["Sburban Jungle", "Cascade (Beta)", "Umbral Ultimatum", "Penumbra Phantasm", "IaMotMC"],
+    "Cog": ["Atomyk Ebonpyre", "Beatdown", "Cascade (Beta)"],
+    "Blastoff": ["Sburban Jungle", "Cascade (Beta)", "Liquid Negrocity", "Aggrieve", "Penumbra Phantasm"],
+    "Extermination": ["Extermination Alpha", "Sburban Jungle", "Cascade (Beta)"],
+    "Queen Folly": ["Extermination Alpha"],
+    "Wicked Witch": ["Extermination Alpha"],
+    "Sburban Resolution": ["Sburban Jungle"],
+    "Torrent (Bonus)": ["Sburban Jungle", "Cascade (Beta)", "Dance of Thorns", "Even in Death", "Upward Movement", "Love You", "Doctor"]
+    "Savoir Allegro (Bonus)": ["Doctor"],
+    "Extermination Alpha": [],
+    "Meowlevatorstuck (Cat Tax)": ["Elevatorstuck"],
 }
 
 
