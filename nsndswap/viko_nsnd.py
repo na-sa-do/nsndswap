@@ -444,7 +444,7 @@ nsnd = {
     "Queen Folly": ["Extermination Alpha"],
     "Wicked Witch": ["Extermination Alpha"],
     "Sburban Resolution": ["Sburban Jungle"],
-    "Torrent (Bonus)": ["Sburban Jungle", "Cascade (Beta)", "Dance of Thorns", "Even in Death", "Upward Movement", "Love You", "Doctor"]
+    "Torrent (Bonus)": ["Sburban Jungle", "Cascade (Beta)", "Dance of Thorns", "Even in Death", "Upward Movement", "Love You", "Doctor"],
     "Savoir Allegro (Bonus)": ["Doctor"],
     "Extermination Alpha": [],
     "Meowlevatorstuck (Cat Tax)": ["Elevatorstuck"],
