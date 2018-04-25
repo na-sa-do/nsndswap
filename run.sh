@@ -7,6 +7,7 @@ if [[ -d output ]]; then
 fi
 mkdir output
 
+echo Starting Python script
 python3 -m nsndswap
 
 cd gephibridge

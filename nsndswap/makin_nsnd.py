@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# nsndswap/xzaz_nsnd.py
+#!/usr/bin/env python3# nsndswap/makin_nsnd.py
 # copyright 2017 ViKomprenas, 2-clause BSD license (LICENSE.md)
 
 import html.parser
@@ -14,8 +13,7 @@ class ParseStates(enum.Enum):
     SKIPPING_ORIGINAL_SONG = enum.auto()
     SEEKING_REFERENCE = enum.auto()
     EATING_REFERENCE = enum.auto()
-    SEEKING_UNRELEASED = enum.auto()
-    UNRELEASED_SKIP = enum.auto()
+    SKIPPING_ARTIST_NAME = enum.auto()
     SEEKING_UNHOMESTUCK = enum.auto()
     EATING_UNHOMESTUCK = enum.auto()
     DONE = enum.auto()
@@ -30,9 +28,11 @@ class Benchmarks(enum.IntEnum):
     ONE_YEAR_OLDER = 3
     COLLIDE = 4
     LOFAM4 = 5
+    UNRELEASED = 6
+    NONHOMESTUCK = 7
 
 
-class XzazParser(html.parser.HTMLParser):
+class MakinParser(html.parser.HTMLParser):
     def __init__(self):
         super().__init__()
         self.state = ParseStates.SEEKING_SONG
@@ -40,19 +40,15 @@ class XzazParser(html.parser.HTMLParser):
         self.all_songs = []
         self.benchmark = Benchmarks.NONE
         self.song_class = None
-        self.am_in_unreleased = False
         self.allow_resume = False
 
     def handle_starttag(self, tag, attrs):
         if self.state == ParseStates.DONE:
             return
         attrs = nsndswap.util.split_attrs(attrs)
-        if tag == "hr":
-            print('Reached unreleased!')
-            self.state = ParseStates.UNRELEASED_SKIP
-            self.am_in_unreleased = True
-        elif self.state == ParseStates.UNRELEASED_SKIP and tag == "td":
-            self.state = ParseStates.SEEKING_SONG
+        if (tag == "tr" and 'class' in attrs.keys() and attrs['class'] is not None
+                and 'unreleasedartist' in attrs['class']):
+            self.state = ParseStates.SKIPPING_ARTIST_NAME
         elif self.state == ParseStates.SEEKING_SONG and tag == "td":
             if 'class' not in attrs.keys():
                 if self.allow_resume:
@@ -65,24 +61,27 @@ class XzazParser(html.parser.HTMLParser):
                 self.song_class = attrs['class']
                 if 'original' in attrs['class']:
                     self.state = ParseStates.SKIPPING_ORIGINAL_SONG
-                if 'hasquotes' in attrs['class']:
+                elif 'hasquotes' in attrs['class']:
                     self.state = ParseStates.FOUND_SONG
         elif self.state == ParseStates.SEEKING_REFERENCE and tag == "td":
-            self.song_class = attrs['class']
+            self.song_class = attrs.get('class', '')
             self.state = ParseStates.EATING_REFERENCE
         elif self.state == ParseStates.SEEKING_UNHOMESTUCK and tag == "td":
-            if 'class' in attrs.keys() and attrs['class'] == 'unhomestuck':
+            if ('class' in attrs.keys() and attrs['class'] is not None
+                    and 'nonhomestucksongname' in attrs['class']):
                 self.state = ParseStates.EATING_UNHOMESTUCK
 
     def handle_data(self, data):
         if self.state == ParseStates.DONE:
             return
-        if data == 'Non-Homestuck songs':
+        if data == ' Unreleased or removed songs':  # note the leading space
+            print('Reached unreleased')
+            self.state = ParseStates.SEEKING_SONG
+            self.benchmark = Benchmarks.UNRELEASED
+        elif data == ' Non-Homestuck songs':  # note the leading space
             print('Reached non-Homestuck songs')
             self.state = ParseStates.SEEKING_UNHOMESTUCK
-        elif data == '????':
-            print('Ignoring a ????')
-            self.state = ParseStates.SEEKING_UNRELEASED
+            self.benchmark = Benchmarks.NONHOMESTUCK
         elif self.state == ParseStates.SKIPPING_ORIGINAL_SONG:
             data = self._check_duplicate_title(data)
             self.all_songs.append(nsndswap.util.Track(data))
@@ -90,6 +89,12 @@ class XzazParser(html.parser.HTMLParser):
             self.state = ParseStates.SEEKING_SONG
             self.allow_resume = False
         elif self.state == ParseStates.FOUND_SONG:
+            if data == "":
+                if self.benchmark == Benchmarks.UNRELEASED:  # Unreleased section sorts by artist name, so:
+                    self.state = ParseStates.SEEKING_SONG
+                    return
+                else:
+                    raise Exception("Unexpected blank field in state FOUND_SONG")
             data = self._check_duplicate_title(data)
             self.active_song = nsndswap.util.Track(data)
             self.state = ParseStates.SEEKING_REFERENCE
@@ -116,12 +121,14 @@ class XzazParser(html.parser.HTMLParser):
         if self.state == ParseStates.DONE:
             return
         if self.state == ParseStates.FOUND_SONG and tag == "td":
-            self.state = ParseStates.SEEKING_REFERENCE if not self.am_in_unreleased else ParseStates.UNRELEASED_SKIP
+            self.state = ParseStates.SEEKING_REFERENCE
         elif self.state in (ParseStates.SEEKING_REFERENCE, ParseStates.SKIPPING_ORIGINAL_SONG) \
                 and tag == "tr":
-            self.state = ParseStates.SEEKING_SONG if not self.am_in_unreleased else ParseStates.UNRELEASED_SKIP
+            self.state = ParseStates.SEEKING_SONG
             self.all_songs.append(self.active_song)
             self.active_song = None
+        elif self.state == ParseStates.SKIPPING_ARTIST_NAME and tag == "td":
+            self.state = ParseStates.SEEKING_SONG
         elif tag == 'body':
             self.state = ParseStates.DONE
             print('Finished at </body>')
@@ -143,7 +150,6 @@ class XzazParser(html.parser.HTMLParser):
             if self.benchmark < Benchmarks.ALTERNIABOUND:
                 return 'Let It Snow (Homestuck for the Holidays)'
             else:
-                print('LIS')
                 return 'Let It Snow (original)'
         elif title == 'Frost':
             if self.benchmark < Benchmarks.ALTERNIABOUND:
@@ -220,30 +226,31 @@ class XzazParser(html.parser.HTMLParser):
             return 'Premonition (Stuckhome Syndrome)'
         elif title == 'Stress':
             # one is under unreleased, one is Vol. 9
-            if self.am_in_unreleased:
+            if self.benchmark >= Benchmarks.UNRELEASED:
                 return 'Stress (George Buzinkai)'
             else:
                 return 'Stress (Vol. 9)'
         elif title == 'Contention':
             # as above
-            if self.am_in_unreleased:
+            if self.benchmark >= Benchmarks.UNRELEASED:
                 return 'Contention (Toby Fox & Bill Bolin)'
             else:
                 return 'Contention (Land of Fans and Music 3)'
         elif title == 'Mother':
             # as above
-            if self.am_in_unreleased:
+            if self.benchmark >= Benchmarks.UNRELEASED:
                 return 'Mother (Malcolm Brown)'
             else:
                 return 'Mother (One Year Older)'
         elif title == 'Mutiny':
             # as above
-            if self.am_in_unreleased:
+            if self.benchmark >= Benchmarks.UNRELEASED:
                 return 'Mutiny (Bill Bolin)'
             else:
                 return 'Mutiny (Ancestral)'
         elif title == 'Swan Song':
-            if self.am_in_unreleased:
+            # as above, but in non-homestuck
+            if self.benchmark >= Benchmarks.NONHOMESTUCK:
                 return 'Swan Song (Set It Off)'
             else:
                 return 'Swan Song (Ancestral)'
@@ -274,6 +281,6 @@ class XzazParser(html.parser.HTMLParser):
 
 
 def parse(nsnd):
-    parser = XzazParser()
+    parser = MakinParser()
     parser.feed(nsnd)
     return parser.all_songs

@@ -5,25 +5,25 @@
 import sys
 import requests
 import nsndswap.util
-import nsndswap.xzaz_nsnd
+import nsndswap.makin_nsnd
 import nsndswap.cookie_nsnd
 import nsndswap.viko_nsnd
 import nsndswap.web
 
 
 def main():
-    xzaz_nsnd = get_nsnd_page('http://xzazupsilon.webs.com/nsnd.html')
-    xzaz_nsnd = nsndswap.xzaz_nsnd.parse(xzaz_nsnd)
-    xzaz_nsnd = postprocess(xzaz_nsnd)
+    makin_nsnd = get_nsnd_page('https://recordcrash.com/nsnd.html')
+    makin_nsnd = nsndswap.makin_nsnd.parse(makin_nsnd)
+    makin_nsnd = postprocess(makin_nsnd)
     cookie_nsnd = get_nsnd_page('https://wheals.github.io/canwc/nsnd.html')
     cookie_nsnd = nsndswap.cookie_nsnd.parse(cookie_nsnd)
     cookie_nsnd = postprocess(cookie_nsnd)
     viko_nsnd = nsndswap.viko_nsnd.parse()
     viko_nsnd = postprocess(viko_nsnd)
 
-    xzaz_web = nsndswap.web.Web()
-    xzaz_web.append(xzaz_nsnd)
-    dump(xzaz_web, 'homestuck')
+    makin_web = nsndswap.web.Web()
+    makin_web.append(makin_nsnd)
+    dump(makin_web, 'homestuck')
 
     cookie_web = nsndswap.web.Web()
     cookie_web.append([nsndswap.util.Track('Showtime (Imp Strife Mix)', ['Showtime'])])
@@ -35,9 +35,9 @@ def main():
     dump(viko_web, 'viko')
 
     all_web = nsndswap.web.Web()
-    all_web.append(xzaz_nsnd)
+    all_web.append(makin_nsnd)
     all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch', 'Midnight Suffer', 'The Gemoni Mustard Blood', 'Formation', 'hors', 'Jungle #3', 'Revisit/Rewind', 'Resend', 'Aura of Colour', 'Ringleader', 'Collision Course (Davepeta\'s Movement)', 'Horizontal Headshot', 'Raise of the Conductor\'s Baton'], skip_on_duplicate=['Showtime (Imp Strife Mix)', 'A History of Babies', 'Throguh Song', 'The Baby is You', 'bootes', 'rose pragnant', 'the rose rap', 'uh oh', 'vs bros', 'a baby is born', 'Old Secret', 'Conflict!'])
-    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams', 'Spider Dance', 'Reunited'])
+    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams', 'Spider Dance', 'Reunited', 'Snowdin Town', 'Spooktune'])
     dump(all_web, 'everything')
 
 
@@ -172,6 +172,7 @@ special_cases = {
     ('Emissary of Dance', 'Checkmate'): 'Checkmate (coloUrs and mayhem: Universe B)',
     ('Explored', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
     ('Greifstrife', '1 Through 15'): '1 Through 15 (Intermishin)',
+    ('HOMOSUCK. DIRECTOR\'S CUT, OF THE YEAR EDITION.', 'Frost'): 'Frost (Vol. 6)',
     ('Last Chance [Bonus]', '1 Through 15'): '1 Through 15 (Intermishin)',
     ('Let It Snow (Homestuck for the Holidays)', 'Let It Snow'): 'Let It Snow (original)',
     ('Lilith In Starlight', 'Mother'): 'Mother (Malcolm Brown)',
@@ -188,6 +189,7 @@ special_cases = {
     ('Sunslammer is my music waifu', 'Mutiny'): 'Mutiny (Bill Bolin)',
     ('Swan Song (Ancestral)', 'Swan Song'): 'Swan Song (Set It Off)',
     ('The Dance of Oblivion', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('The End of Something Really Excellent (Land of Fans and Music 4)', 'Frost'): 'Frost (Vol. 6)',
     ('Three in the Morning (4 1/3 Hours Late Remix; CaNon edit)', 'Three in the Morning (4 1/3 Hours Late Remix)'): 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)',
     ('Three in the morning (Dif\'s JUST GO THE FUCK TO SLEEP ALREADY mix)', 'Three in the Morning (4 1/3 Hours Late Remix)'): 'Three in the Morning (4 1/3 Hours Late Remix) (voulem. 1)',
     ('Trollcops', 'Under the Hat'): 'Under the Hat (Land of Fans and Music)',
@@ -202,10 +204,10 @@ special_cases = {
     ('missathing.midi', "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (Bowman cover)",  # pending composer's word as of 2017-06-23
     ('the march of jaed', 'Mutiny'): 'Mutiny (Bill Bolin)',
     ('the version we had of this was unusable and we had like one day to replace it so yazshu whipped out his kazoo and here we are', "I Don't Want to Miss a Thing"): "I Don't Want to Miss a Thing (Bowman cover)",
+    ('~~ GARBAGE ~~ 「 総たわごと 」 ~~ultimate fakeout~~', 'Meme Voyage'): 'Meme Voyage (vol. s*x)',
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe A)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe A)',
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe B)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe B)',
-    ('HOMOSUCK. DIRECTOR\'S CUT, OF THE YEAR EDITION.', 'Frost'): 'Frost (Vol. 6)',
-    ('The End of Something Really Excellent (Land of Fans and Music 4)', 'Frost'): 'Frost (Vol. 6)',
+    ('Skaian Dreams (Remix)', 'Mutiny'): 'Mutiny (Bill Bolin)',
 }
 
 
