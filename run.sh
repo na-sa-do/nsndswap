@@ -14,5 +14,6 @@ cd gephibridge
 export CLASSPATH='.:lib/*'
 javac GephiBridge.java
 for f in ../output/*.gexf ; do
-    java GephiBridge "$f"
+    java GephiBridge "$f" &
 done
+wait
