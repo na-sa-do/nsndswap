@@ -115,18 +115,18 @@ class Web:
                 self.edges += [edge]
                 print(f'Followed a reference from "{next_song.title}" to "{ref}"')
 
-    def make_snapshot(self):
+    def make_snapshot(self, reverse_size=False):
         snapshot = [NodeSnapshot() for _ in self.nodes]
 
-        print('Adding basics and degrees to snapshot')
+        print('Adding basics to snapshot')
         for i in range(len(self.nodes)):
             snapshot[i].index = i
             snapshot[i].name = self.nodes[i]
-            for ref in self.edges:
-                if ref[0] == i:
-                    snapshot[i].out_deg += 1
-                elif ref[1] == i:
-                    snapshot[i].in_deg += 1
+
+        print('Adding degrees to snapshot')
+        for ref in self.edges:
+            snapshot[ref[0]].out_deg += 1
+            snapshot[ref[1]].in_deg += 1
 
         print('Computing largest degree (for weighted degrees)')
         largest_in = 1
@@ -139,8 +139,9 @@ class Web:
         for data in snapshot:
             data.weighted_in_deg = data.in_deg / largest_in
             data.weighted_out_deg = data.out_deg / largest_out
+            size_deg = data.weighted_in_deg if not reverse_size else data.weighted_out_deg
             # don't ask me where this off-by-one comes from
-            data.size = data.weighted_in_deg * (SIZE_FACTOR) + SIZE_OFFSET - 1
+            data.size = size_deg * SIZE_FACTOR + SIZE_OFFSET - 1
 
         print('Randomizing node locations and colors')
 
@@ -158,9 +159,10 @@ class Web:
         print('Done building node data')
         return snapshot
 
-    def dump_gexf(self, outf):
-        snapshot = self.make_snapshot()
-        print('Dumping web')
+    def dump_gexf(self, outf, reverse_size=False):
+        reverse_str = 'reversed ' if reverse else ''
+        snapshot = self.make_snapshot(reverse=reverse)
+        print(f'Dumping {reverse_str}web')
         outf.write(f"""<?xml version="1.0" encoding="UTF-8" ?>
 <gexf xmlns="http://www.gexf.net/1.3" version="1.3" xmlns:viz="http://www.gexf.net/1.3/viz">
     <meta lastmodifieddate="{str(datetime.date.today())}">
@@ -180,8 +182,11 @@ class Web:
         </nodes>
         <edges>""")
         for edge_id in range(len(self.edges)):
+            edge = self.edges[edge_id]
+            if reverse_size:
+                edge = edge[1], edge[0]
             outf.write(f"""
-            <edge id="{edge_id}" source="{self.edges[edge_id][0]}" target="{self.edges[edge_id][1]}">
+            <edge id="{edge_id}" source="{edge[0]}" target="{edge[1]}">
                 <viz:color r="192" g="192" b="192"></viz:color>
             </edge>""")
         outf.write("""

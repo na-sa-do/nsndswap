@@ -239,6 +239,8 @@ def postprocess_title(title, context):
 def dump(web, name):
     with open(f'output/{name}.gexf', 'w') as f:
         web.dump_gexf(f)
+    with open(f'output/{name}.reverse.gexf', 'w') as f:
+        web.dump_gexf(f, reverse_size=True)
     with open(f'output/{name}.titles.txt', 'w') as f:
         web.dump_titles(f)
     with open(f'output/{name}.txt', 'w') as f:
