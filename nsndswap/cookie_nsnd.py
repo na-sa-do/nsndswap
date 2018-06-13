@@ -153,7 +153,7 @@ class CookieParser(html.parser.HTMLParser):
             else:
                 return 'you have got to be SHITTONG me (Greatest Hits 2)'
         elif title == '==>':
-            # There's one of these in xzaz_nsnd and one here
+            # There's one of these in makin_nsnd and one here
             return '==> (CANWC)'
         elif title == 'Checkmate' and not is_ref:
             # as above

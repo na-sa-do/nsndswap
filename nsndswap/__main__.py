@@ -22,7 +22,7 @@ def main():
     viko_nsnd = postprocess(viko_nsnd)
 
     makin_web = nsndswap.web.Web()
-    makin_web.append(makin_nsnd)
+    makin_web.append(makin_nsnd, skip_on_duplicate=['Requiem for Something Really Excellent (Demo)'])
     dump(makin_web, 'homestuck')
 
     cookie_web = nsndswap.web.Web()
@@ -35,8 +35,8 @@ def main():
     dump(viko_web, 'viko')
 
     all_web = nsndswap.web.Web()
-    all_web.append(makin_nsnd)
-    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch', 'Midnight Suffer', 'The Gemoni Mustard Blood', 'Formation', 'hors', 'Jungle #3', 'Revisit/Rewind', 'Resend', 'Aura of Colour', 'Ringleader', 'Collision Course (Davepeta\'s Movement)', 'Horizontal Headshot', 'Raise of the Conductor\'s Baton'], skip_on_duplicate=['Showtime (Imp Strife Mix)', 'A History of Babies', 'Throguh Song', 'The Baby is You', 'bootes', 'rose pragnant', 'the rose rap', 'uh oh', 'vs bros', 'a baby is born', 'Old Secret', 'Conflict!'])
+    all_web.append(makin_nsnd, skip_on_duplicate=['Requiem for Something Really Excellent (Demo)'])
+    all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch', 'Midnight Suffer', 'The Gemoni Mustard Blood', 'Formation', 'hors', 'Jungle #3', 'Revisit/Rewind', 'Resend', 'Aura of Colour', 'Ringleader', 'Collision Course (Davepeta\'s Movement)', 'Horizontal Headshot', 'Raise of the Conductor\'s Baton'], skip_on_duplicate=['Showtime (Imp Strife Mix)', 'A History of Babies', 'Throguh Song', 'The Baby is You', 'bootes', 'rose pragnant', 'the rose rap', 'uh oh', 'vs bros', 'a baby is born', 'Old Secret', 'Conflict!', 'Apexhalation'])
     all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams', 'Spider Dance', 'Reunited', 'Snowdin Town', 'Spooktune'])
     dump(all_web, 'everything')
 

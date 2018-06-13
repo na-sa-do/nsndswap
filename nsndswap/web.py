@@ -160,8 +160,8 @@ class Web:
         return snapshot
 
     def dump_gexf(self, outf, reverse_size=False):
-        reverse_str = 'reversed ' if reverse else ''
-        snapshot = self.make_snapshot(reverse=reverse)
+        reverse_str = 'reversed ' if reverse_size else ''
+        snapshot = self.make_snapshot(reverse_size=reverse_size)
         print(f'Dumping {reverse_str}web')
         outf.write(f"""<?xml version="1.0" encoding="UTF-8" ?>
 <gexf xmlns="http://www.gexf.net/1.3" version="1.3" xmlns:viz="http://www.gexf.net/1.3/viz">
