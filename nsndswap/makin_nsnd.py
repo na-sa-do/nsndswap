@@ -56,7 +56,11 @@ class MakinParser(html.parser.HTMLParser):
                     self.state = ParseStates.SEEKING_REFERENCE
                     print(f'Resuming "{self.active_song.title}"')
                 else:
-                    print('Skipped a resume')
+                    if self.benchmark >= Benchmarks.UNRELEASED:
+                        print('Skipped a resume in unreleased, re-enabling resume')
+                        self.allow_resume = True
+                    else:
+                        print('Skipped a resume')
             else:
                 self.song_class = attrs['class']
                 if 'original' in attrs['class']:
@@ -90,11 +94,7 @@ class MakinParser(html.parser.HTMLParser):
             self.allow_resume = False
         elif self.state == ParseStates.FOUND_SONG:
             if data == "":
-                if self.benchmark == Benchmarks.UNRELEASED:  # Unreleased section sorts by artist name, so:
-                    self.state = ParseStates.SEEKING_SONG
-                    return
-                else:
-                    raise Exception("Unexpected blank field in state FOUND_SONG")
+                raise Exception("Unexpected blank field in state FOUND_SONG")
             data = self._check_duplicate_title(data)
             self.active_song = nsndswap.util.Track(data)
             self.state = ParseStates.SEEKING_REFERENCE
@@ -127,6 +127,9 @@ class MakinParser(html.parser.HTMLParser):
             self.state = ParseStates.SEEKING_SONG
             self.all_songs.append(self.active_song)
             self.active_song = None
+            if self.benchmark == Benchmarks.UNRELEASED:
+                print('Disabling resume for unreleased')
+                self.allow_resume = False
         elif self.state == ParseStates.SKIPPING_ARTIST_NAME and tag == "td":
             self.state = ParseStates.SEEKING_SONG
         elif tag == 'body':
@@ -203,6 +206,26 @@ class MakinParser(html.parser.HTMLParser):
                 return 'The End of Something Really Excellent (Stuckhome Syndrome)'
             else:
                 return 'The End of Something Really Excellent (Land of Fans and Music 4)'
+        elif title == 'Null':
+            if self.benchmark < Benchmarks.MAYHEM_B:
+                return 'Null (Song of Skaia)'
+            else:
+                return 'Null (James Roach)'
+        elif title == 'Aggress':
+            if self.benchmark < Benchmarks.UNRELEASED:
+                return 'Aggress (Weird Puzzle Tunes)'
+            else:
+                return 'Aggress (Mark Hadley)'
+        elif title == 'Beatdown':
+            if self.benchmark < Benchmarks.UNRELEASED:
+                return 'Beatdown'  # this one specifically is just stupid, why bother disambiguating it
+            else:
+                return 'Beatdown (Toby Fox)'
+        elif title == 'Already Here':
+            if self.benchmark < Benchmarks.UNRELEASED:
+                return 'Already Here (Stuckhome Syndrome)'
+            else:
+                return 'Already Here (Unknown)'
         elif title == '==>':
             # There's one of these in canmt and one here
             return '==> (Stuckhome Syndrome)'
@@ -215,15 +238,27 @@ class MakinParser(html.parser.HTMLParser):
         elif title == 'Sunrise':
             # as above
             return 'Sunrise (One Year Older)'
-        elif title == 'Midnight':
-            # as above
-            return 'Midnight (Land of Fans and Music 4)'
         elif title == 'Strife Mayhem':
             # as above
             return 'Strife Mayhem (Land of Fans and Music 4)'
+        elif title == 'Explored':
+            # as above
+            return 'Explored (Toby Fox & George Buzinkai)'
+        elif title == 'Sunset':
+            # as above
+            return 'Sunset (Toby Fox)'
+        elif title == 'Rain':
+            # as above
+            return 'Rain (Medium)'
         elif title == 'Premonition':
             # as above, but in viko_nsnd
             return 'Premonition (Stuckhome Syndrome)'
+        elif title == 'Midnight':
+            # two of these here AND one in canmt. wow
+            if self.benchmark >= Benchmarks.UNRELEASED:
+                return 'Midnight (Malcolm Brown)'
+            else:
+                return 'Midnight (Land of Fans and Music 4)'
         elif title == 'Stress':
             # one is under unreleased, one is Vol. 9
             if self.benchmark >= Benchmarks.UNRELEASED:

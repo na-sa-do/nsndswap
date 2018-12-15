@@ -152,6 +152,17 @@ class CookieParser(html.parser.HTMLParser):
                 return 'you have got to be SHITTONG me (9)'
             else:
                 return 'you have got to be SHITTONG me (Greatest Hits 2)'
+        elif title == 'Meldey':
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Meldey (Basement Tale)'
+            else:
+                return 'Meldey (Rain)'
+        elif title == 'Sunset':
+            # two here and one in makin_nsnd
+            if self.benchmark < Benchmarks.GAMESCANTE:
+                return 'Sunset (CANWC)'
+            else:
+                return 'Sunset (Cerulean)'
         elif title == '==>':
             # There's one of these in makin_nsnd and one here
             return '==> (CANWC)'
@@ -167,12 +178,15 @@ class CookieParser(html.parser.HTMLParser):
         elif title == 'Strife Mayhem':
             # as above
             return 'Strife Mayhem (CANWC)'
-        elif title == 'Dentist':
-            # as above, but viko_nsnd
-            return 'Dentist (CANWC)'
+        elif title == 'Explored':
+            # as above
+            return 'Explored (CANWC)'
         elif title == 'Anticipation':
             # as above
             return 'Anticipation (CANWC)'
+        elif title == 'Rain':
+            # as above
+            return 'Rain (CANWC)'
         elif title == 'Fanfare':
             # HA HA HA HA HA HA HA
             return 'Showtime (Imp Strife Mix)'

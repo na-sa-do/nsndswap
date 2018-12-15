@@ -25,73 +25,11 @@ nsnd = {
     "Whirlwind": ["Showtime", "Doctor", "Patient", "Savior of the Waking World", "Penumbra Phantasm"],
     "Ignition": ["Flare (Cascade Cut)", "MeGaLoVania"],
 
-    # M3l0m4ni4c Sins album
-    "Temmie Sleuth": ["Problem Sleuth Title Screen", "Temmie Village"],
-    "Midnight Temmie": ["I'm a Member of the Midnight Crew", "Temmie Village"],
-    "Infinity Temmie": ["Infinity Mechanism", "Temmie Village"],
-    "Lord Temmie": ["English", "Temmie Village"],
-    "Temmie Served Cold": ["Eternity, Served Cold", "Temmie Village"],
-    "Temmie on My Side": ["Time on My Side", "Temmie Village"],
-    "Temmie Dreamers": ["Derse Dreamers", "Temmie Village"],
-    "[S] Temmie: Ascend": ["Explore", "Temmie Village"],
-    "Temmiesetter": ["Moonsetter", "Temmie Village"],
-    "The Lost Temmie": ["The Lost Child", "Temmie Village"],
-    "Beatdown (Temmie Style)": ["Beatdown", "Temmie Village"],
-    "Temmieawesome": ["Revelawesome", "Temmie Village"],
-    "Tems (With Temmies)": ["Ruins (With Strings)", "Temmie Village"],
-    "Temmieslammer": ["Sunslammer", "Temmie Village"],
-    "Temmie Aggrieves": ["Aggrieve", "Temmie Village"],
-    "Endless Temmie": ["Endless Climb", "Temmie Village"],
-    "Temmie8reath": ["Spider8reath", "Temmie Village"],
-    "BL1ND T3MM13": ["BL1ND JUST1C3 : 1NV3ST1G4T1ON !!", "Temmie Village"],
-    "Crystamanthetems": ["Crystamanthequins", "Temmie Village"],
-    "Temmiedown": ["Showdown", "Temmie Village"],
-    "Cascade of Unfortunate Temmies": ["Cascade (Beta)", "Temmie Village"],
-    "Umbral Temmie": ["Umbral Ultimatum", "Temmie Village"],
-    "[S] Temmie: Descend": ["Descend", "Temmie Village"],
-    "Temmie's Claw": ["Spider's Claw", "Temmie Village"],
-    "Atomyk Temmiepyre": ["Atomyk Ebonpyre", "Temmie Village"],
-    "Liquid Temmiecity": ["Liquid Negrocity", "Temmie Village"],
-    "Savior of the Waking Temmie": ["Savior of the Waking World", "Temmie Village"],
-    "ShowTemmie": ["Showtime", "Temmie Village"],
-    "Temmie Flares": ["Flare (Cascade Cut)", "Temmie Village"],
-
     # ViKomprenas soundcloud
     "Another Elevator": ["Another Jungle", "Sburban Elevator"],
     "Elevator #3": ["Jungle #3", "Sburban Elevator"],
     "unfinished medley for power464646": ["Carbon Nadsat/Cuestick Genius", "Rhapsody in Green", "Havoc", "Eternity, Served Cold", "Showdown", "Riches to Ruins Movements I & II", "Negastrife", "PPiSHWA", "Carne Vale"],
     "Saiddit Lullaby": ["Colt Blooded", "Look Where We Are"],
-
-    # Sealstuck Volume 1
-    "Sealumbra Phantasm": ["Penumbra Phantasm"],
-    "sealteamsixgoestotacobellfordinnerexcepteveryonesasealandwecheer": [],
-    "Sealburban Jugnle": ["Sburban Jungle"],
-    "it's an amusement park! it's a sealival!": ["le canrival"],
-    "A seal related undertale pun": ["CORE"],
-    "sealsleepytime.wav": [],
-    "caseal": ["casin"],
-    "Seal Who": ["Doctor Who Theme"],
-    "the seal rap": [],
-    "Necrosealfoxtasia": ["Necrofantasia"],
-    "Pumpkin Party in Seal Hitler's Water Apocalypse": ["Pumpkin Party in Sea Hitler's Water Apocalypse"],
-    "Dinoseal Comics": ["Dinosaur Comics Theme"],
-    "Sealache": ["Heartache"],
-    "Seal Intermission": [],
-    "Moonsealer": ["Moonsetter"],
-    "Seally Slippery Cave": ["Ice Path"],
-    "sealsetter": ["Sunsetter"],
-    "eriseals theme": ["Eridan's Theme"],
-    "sealwave": [],
-    "The Key of Seal": [],
-    "just driving my seal to work officer": [],
-    "Unintentionally Seal": ["Unintentionally Short"],
-    "i put seal noises over an old abandoned project": [],
-    "\u30a2\u30b6\u30e9\u30b7 \u8d64\u3061\u3083\u3093 420 / \u30e2\u30c0\u30f3\u6a39\u76ae": ["MACINTOSH PLUS"],
-    "This isn't an old song that I bullshitted over, no sir": [],
-    "sealsounds.wav": [],
-    "Troubled Seas": [],
-    "Seal the Deal": [],
-    "A Seal Legend - A Seal is 2": ["A Baby Legend"],
 
     # UNDERTALE Soundtrack
     "Once Upon a Time": [],
@@ -214,7 +152,6 @@ nsnd = {
 
     # Misc
     "SPIDER DANCE FROM UNDERTALE BUT NOW ITS SKA I GUESS???": ["Spider Dance"],
-    "Sunset (Toby Fox)": ["Sunsetter"],
 
     # Redditstuck Vol. 1
     "Cogs": [],
@@ -282,51 +219,10 @@ nsnd = {
     "Burnout Flounce": [],
     "Ex Nihilo": [],
 
-    # Remastered Remixes Vol. 1
-    # i can't believe i've done this
-    # homestuck-related remixes only
-    # titles are from when they were on meems's soundcloud
-    "Old Secret Cover (Remastered Remix)": ["Old Secret"],
-    "Endless": ["Endless Climb"],
-    "Doctor (Remastered Remix)": ["Doctor"],
-    "Dissension (Remastered Remix)": ["Dissension"],
-    "Chorale For Jaspers (Remastered Remix)": ["Chorale for Jaspers"],
-    "Carefree": ["Carefree Action"],
-    "Black (Remastered Remix)": ["Black"],
-    "Beatdown (Remastered Remix)": ["Beatdown (Strider Style)"],
-    "Atomic Ebonpyre": ["Atomyk Ebonpyre"],  # sic
-    "Aggrieve (Remastered Remix)": ["Aggrieve"],
-    "Upward Movement (Remastered Remix)": ["Upward Movement"],
-    "Skies Of Skaia (Remastered Remix)": ["Skies of Skaia"],
-    "Showtime Piano Refrain (Remastered Remix)": ["Showtime (Piano Refrain)"],
-    "Showtime Original Mix (Remastered Remix)": ["Showtime"],
-    "Sburban Jungle Remix": ["Sburban Jungle"],
-    "Sburban Countdown (Remastered Remix)": ["Sburban Countdown"],
-    "Revelawexome": ["Revelawesome"],  # sic
-    "Pony Chorale (Remastered Remix)": ["Pony Chorale"],
-    "Harlequin (Remastered Remix)": ["Harlequin"],
-    "Guardian (Remastered Remix)": ["Guardian"],
-    "Gardner": ["Gardener"],  # sic
-    "Explore (Remastered Remix)": ["Explore"],
-    "Carne Vale Remastered Remix": ["Carne Vale"],
-    "Eternity Served Cold Covered Remixed Remastered": ["Eternity, Served Cold"],
-    "Nuclear Remastered Remix": ["Nuclear"],
-    "Cascade Remixed Remastered": ["Cascade"],
-    "Terezi Owns Remastered Remix": ["Terezi Owns"],
-    "Savior Of The Waking World (Remastered Remix)": ["Savior of the Waking World"],
-    "Lotus (Remastered Remix)": ["Lotus"],
-    "Heir Conditioning Remastered Remix": ["Heir Conditioning"],
-    "Kall And Kontakt Remastered Remix Remastered Reimagined": ["CONFERANCE CALL ~~LAST CONTACT~~"],
-    "Rex Duodecim Angelus Remastered Remix": ["Rex Duodecim Angelus"],
-    "Bearburban Jungle": ["Sburban Jungle"],
-    "Megalovania Orchestral Remix": ["MeGaLoVania"],  # does this count as homestuck????
-    "MegalovAAAAAAAAAAAAAAAnia": ["MeGaLoVania"],  # what about this
-    "Bearlovania": ["MeGaLoVania"],  # or this
-
-    # cosmicTerrorist soundcloud
-    "Mannequin (cosmicTerrorist)": ["Mannequin"],
+    # WarxTron soundcloud
+    "Mannequin (WarxTron)": ["Mannequin"],
     "Solid Griscosity": ["Liquid Negrocity"],
-    "Sunset (cosmicTerrorist)": ["Sunset (Toby Fox)"],
+    "Sunset (WarxTron)": ["Sunset (Toby Fox)"],
     "Last Breath of the Heir": ["Showtime (Piano Refrain)", "Doctor", "Penumbra Phantasm", "Harlequin", "Liquid Negrocity"],
     "Doctor Percocets": ["Doctor", "Mask Off", "Penumbra Phantasm"],
     "Patient (Full Mix)": ["Patient"],
