@@ -28,8 +28,10 @@ class Benchmarks(enum.IntEnum):
     ONE_YEAR_OLDER = 3
     COLLIDE = 4
     LOFAM4 = 5
-    UNRELEASED = 6
-    NONHOMESTUCK = 7
+    STLAP = 6
+    CARETAKERS = 7
+    UNRELEASED = 998
+    NONHOMESTUCK = 999
 
 
 class MakinParser(html.parser.HTMLParser):
@@ -199,8 +201,12 @@ class MakinParser(html.parser.HTMLParser):
         elif title == 'Disc 1':
             if self.benchmark < Benchmarks.COLLIDE:
                 return '˚Disc 1˚'  # LOFAM3
-            else:
+            elif self.benchmark < Benchmarks.LOFAM4:
                 return '♪ Disc 1 ♪'  # Beforus
+            elif self.benchmark < Benchmarks.CARETAKERS:
+                return 'Disc 1 (Stable Time Loops and Paradoxes)'
+            else:
+                return 'Disc 1 (Stable Time Loops and Paradoxes 2)'
         elif title == 'The End of Something Really Excellent':
             if self.benchmark < Benchmarks.LOFAM4:
                 return 'The End of Something Really Excellent (Stuckhome Syndrome)'
@@ -247,18 +253,27 @@ class MakinParser(html.parser.HTMLParser):
         elif title == 'Sunset':
             # as above
             return 'Sunset (Toby Fox)'
-        elif title == 'Rain':
+        elif title == 'Starsetter':
             # as above
-            return 'Rain (Medium)'
+            return 'Starsetter (Stable Time Loops and Paradoxes)'
         elif title == 'Premonition':
             # as above, but in viko_nsnd
             return 'Premonition (Stuckhome Syndrome)'
+        elif title == 'Home':
+            # as above
+            return 'Home (Moons of Theseus)'
         elif title == 'Midnight':
             # two of these here AND one in canmt. wow
             if self.benchmark >= Benchmarks.UNRELEASED:
                 return 'Midnight (Malcolm Brown)'
             else:
                 return 'Midnight (Land of Fans and Music 4)'
+        elif title == 'Rain':
+            # as above
+            if self.benchmark >= Benchmarks.NONHOMESTUCK:
+                return 'Rain (Rob Scallon)'
+            else:
+                return 'Rain (Medium)'
         elif title == 'Stress':
             # one is under unreleased, one is Vol. 9
             if self.benchmark >= Benchmarks.UNRELEASED:
@@ -293,6 +308,11 @@ class MakinParser(html.parser.HTMLParser):
             return 'Breath of the Wild Theme'
         elif title == 'Title Theme':
             return 'RollerCoaster Tycoon Theme'
+        elif title == 'Daydreamer':
+            if self.benchmark >= Benchmarks.STLAP:
+                return 'Daydreamer (Stable Time Loops and Paradoxes)'
+            else:
+                return 'Daydreamer (Land of Fans and Music 4)'
 
         # Update benchmark
         if update_benchmark:
@@ -311,6 +331,12 @@ class MakinParser(html.parser.HTMLParser):
             elif title == 'Merge' and self.benchmark < Benchmarks.LOFAM4:
                 print('Reached benchmark: LOFAM4')
                 self.benchmark = Benchmarks.LOFAM4
+            elif title == 'Solicide' and self.benchmark < Benchmarks.STLAP:
+                print('Reached benchmark: STLAP')
+                self.benchmark = Benchmarks.STLAP
+            elif title == 'A Paradox Legend' and self.benchmark < Benchmarks.CARETAKERS:
+                print('Reached benchmark: CARETAKERS')
+                self.benchmark = Benchmarks.CARETAKERS
 
         return title
 

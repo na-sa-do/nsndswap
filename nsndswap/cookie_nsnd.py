@@ -187,9 +187,15 @@ class CookieParser(html.parser.HTMLParser):
         elif title == 'Rain':
             # as above
             return 'Rain (CANWC)'
+        elif title == 'Starsetter':
+            # as above
+            return 'Starsetter (CANWC)'
         elif title == 'Fanfare':
             # HA HA HA HA HA HA HA
             return 'Showtime (Imp Strife Mix)'
+        elif title == 'Roundabout':
+            # goddammit yaz I hope nobody references your song
+            return 'Roundabout (yazshu)'
 
         # Update
         if update_benchmark:

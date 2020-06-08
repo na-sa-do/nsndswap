@@ -8,7 +8,7 @@ fi
 mkdir output
 
 echo Starting Python script
-python3 -m nsndswap
+.env/bin/python3 -m nsndswap
 
 cd gephibridge
 export CLASSPATH='.:lib/*'

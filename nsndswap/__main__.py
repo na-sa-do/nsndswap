@@ -12,7 +12,7 @@ import nsndswap.web
 
 
 def main():
-    makin_nsnd = get_nsnd_page('https://recordcrash.com/nsnd.html')
+    makin_nsnd = get_nsnd_page('https://homestuck.net/music/references.html')
     makin_nsnd = nsndswap.makin_nsnd.parse(makin_nsnd)
     makin_nsnd = postprocess(makin_nsnd)
     cookie_nsnd = get_nsnd_page('https://wheals.github.io/canwc/nsnd.html')
@@ -21,23 +21,27 @@ def main():
     viko_nsnd = nsndswap.viko_nsnd.parse()
     viko_nsnd = postprocess(viko_nsnd)
 
+    print('Building makin_web')
     makin_web = nsndswap.web.Web()
-    makin_web.append(makin_nsnd, skip_on_duplicate=['Requiem for Something Really Excellent (Demo)', 'Skaian Shuffle', 'Mother (Malcolm Brown)', 'Skaia Voyages', 'Clockwork Apocalypse', 'Double Midnight', 'Hawkeye', 'Homosuck Anthem', 'Jadesprite', 'Penumbra Phantasm', 'Mother (Malcolm Brown)'])
+    makin_web.append(makin_nsnd, skip_on_duplicate=['Requiem for Something Really Excellent (Demo)', 'Skaian Shuffle', 'Mother (Malcolm Brown)', 'Skaia Voyages', 'Clockwork Apocalypse', 'Double Midnight', 'Hawkeye', 'Homosuck Anthem', 'Jadesprite', 'Penumbra Phantasm', 'Mother (Malcolm Brown)', "Egbert's Kitchen"])
     dump(makin_web, 'homestuck')
 
+    print('Building cookie_web')
     cookie_web = nsndswap.web.Web()
     cookie_web.append([nsndswap.util.Track('Showtime (Imp Strife Mix)', ['Showtime'])])
     cookie_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S'], skip_on_duplicate=['Showtime (Imp Strife Mix)'])
     dump(cookie_web, 'canwc')
 
+    print('Building viko_web')
     viko_web = nsndswap.web.Web()
     viko_web.append(viko_nsnd)
     dump(viko_web, 'viko')
 
+    print('Building all_web')
     all_web = nsndswap.web.Web()
-    all_web.append(makin_nsnd, skip_on_duplicate=['Requiem for Something Really Excellent (Demo)', 'Skaian Shuffle', 'Mother (Malcolm Brown)', 'Skaia Voyages', 'Clockwork Apocalypse', 'Double Midnight', 'Hawkeye', 'Homosuck Anthem', 'Jadesprite', 'Penumbra Phantasm', 'Mother (Malcolm Brown)'])
+    all_web.append(makin_nsnd, skip_on_duplicate=['Requiem for Something Really Excellent (Demo)', 'Skaian Shuffle', 'Mother (Malcolm Brown)', 'Skaia Voyages', 'Clockwork Apocalypse', 'Double Midnight', 'Hawkeye', 'Homosuck Anthem', 'Jadesprite', 'Penumbra Phantasm', 'Mother (Malcolm Brown)', "Egbert's Kitchen"])
     all_web.append(cookie_nsnd, override_on_duplicate=['C R Y S T A L S', 'Tick', 'Rex Mille Geromius', 'Smackdown', 'Contra', 'CONTACT', 'Moshi Moshi?', 'Unintentional Touhou', 'Muse of Nanchos', 'Intro', 'daet with roze', 'Lord Spanish', 'Something Familiar', 'Stay in Touch', 'Midnight Suffer', 'The Gemoni Mustard Blood', 'Formation', 'hors', 'Jungle #3', 'Revisit/Rewind', 'Resend', 'Aura of Colour', 'Ringleader', 'Collision Course (Davepeta\'s Movement)', 'Horizontal Headshot', 'Raise of the Conductor\'s Baton'], skip_on_duplicate=['Showtime (Imp Strife Mix)', 'A History of Babies', 'Throguh Song', 'The Baby is You', 'bootes', 'rose pragnant', 'the rose rap', 'uh oh', 'vs bros', 'a baby is born', 'Old Secret', 'Conflict!', 'Apexhalation'])
-    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams', 'Spider Dance', 'Reunited', 'Snowdin Town', 'Spooktune'])
+    all_web.append(viko_nsnd, override_on_duplicate=['Cascadium Dioxide', 'Conflict!', 'Malediction', 'Taureg', 'Your Best Friend', 'Metal Crusher', 'CORE', 'Death by Glamour', 'Menu (Full)', 'Hopes and Dreams', 'Spider Dance', 'Reunited', 'Snowdin Town', 'Spooktune', 'Dogsong'])
     dump(all_web, 'everything')
 
 
@@ -143,11 +147,18 @@ postprocess_title_table = {
     "♬ Disc 3 ♬": "Disc 3 (Beforus)",
     "• ~ 2 SKID~ •": "2 Skid (cool and new volume 7)",
     "• ~ DIKS 1 ~ •": "Diks 1 (cool and new volume 7)",
+    "Disc 1": "Disc 1 (Cosmic Caretakers)",
+    "Disc 2": "Disc 2 (Cosmic Caretakers)",
+    "Disc 3": "Disc 3 (Cosmic Caretakers)",
+    "~~Disk 1~~": "Disc 1 (Stable Time Loops and Paradoxes)",
+    "~~Disk 2~~": "Disc 2 (Stable Time Loops and Paradoxes)",
+    "~~Disc 3~~": "Disc 3 (Stable Time Loops and Paradoxes)",
+    "~~Disk 4~~": "Disc 4 (Stable Time Loops and Paradoxes)",
 }
 
 forbidden_names = [
     # Things that need manual disambiguation
-    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise', 'Mutiny', 'Swan Song', 'Downwards', 'Midnight', 'Meme Voyage', 'Vegetal Colina', 'Enter with Caliborn: Destruction Adventure', '"Libera me" from Bowman', 'Fighting Spirit ~Double Ascended Form~', '1 Through 15', '72.0x SHOWDOWN COMBO', 'Welcome to Flavortown (Battle Against a Bodacious Foe)', 'Welcome to Flavortown', 'you have got to be SHITTONG me (temp title)', 'you have got to be SHITTONG me', 'The End of Something Really Excellent', 'Strife Mayhem', 'Null', 'Aggress', 'Meldey', 'Explored', 'Rain', 'Sunset',
+    'Light', 'Frost', '~~SIDE 1~~', '~~SIDE 2~~', '~~ADDITIONAL MAYHEM~~', 'Game Over', 'Under the Hat', 'Red Miles', '==>', 'Checkmate', 'Premonition', 'Moondoctor', '==>', 'Checkmate', 'Anticipation', 'Three in the Morning (4 1/3 Hours Late Remix)', 'Fake Fruit Fiesta', 'Showup', 'Stress', 'Contention', 'Mother', 'Fanfare', "Don't Hug Me I'm Scared", 'Let It Snow', "I Don't Want to Miss a Thing", 'Sunrise', 'Mutiny', 'Swan Song', 'Downwards', 'Midnight', 'Meme Voyage', 'Vegetal Colina', 'Enter with Caliborn: Destruction Adventure', '"Libera me" from Bowman', 'Fighting Spirit ~Double Ascended Form~', '1 Through 15', '72.0x SHOWDOWN COMBO', 'Welcome to Flavortown (Battle Against a Bodacious Foe)', 'Welcome to Flavortown', 'you have got to be SHITTONG me (temp title)', 'you have got to be SHITTONG me', 'The End of Something Really Excellent', 'Strife Mayhem', 'Null', 'Aggress', 'Meldey', 'Explored', 'Rain', 'Sunset', 'Daydreamer', 'Home',
     # Artist names (might be caught by cookie_nsnd if things aren't doing well)
     'HadronKalido', 'Hadron Kalido', 'ostrichlittledungeon', 'Sir Felix (Jaspy)', 'ost', 'cookiefonster', 'Makin', 'wheals', 'Difarem',
     # Typos
@@ -227,6 +238,15 @@ special_cases = {
     ('~~ GARBAGE ~~ 「 総たわごと 」 ~~ultimate fakeout~~', 'Meme Voyage'): 'Meme Voyage (vol. s*x)',
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe A)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe A)',
     ('~~SIDE 2~~ (coloUrs and mayhem: Universe B)', '~~SIDE 1~~'): '~~SIDE 1~~ (coloUrs and mayhem: Universe B)',
+    ("Egbert's Kitchen", 'Under the Hat'): 'Under the Hat (One Year Older)',
+    ('Tranquil Downpour', 'Rain'): 'Rain (Rob Scallon)',
+    ('Fetch The Bullet!', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Jade English - Study for Eclectic Bass, 1984.1', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Insurrection', 'Mutiny'): 'Mutiny (Bill Bolin)',
+    ('Play the Rain', 'Rain'): 'Rain (Medium)',
+    ('A Happy Ending', 'Mother'): 'Mother (One Year Older)',
+    ('Constituent Hearts', 'Stress'): 'Stress (Vol. 9)',
+    ('Dance of the Dead', 'Daydreamer'): 'Daydreamer (Land of Fans and Music 4)',
 }
 
 
