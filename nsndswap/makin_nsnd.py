@@ -313,6 +313,11 @@ class MakinParser(html.parser.HTMLParser):
                 return 'Daydreamer (Stable Time Loops and Paradoxes)'
             else:
                 return 'Daydreamer (Land of Fans and Music 4)'
+        elif title == 'Cornered':
+            if self.benchmark >= Benchmarks.CARETAKERS:
+                return 'Cornered (Stuckhome Syndrome)'
+            else:
+                return 'Cornered (Hiveswap Act 2)'
 
         # Update benchmark
         if update_benchmark:
